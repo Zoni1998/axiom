@@ -857,25 +857,49 @@ class AgentLoop @Inject constructor(
 
     private fun cleanPlanJson(raw: String): String {
         var content = raw.trim()
+        // Strip markdown code blocks
         if (content.startsWith("```json")) {
             content = content.removePrefix("```json")
+        } else if (content.startsWith("```")) {
+            content = content.removePrefix("```")
         }
         if (content.endsWith("```")) {
             content = content.removeSuffix("```")
         }
         content = content.trim()
+        
+        // Find first { and last } to extract JSON object
+        val firstBrace = content.indexOf('{')
+        val lastBrace = content.lastIndexOf('}')
+        if (firstBrace >= 0 && lastBrace > firstBrace) {
+            content = content.substring(firstBrace, lastBrace + 1)
+        }
+        
         try {
             val jsonElement = json.parseToJsonElement(content)
             if (jsonElement is JsonObject) {
+                // If response has a "plan" wrapper, extract it
                 if (jsonElement.containsKey("plan")) {
                     val planElement = jsonElement["plan"]
                     if (planElement != null) {
                         return planElement.toString()
                     }
                 }
+                // Return the full JSON if it looks like a plan (has "steps" or "goal")
+                if (jsonElement.containsKey("steps") || jsonElement.containsKey("goal")) {
+                    return content
+                }
             }
         } catch (e: Exception) {
-            // Silently ignore parsing errors here and let downstream deserialization report them if needed
+            // Try to salvage: remove trailing commas, fix common issues
+            content = content.replace(",\\s*}".toRegex(), "}")
+                .replace(",\\s*]".toRegex(), "]")
+            try {
+                val retry = json.parseToJsonElement(content)
+                if (retry is JsonObject && (retry.containsKey("steps") || retry.containsKey("goal"))) {
+                    return content
+                }
+            } catch (_: Exception) { }
         }
         return content
     }
