@@ -160,6 +160,81 @@ object AliasResolver {
         "turn off hotspot"  to ActionHint("TOGGLE_HOTSPOT", mapOf("state" to "off")),
         "tethering"         to ActionHint("TOGGLE_HOTSPOT", mapOf("state" to "toggle")),
 
+|
+|        // ═══════════════ PORTUGUÊS (PT-BR) ═══════════════
+|
+|        // ── LANTERNA ──
+|        "lanterna"           to ActionHint("TOGGLE_FLASHLIGHT", mapOf("state" to "toggle")),
+|        "ligar lanterna"     to ActionHint("TOGGLE_FLASHLIGHT", mapOf("state" to "on")),
+|        "desligar lanterna"  to ActionHint("TOGGLE_FLASHLIGHT", mapOf("state" to "off")),
+|        "acender lanterna"   to ActionHint("TOGGLE_FLASHLIGHT", mapOf("state" to "on")),
+|        "apagar lanterna"    to ActionHint("TOGGLE_FLASHLIGHT", mapOf("state" to "off")),
+|
+|        // ── BRILHO ──
+|        "brilho"             to ActionHint("SET_BRIGHTNESS", mapOf("level" to "50")),
+|        "aumentar brilho"    to ActionHint("SET_BRIGHTNESS", mapOf("level" to "80")),
+|        "aumenta o brilho"   to ActionHint("SET_BRIGHTNESS", mapOf("level" to "80")),
+|        "diminuir brilho"    to ActionHint("SET_BRIGHTNESS", mapOf("level" to "20")),
+|        "diminui o brilho"   to ActionHint("SET_BRIGHTNESS", mapOf("level" to "20")),
+|        "mais brilho"        to ActionHint("SET_BRIGHTNESS", mapOf("level" to "80")),
+|        "menos brilho"       to ActionHint("SET_BRIGHTNESS", mapOf("level" to "20")),
+|        "brilho máximo"      to ActionHint("SET_BRIGHTNESS", mapOf("level" to "100")),
+|        "brilho mínimo"      to ActionHint("SET_BRIGHTNESS", mapOf("level" to "10")),
+|
+|        // ── PRINT ──
+|        "print"              to ActionHint("TAKE_SCREENSHOT", emptyMap()),
+|        "tirar print"        to ActionHint("TAKE_SCREENSHOT", emptyMap()),
+|        "tira um print"      to ActionHint("TAKE_SCREENSHOT", emptyMap()),
+|        "capturar tela"      to ActionHint("TAKE_SCREENSHOT", emptyMap()),
+|
+|        // ── WIFI ──
+|        "ligar wifi"         to ActionHint("TOGGLE_WIFI", mapOf("state" to "on")),
+|        "desligar wifi"      to ActionHint("TOGGLE_WIFI", mapOf("state" to "off")),
+|        "liga o wifi"        to ActionHint("TOGGLE_WIFI", mapOf("state" to "on")),
+|        "desliga o wifi"     to ActionHint("TOGGLE_WIFI", mapOf("state" to "off")),
+|
+|        // ── BLUETOOTH ──
+|        "ligar bluetooth"    to ActionHint("TOGGLE_BLUETOOTH", mapOf("state" to "on")),
+|        "desligar bluetooth" to ActionHint("TOGGLE_BLUETOOTH", mapOf("state" to "off")),
+|
+|        // ── VOLUME / SOM ──
+|        "mutar"              to ActionHint("SET_VOLUME", mapOf("type" to "ring", "level" to "0")),
+|        "desmutar"           to ActionHint("SET_VOLUME", mapOf("type" to "ring", "level" to "50")),
+|        "silencioso"         to ActionHint("SET_VOLUME", mapOf("type" to "ring", "level" to "0")),
+|        "modo silencioso"    to ActionHint("SET_VOLUME", mapOf("type" to "ring", "level" to "0")),
+|        "aumentar volume"    to ActionHint("SET_VOLUME", mapOf("type" to "media", "level" to "80")),
+|        "aumenta o volume"   to ActionHint("SET_VOLUME", mapOf("type" to "media", "level" to "80")),
+|        "diminuir volume"    to ActionHint("SET_VOLUME", mapOf("type" to "media", "level" to "30")),
+|        "diminui o volume"   to ActionHint("SET_VOLUME", mapOf("type" to "media", "level" to "30")),
+|        "volume máximo"      to ActionHint("SET_VOLUME", mapOf("type" to "media", "level" to "100")),
+|
+|        // ── TELA ──
+|        "bloquear tela"      to ActionHint("LOCK_SCREEN", emptyMap()),
+|        "travar tela"        to ActionHint("LOCK_SCREEN", emptyMap()),
+|        "desligar tela"      to ActionHint("LOCK_SCREEN", emptyMap()),
+|
+|        // ── VIBRAR ──
+|        "vibrar"             to ActionHint("SET_RINGER_MODE", mapOf("mode" to "vibrate")),
+|        "modo vibrar"        to ActionHint("SET_RINGER_MODE", mapOf("mode" to "vibrate")),
+|
+|        // ── NÃO PERTURBE ──
+|        "não perturbe"       to ActionHint("TOGGLE_DND", mapOf("state" to "toggle")),
+|        "modo não perturbe"  to ActionHint("TOGGLE_DND", mapOf("state" to "toggle")),
+|
+|        // ── APPS ──
+|        "abrir câmera"       to ActionHint("OPEN_APP", mapOf("appName" to "Câmera")),
+|        "abrir camera"       to ActionHint("OPEN_APP", mapOf("appName" to "Câmera")),
+|        "abrir mapas"        to ActionHint("OPEN_APP", mapOf("appName" to "Google Maps")),
+|        "abrir google maps"  to ActionHint("OPEN_APP", mapOf("appName" to "Google Maps")),
+|        "abrir whatsapp"     to ActionHint("OPEN_APP", mapOf("appName" to "WhatsApp")),
+|        "abrir zap"          to ActionHint("OPEN_APP", mapOf("appName" to "WhatsApp")),
+|        "abrir configurações" to ActionHint("OPEN_APP", mapOf("appName" to "Configurações")),
+|        "abrir ajustes"      to ActionHint("OPEN_APP", mapOf("appName" to "Configurações")),
+|        "abrir chrome"       to ActionHint("OPEN_BROWSER", emptyMap()),
+|        "abrir navegador"    to ActionHint("OPEN_BROWSER", emptyMap()),
+|        "abrir youtube"      to ActionHint("OPEN_APP", mapOf("appName" to "YouTube")),
+|        "abrir instagram"    to ActionHint("OPEN_APP", mapOf("appName" to "Instagram")),
+
         // ── COMMON APP SHORTCUTS ─────────────────────────
         "settings"          to ActionHint("OPEN_APP", mapOf("appName" to "Settings")),
         "open settings"     to ActionHint("OPEN_APP", mapOf("appName" to "Settings")),
@@ -203,7 +278,12 @@ object AliasResolver {
     private val compoundIntentWords = setOf(
         "send", "message", "text", "msg", "call", "dial", "ring",
         "email", "mail", "navigate", "directions", "search", "find",
-        "play", "book", "order", "remind"
+        "play", "book", "order", "remind",
+        // PT-BR
+        "enviar", "manda", "mandar", "mensagem", "ligar", "ligação",
+        "navegar", "pesquisar", "procurar", "buscar", "tocar",
+        "reservar", "pedir", "lembrar", "calcular", "distância",
+        "trajeto", "rota", "caminho"
     )
 
     /**
@@ -213,7 +293,7 @@ object AliasResolver {
     private fun cleanInput(input: String): String {
         return input.lowercase()
             .replace(Regex("""[.,\/#!$%\^&\*;:{}=\-_`~()?+!]"""), " ") // replace punctuation with spaces
-            .replace(Regex("""\b(the|a|an|please|could\s+you|please\s+turn|turn\s+the|open\s+the|close\s+the|enable\s+the|disable\s+the|switch\s+on\s+the|switch\s+off\s+the)\b"""), "") // remove stop/filler words
+            .replace(Regex("""\b(the|a|an|please|could\s+you|please\s+turn|turn\s+the|open\s+the|close\s+the|enable\s+the|disable\s+the|switch\s+on\s+the|switch\s+off\s+the|o|a|os|as|por\s+favor|pode|poderia|você|pode\s+você)\b"""), "") // remove stop/filler words (EN + PT)
             .replace(Regex("""\s+"""), " ") // collapse multiple spaces
             .trim()
     }
@@ -232,7 +312,7 @@ object AliasResolver {
 
         // 2. Dynamic brightness extraction — "set brightness to 30%", "brightness 60", etc.
         //    This runs BEFORE compound-intent guard so the LLM doesn't need to handle it.
-        if (lower.contains("brightness")) {
+        if (lower.contains("brightness") || lower.contains("brilho")) {
             val numberMatch = Regex("""\d+""").find(lower)
             if (numberMatch != null) {
                 val level = numberMatch.value.toIntOrNull()?.coerceIn(0, 100) ?: 50
