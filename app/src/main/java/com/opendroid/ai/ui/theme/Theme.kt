@@ -12,8 +12,8 @@ import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 
 private val DarkColorScheme = darkColorScheme(
-    primary = DarkPalette.accentNeonGreen,
-    secondary = DarkPalette.accentPurple,
+    primary = DarkPalette.accentSecondary,
+    secondary = DarkPalette.accentPrimary,
     tertiary = DarkPalette.accentCyan,
     background = DarkPalette.background,
     surface = DarkPalette.surface,
@@ -25,8 +25,8 @@ private val DarkColorScheme = darkColorScheme(
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = LightPalette.accentNeonGreen,
-    secondary = LightPalette.accentPurple,
+    primary = LightPalette.accentSecondary,
+    secondary = LightPalette.accentPrimary,
     tertiary = LightPalette.accentCyan,
     background = LightPalette.background,
     surface = LightPalette.surface,
@@ -38,7 +38,7 @@ private val LightColorScheme = lightColorScheme(
 )
 
 @Composable
-fun OpenDroidTheme(
+fun ZoniaTheme(
     isDarkTheme: Boolean = true,
     content: @Composable () -> Unit
 ) {
@@ -49,19 +49,28 @@ fun OpenDroidTheme(
     if (!view.isInEditMode) {
         SideEffect {
             val window = (view.context as Activity).window
+            // AMOLED black for dark, iOS gray for light
             window.statusBarColor = palette.background.toArgb()
             window.navigationBarColor = palette.background.toArgb()
-            // Light status bar icons for dark theme, dark icons for light theme
             WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = !isDarkTheme
             WindowCompat.getInsetsController(window, view).isAppearanceLightNavigationBars = !isDarkTheme
         }
     }
 
-    CompositionLocalProvider(LocalOpenDroidColors provides palette) {
+    CompositionLocalProvider(LocalZoniaColors provides palette) {
         MaterialTheme(
             colorScheme = colorScheme,
             typography = Typography,
             content = content
         )
     }
+}
+
+// Keep old name for backward compat
+@Composable
+fun OpenDroidTheme(
+    isDarkTheme: Boolean = true,
+    content: @Composable () -> Unit
+) {
+    ZoniaTheme(isDarkTheme, content)
 }

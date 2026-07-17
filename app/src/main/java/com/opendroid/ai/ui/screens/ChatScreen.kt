@@ -109,7 +109,7 @@ fun ChatScreen(
                 title = {
                     Column {
                         Text(
-                            text = "AXIOM",
+                            text = "ZONIA",
                             fontFamily = FontFamily.Monospace,
                             fontWeight = FontWeight.Bold,
                             color = AccentNeonGreen,
@@ -248,7 +248,7 @@ fun ChatScreen(
                             TextField(
                                 value = inputQuery,
                                 onValueChange = { inputQuery = it },
-                                placeholder = { Text("Peça ao Axiom para executar uma tarefa...", color = TextSecondary, fontSize = 14.sp) },
+                                placeholder = { Text("Peça ao ZonIA para executar uma tarefa...", color = TextSecondary, fontSize = 14.sp) },
                                 colors = TextFieldDefaults.colors(
                                     focusedContainerColor = Color.Transparent,
                                     unfocusedContainerColor = Color.Transparent,

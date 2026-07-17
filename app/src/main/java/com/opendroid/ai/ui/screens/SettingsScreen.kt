@@ -1136,7 +1136,7 @@ fun SettingsScreen(
                              )
                              Spacer(modifier = Modifier.height(6.dp))
                              Text(
-                                 text = "Os modelos do Axiom ocupam ${formatBytes(usedByApp)} of on-device storage.",
+                                 text = "Os modelos do ZonIA ocupam ${formatBytes(usedByApp)} of on-device storage.",
                                  fontSize = 10.sp,
                                  color = TextSecondary
                              )
@@ -1358,7 +1358,7 @@ fun SettingsScreen(
                                     modifier = Modifier.fillMaxWidth()
                                 )
                                 Text(
-                                    text = "Se a chave ElevenLabs não estiver configurada, o Axiom usa automaticamente o Text-to-Speech nativo offline do Android.",
+                                    text = "Se a chave ElevenLabs não estiver configurada, o ZonIA usa automaticamente o Text-to-Speech nativo offline do Android.",
                                     fontSize = 10.sp,
                                     color = TextSecondary
                                 )
@@ -1682,7 +1682,7 @@ fun SettingsScreen(
                             )
                             Spacer(modifier = Modifier.height(2.dp))
                             Text(
-                                text = "Como o Axiom gerencia seus dados e privacidade.",
+                                text = "Como o ZonIA gerencia seus dados e privacidade.",
                                 fontSize = 12.sp,
                                 color = TextSecondary
                             )
@@ -1728,7 +1728,7 @@ fun SettingsScreen(
                             )
                             Spacer(modifier = Modifier.height(2.dp))
                             Text(
-                                text = "Termos de uso e condições do Axiom.",
+                                text = "Termos de uso e condições do ZonIA.",
                                 fontSize = 12.sp,
                                 color = TextSecondary
                             )
@@ -1858,7 +1858,7 @@ fun SettingsScreen(
                         Spacer(modifier = Modifier.width(12.dp))
                         Column(modifier = Modifier.weight(1f)) {
                             Text(
-                                text = "SOBRE O AXIOM",
+                                text = "SOBRE O ZONIA",
                                 fontSize = 11.sp,
                                 fontWeight = FontWeight.Bold,
                                 fontFamily = FontFamily.Monospace,
@@ -1898,7 +1898,7 @@ fun SettingsScreen(
                         )
                         Spacer(modifier = Modifier.height(10.dp))
                         Text(
-                            text = "Para permitir que o Axiom opere outros aplicativos de forma autônoma (e.g. WhatsApp, Calendar), verify that the serviço de acessibilidade 'Axiom' is active in Settings -> Accessibility -> Installed Services.",
+                            text = "Para permitir que o ZonIA opere outros aplicativos de forma autônoma (e.g. WhatsApp, Calendar), verify that the serviço de acessibilidade 'ZonIA' is active in Settings -> Accessibility -> Installed Services.",
                             fontSize = 12.sp,
                             color = TextSecondary
                         )

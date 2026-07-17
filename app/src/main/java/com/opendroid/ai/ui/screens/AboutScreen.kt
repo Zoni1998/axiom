@@ -107,7 +107,7 @@ fun AboutScreen(
                         Spacer(modifier = Modifier.height(16.dp))
 
                         Text(
-                            text = "Axiom",
+                            text = "ZonIA",
                             fontSize = 28.sp,
                             fontWeight = FontWeight.ExtraBold,
                             color = TextPrimary,

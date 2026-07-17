@@ -280,7 +280,7 @@ fun IntroductionPanel(
         ) {
             Image(
                 painter = painterResource(id = com.opendroid.ai.R.drawable.bot),
-                contentDescription = "Axiom Avatar",
+                contentDescription = "ZonIA Avatar",
                 modifier = Modifier.size(120.dp)
             )
         }
@@ -288,7 +288,7 @@ fun IntroductionPanel(
         Spacer(modifier = Modifier.height(24.dp))
         
         Text(
-            text = "Olá! Eu sou o Axiom",
+            text = "Olá! Eu sou o ZonIA",
             fontSize = 24.sp,
             fontWeight = FontWeight.Bold,
             color = TextPrimary
@@ -392,7 +392,7 @@ fun PermissionPromptPanel(
         ) {
             Image(
                 painter = painterResource(id = com.opendroid.ai.R.drawable.bot),
-                contentDescription = "Axiom Avatar",
+                contentDescription = "ZonIA Avatar",
                 modifier = Modifier.size(120.dp)
             )
         }
@@ -571,7 +571,7 @@ fun PermissionsPanelContent(
             colors = ButtonDefaults.buttonColors(containerColor = AccentNeonGreen, contentColor = DarkBackground),
             shape = RoundedCornerShape(8.dp)
         ) {
-            Text("Entrar no Axiom", fontWeight = FontWeight.Bold, fontSize = 16.sp)
+            Text("Entrar no ZonIA", fontWeight = FontWeight.Bold, fontSize = 16.sp)
         }
     }
 }

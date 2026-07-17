@@ -3,82 +3,85 @@ package com.opendroid.ai.ui.theme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.compositionLocalOf
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.ui.graphics.Color
 
 /**
- * OpenDroid color palette — resolved via CompositionLocal so all screens
- * automatically adapt to the active theme (light / dark).
+ * ZonIA premium color palette — glassmorphism-ready with AMOLED dark mode.
  */
-data class OpenDroidColors(
+data class ZoniaColors(
     val background: Color,
     val surface: Color,
+    val glassSurface: Color,
+    val glassBorder: Color,
     val cardBackground: Color,
     val borderColor: Color,
     val textPrimary: Color,
     val textSecondary: Color,
-    val accentNeonGreen: Color,
-    val accentPurple: Color,
+    val accentPrimary: Color,    // Premium purple
+    val accentSecondary: Color,  // Neon green
     val accentCyan: Color,
     val accentRed: Color,
+    val glassGradientStart: Color,
+    val glassGradientEnd: Color,
     val isDark: Boolean
 )
 
-// ── Dark palette (the existing one) ─────────────────────────
-val DarkPalette = OpenDroidColors(
-    background = Color(0xFF080C10),
-    surface = Color(0xFF0D1117),
-    cardBackground = Color(0xFF161B22),
-    borderColor = Color(0xFF30363D),
-    textPrimary = Color(0xFFF0F6FC),
-    textSecondary = Color(0xFF8B949E),
-    accentNeonGreen = Color(0xFF00FF88),
-    accentPurple = Color(0xFF7C4DFF),
-    accentCyan = Color(0xFF00F0FF),
-    accentRed = Color(0xFFFF3B30),
+// ═══════════════ DARK — AMOLED Black ═══════════════
+val DarkPalette = ZoniaColors(
+    background = Color(0xFF000000),          // Pure AMOLED black
+    surface = Color(0xFF0A0A0A),            // Slightly elevated
+    glassSurface = Color(0x14FFFFFF),       // Ultra-subtle glass (8% white)
+    glassBorder = Color(0x1AFFFFFF),        // Glass border (10% white)
+    cardBackground = Color(0x0DFFFFFF),     // Card (5% white)
+    borderColor = Color(0x1AFFFFFF),        // Subtle borders
+    textPrimary = Color(0xFFF5F5F7),        // Soft white (Apple-style)
+    textSecondary = Color(0xFF98989D),      // Muted gray
+    accentPrimary = Color(0xFFA78BFA),      // Premium violet
+    accentSecondary = Color(0xFF00FF88),    // Neon green (kept)
+    accentCyan = Color(0xFF5EEAD4),         // Soft teal
+    accentRed = Color(0xFFFF453A),          // iOS red
+    glassGradientStart = Color(0x1AA78BFA), // Purple glass tint
+    glassGradientEnd = Color(0x1A6366F1),   // Blue glass tint
     isDark = true
 )
 
-// ── Light palette ───────────────────────────────────────────
-val LightPalette = OpenDroidColors(
-    background = Color(0xFFF6F8FA),
-    surface = Color(0xFFFFFFFF),
-    cardBackground = Color(0xFFFFFFFF),
-    borderColor = Color(0xFFD0D7DE),
-    textPrimary = Color(0xFF1F2328),
-    textSecondary = Color(0xFF656D76),
-    accentNeonGreen = Color(0xFF1A7F37),
-    accentPurple = Color(0xFF8250DF),
-    accentCyan = Color(0xFF0969DA),
-    accentRed = Color(0xFFCF222E),
+// ═══════════════ LIGHT — iOS-style Soft ═══════════════
+val LightPalette = ZoniaColors(
+    background = Color(0xFFF2F2F7),         // iOS light gray
+    surface = Color(0xFFFFFFFF),            // Pure white
+    glassSurface = Color(0xCCFFFFFF),       // Frosted glass (80% white)
+    glassBorder = Color(0x1A000000),        // Subtle dark border
+    cardBackground = Color(0xFFFFFFFF),     // White cards
+    borderColor = Color(0xFFE5E5EA),        // iOS separator
+    textPrimary = Color(0xFF1C1C1E),        // Near black
+    textSecondary = Color(0xFF8E8E93),      // iOS gray
+    accentPrimary = Color(0xFF7C3AED),      // Deep violet
+    accentSecondary = Color(0xFF059669),    // Emerald green
+    accentCyan = Color(0xFF0D9488),         // Darker teal
+    accentRed = Color(0xFFDC2626),          // Red
+    glassGradientStart = Color(0x1A7C3AED), // Purple tint
+    glassGradientEnd = Color(0x1A6366F1),   // Blue tint
     isDark = false
 )
 
-val LocalOpenDroidColors = compositionLocalOf { DarkPalette }
+val LocalZoniaColors = compositionLocalOf { DarkPalette }
 
-/** Access the active palette from any @Composable */
 object AppTheme {
-    val colors: OpenDroidColors
+    val colors: ZoniaColors
         @Composable
         @ReadOnlyComposable
-        get() = LocalOpenDroidColors.current
+        get() = LocalZoniaColors.current
 }
 
-// ── Legacy top-level aliases ────────────────────────────────
-// These keep every existing screen compiling without changes.
-// They delegate to the composition-local palette at read-time.
-
-// NOTE: These are static vals used outside @Composable scope.
-// For full dynamic theming in screens that read these outside Compose,
-// they keep the dark defaults. Inside @Composable, use AppTheme.colors.*
+// ── Legacy aliases for backward compat ──
 val DarkBackground = DarkPalette.background
 val DarkSurface = DarkPalette.surface
 val CardBackground = DarkPalette.cardBackground
 val BorderColor = DarkPalette.borderColor
 val TextPrimary = DarkPalette.textPrimary
 val TextSecondary = DarkPalette.textSecondary
-val AccentNeonGreen = DarkPalette.accentNeonGreen
-val AccentPurple = DarkPalette.accentPurple
+val AccentNeonGreen = DarkPalette.accentSecondary
+val AccentPurple = DarkPalette.accentPrimary
 val AccentCyan = DarkPalette.accentCyan
 val AccentRed = DarkPalette.accentRed

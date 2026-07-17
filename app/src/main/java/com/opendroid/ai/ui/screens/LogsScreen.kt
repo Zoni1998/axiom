@@ -135,7 +135,7 @@ fun LogsScreen(
                     } else {
                         EmptyStateView(
                             title = "Nenhuma execução registrada",
-                            subtitle = "Cada ação executada pelo Axiom é arquivada aqui.",
+                            subtitle = "Cada ação executada pelo ZonIA é arquivada aqui.",
                             icon = Icons.Default.Info
                         )
                     }
