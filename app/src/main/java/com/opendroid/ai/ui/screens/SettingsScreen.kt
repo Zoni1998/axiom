@@ -80,6 +80,7 @@ fun SettingsScreen(
         "Cohere",
         "DeepSeek",
         "Copilot API",
+        "NVIDIA NIM",
         "Custom OpenAI Compatible",
         "Ollama",
         "On-Device AI"
@@ -1377,6 +1378,55 @@ fun SettingsScreen(
                 ) {
                     Column(modifier = Modifier.padding(16.dp)) {
                         Text(
+                            
+                            // ── TTS / Voz ──
+                            Spacer(modifier = Modifier.height(24.dp))
+                            Card(
+                                modifier = Modifier.fillMaxWidth(),
+                                colors = CardDefaults.cardColors(containerColor = CardBackground),
+                                shape = RoundedCornerShape(12.dp)
+                            ) {
+                                Column(modifier = Modifier.padding(16.dp)) {
+                                    Text(
+                                        text = "SÍNTESE DE VOZ",
+                                        fontSize = 11.sp,
+                                        fontWeight = FontWeight.Bold,
+                                        color = AccentCyan,
+                                        letterSpacing = 1.sp
+                                    )
+                                    Spacer(modifier = Modifier.height(12.dp))
+                                    Row(
+                                        modifier = Modifier.fillMaxWidth(),
+                                        horizontalArrangement = Arrangement.SpaceBetween,
+                                        verticalAlignment = Alignment.CenterVertically
+                                    ) {
+                                        Column(modifier = Modifier.weight(1f)) {
+                                            Text(
+                                                "Falar Respostas",
+                                                fontSize = 15.sp,
+                                                fontWeight = FontWeight.SemiBold,
+                                                color = TextPrimary
+                                            )
+                                            Text(
+                                                "O assistente lê as respostas em voz alta",
+                                                fontSize = 12.sp,
+                                                color = TextSecondary
+                                            )
+                                        }
+                                        Switch(
+                                            checked = config.speakResponsesEnabled,
+                                            onCheckedChange = { viewModel.toggleSpeakResponses(it) },
+                                            colors = SwitchDefaults.colors(
+                                                checkedThumbColor = AccentNeonGreen,
+                                                checkedTrackColor = AccentNeonGreen.copy(alpha = 0.3f),
+                                                uncheckedThumbColor = TextSecondary,
+                                                uncheckedTrackColor = TextSecondary.copy(alpha = 0.2f)
+                                            )
+                                        )
+                                    }
+                                }
+                            }
+
                             text = "PLANEJAMENTO E AUTOMAÇÃO",
                             fontSize = 11.sp,
                             fontWeight = FontWeight.Bold,

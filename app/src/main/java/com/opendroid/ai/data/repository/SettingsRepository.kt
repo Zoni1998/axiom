@@ -37,6 +37,7 @@ class SettingsRepository @Inject constructor(
     private val autoReplyWhitelistKey = stringSetPreferencesKey("auto_reply_whitelist")
     private val autoReplyCustomPromptKey = stringPreferencesKey("auto_reply_custom_prompt")
     private val autoReplyMaxPerHourKey = intPreferencesKey("auto_reply_max_per_hour")
+    private val speakResponsesKey = booleanPreferencesKey("speak_responses")
 
     val llmConfig: Flow<LLMConfig> = context.dataStore.data.map { preferences ->
         val configStr = preferences[llmConfigKey]
@@ -49,6 +50,10 @@ class SettingsRepository @Inject constructor(
         } else {
             LLMConfig()
         }
+    }
+
+    val speakResponsesEnabled: Flow<Boolean> = context.dataStore.data.map { preferences ->
+        preferences[speakResponsesKey] ?: true
     }
 
     val autoReplyConfig: Flow<AutoReplyConfig> = context.dataStore.data.map { preferences ->
@@ -89,6 +94,12 @@ class SettingsRepository @Inject constructor(
             val fetchMap = current.lastModelFetch.toMutableMap()
             fetchMap[provider] = System.currentTimeMillis()
             current.copy(modelCache = cache, lastModelFetch = fetchMap)
+        }
+    }
+
+    suspend fun updateSpeakResponses(enabled: Boolean) {
+        context.dataStore.edit { preferences ->
+            preferences[speakResponsesKey] = enabled
         }
     }
 

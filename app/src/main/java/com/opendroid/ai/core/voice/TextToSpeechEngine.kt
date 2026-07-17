@@ -58,6 +58,8 @@ class TextToSpeechEngine(
 
     fun speak(text: String) {
         scope.launch {
+            val speakEnabled = try { settingsRepository.speakResponsesEnabled.first() } catch (e: Exception) { true }
+            if (!speakEnabled) return@launch
             val config = settingsRepository.llmConfig.first()
             val apiKey = config.elevenLabsApiKey
             val voiceId = config.elevenLabsVoiceId.ifEmpty { "21m00Tcm4TlvDq8ikWAM" } // default Rachel voice

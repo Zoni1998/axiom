@@ -7,6 +7,7 @@ import com.opendroid.ai.core.agent.IntentClassifier
 import com.opendroid.ai.core.agent.QueryComplexity
 import com.opendroid.ai.core.llm.prompts.SystemPrompts
 import com.opendroid.ai.core.llm.providers.*
+import com.opendroid.ai.core.llm.providers.NvidiaNimProvider
 import com.opendroid.ai.core.llm.providers.HybridOnDeviceProvider
 import com.opendroid.ai.core.llm.providers.LiteRTLMProvider
 import com.opendroid.ai.data.repository.SettingsRepository
@@ -33,6 +34,7 @@ class LLMProviderFactory @Inject constructor(
     private val gemmaProvider: Provider<GemmaProvider>,
     private val liteRTLMProvider: Provider<LiteRTLMProvider>,
     private val hybridOnDeviceProvider: Provider<HybridOnDeviceProvider>,
+    private val nvidiaNimProvider: Provider<NvidiaNimProvider>,
     private val settingsRepository: SettingsRepository,
     private val actionDispatcher: dagger.Lazy<ActionDispatcher>,
     private val intentClassifier: dagger.Lazy<IntentClassifier>,
@@ -53,6 +55,7 @@ class LLMProviderFactory @Inject constructor(
             "DeepSeek" -> deepSeekProvider.get()
             "Copilot API" -> copilotProvider.get()
             "Custom OpenAI Compatible" -> customOpenAIProvider.get()
+            "NVIDIA NIM" -> nvidiaNimProvider.get()
             // Hybrid on-device: both old and new names map here
             "On-Device AI",
             "Gemma 4 (On-device)" -> hybridOnDeviceProvider.get()
@@ -76,6 +79,7 @@ class LLMProviderFactory @Inject constructor(
             "DeepSeek",
             "Copilot API",
             "Custom OpenAI Compatible",
+            "NVIDIA NIM",
             "Ollama",
             "On-Device AI"
         )
