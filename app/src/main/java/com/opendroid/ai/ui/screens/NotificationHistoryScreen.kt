@@ -171,7 +171,7 @@ fun NotificationHistoryScreen(
 private fun StatChip(
     value: String,
     label: String,
-    themeColors: com.opendroid.ai.ui.theme.OpenDroidColors,
+    themeColors: com.opendroid.ai.ui.theme.ZoniaColors,
     modifier: Modifier = Modifier
 ) {
     Card(
@@ -192,7 +192,7 @@ private fun StatChip(
 @Composable
 private fun NotificationCard(
     notification: NotificationEntity,
-    themeColors: com.opendroid.ai.ui.theme.OpenDroidColors
+    themeColors: com.opendroid.ai.ui.theme.ZoniaColors
 ) {
     val dateFormat = remember { java.text.SimpleDateFormat("MMM d, h:mm a", java.util.Locale.getDefault()) }
     val timeText = dateFormat.format(java.util.Date(notification.timestamp))

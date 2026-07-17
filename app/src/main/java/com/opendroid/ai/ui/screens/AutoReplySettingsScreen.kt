@@ -420,7 +420,7 @@ private fun AppToggleRow(
     appName: String,
     emoji: String,
     isEnabled: Boolean,
-    themeColors: com.opendroid.ai.ui.theme.OpenDroidColors,
+    themeColors: com.opendroid.ai.ui.theme.ZoniaColors,
     onToggle: (Boolean) -> Unit
 ) {
     Row(
