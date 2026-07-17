@@ -169,11 +169,11 @@ fun OpenDroidNavigation(
 
 sealed class Screen(val route: String, val title: String, val icon: ImageVector) {
     object Chat : Screen("chat", "Chat", Icons.Default.Chat)
-    object Plan : Screen("plan", "Plan", Icons.Default.List)
-    object Memory : Screen("memory", "Memory", Icons.Default.Star)
+    object Plan : Screen("plan", "Plano", Icons.Default.List)
+    object Memory : Screen("memory", "Memória", Icons.Default.Star)
     object Macros : Screen("macros", "Macros", Icons.Default.Build)
-    object History : Screen("history", "Logs", Icons.Default.History)
-    object Settings : Screen("settings", "Settings", Icons.Default.Settings)
+    object History : Screen("history", "Registros", Icons.Default.History)
+    object Settings : Screen("settings", "Ajustes", Icons.Default.Settings)
 }
 
 @Composable

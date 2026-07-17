@@ -60,7 +60,7 @@ fun SplashScreen(onNavigateNext: () -> Unit) {
             )
             Spacer(modifier = Modifier.height(24.dp))
             Text(
-                text = "OPENDROID",
+                text = "AXIOM",
                 fontSize = 36.sp,
                 fontWeight = FontWeight.Bold,
                 fontFamily = FontFamily.Monospace,
@@ -69,14 +69,14 @@ fun SplashScreen(onNavigateNext: () -> Unit) {
             )
             Spacer(modifier = Modifier.height(12.dp))
             Text(
-                text = "Your Open Autonomous Android Agent",
+                text = "Seu Assistente Autônomo Android",
                 fontSize = 14.sp,
                 fontFamily = FontFamily.SansSerif,
                 color = TextSecondary
             )
             Spacer(modifier = Modifier.height(48.dp))
             Text(
-                text = "SYSTEM BOOT: ONLINE",
+                text = "SISTEMA: ATIVO",
                 fontSize = 12.sp,
                 fontFamily = FontFamily.Monospace,
                 color = TextPrimary,

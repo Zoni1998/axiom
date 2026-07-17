@@ -284,7 +284,7 @@ fun SettingsScreen(
                             OutlinedTextField(
                                 value = config.activeModel,
                                 onValueChange = { viewModel.updateActiveModel(it) },
-                                label = { Text("Active LLM Model", fontSize = 12.sp) },
+                                label = { Text("Modelo LLM Ativo", fontSize = 12.sp) },
                                 singleLine = true,
                                 trailingIcon = {
                                     IconButton(onClick = { modelDropdownExpanded = !modelDropdownExpanded }) {
@@ -459,7 +459,7 @@ fun SettingsScreen(
                             OutlinedTextField(
                                 value = config.ollamaUrl,
                                 onValueChange = { viewModel.updateOllamaUrl(it) },
-                                label = { Text("Ollama Server URL", fontSize = 12.sp) },
+                                label = { Text("URL do Servidor Ollama", fontSize = 12.sp) },
                                 singleLine = true,
                                 colors = OutlinedTextFieldDefaults.colors(
                                     focusedBorderColor = AccentNeonGreen,
@@ -538,17 +538,17 @@ fun SettingsScreen(
                                     val client = Generation.getClient()
                                     val status = client.checkStatus()
                                     gemma4Status = when (status) {
-                                        FeatureStatus.AVAILABLE -> "Available and ready"
+                                        FeatureStatus.AVAILABLE -> "Disponível e pronto"
                                         FeatureStatus.DOWNLOADABLE -> {
                                             showGemma4Download = true
-                                            "Download needed"
+                                            "Download necessário"
                                         }
-                                        FeatureStatus.DOWNLOADING -> "Downloading..."
-                                        FeatureStatus.UNAVAILABLE -> "Not supported on this device"
-                                        else -> "Unknown"
+                                        FeatureStatus.DOWNLOADING -> "Baixando..."
+                                        FeatureStatus.UNAVAILABLE -> "Não suportado neste dispositivo"
+                                        else -> "Desconhecido"
                                     }
                                 } catch (e: Exception) {
-                                    gemma4Status = "Not supported on this device"
+                                    gemma4Status = "Não suportado neste dispositivo"
                                 }
                                 
                                 // Check Gemma 3n (preview/fast)
@@ -562,17 +562,17 @@ fun SettingsScreen(
                                     val client3n = Generation.getClient(previewConfig)
                                     val status3n = client3n.checkStatus()
                                     gemma3nStatus = when (status3n) {
-                                        FeatureStatus.AVAILABLE -> "Available and ready"
+                                        FeatureStatus.AVAILABLE -> "Disponível e pronto"
                                         FeatureStatus.DOWNLOADABLE -> {
                                             showGemma3nDownload = true
-                                            "Download needed"
+                                            "Download necessário"
                                         }
-                                        FeatureStatus.DOWNLOADING -> "Downloading..."
-                                        FeatureStatus.UNAVAILABLE -> "Not supported on this device"
-                                        else -> "Unknown"
+                                        FeatureStatus.DOWNLOADING -> "Baixando..."
+                                        FeatureStatus.UNAVAILABLE -> "Não suportado neste dispositivo"
+                                        else -> "Desconhecido"
                                     }
                                 } catch (e: Exception) {
-                                    gemma3nStatus = "Not supported on this device"
+                                    gemma3nStatus = "Não suportado neste dispositivo"
                                 }
                             }
                             
@@ -596,7 +596,7 @@ fun SettingsScreen(
                                         try {
                                             val client = Generation.getClient()
                                             client.download()
-                                            gemma4Status = "Downloading..."
+                                            gemma4Status = "Baixando..."
                                             showGemma4Download = false
                                         } catch (e: Exception) {
                                             gemma4Status = "Download failed: ${e.localizedMessage}"
@@ -605,7 +605,7 @@ fun SettingsScreen(
                                     colors = ButtonDefaults.buttonColors(containerColor = AccentNeonGreen),
                                     modifier = Modifier.fillMaxWidth()
                                 ) {
-                                    Text("Download Gemma 4 (AI Core)", color = DarkBackground)
+                                    Text("Baixar Gemma 4 (AI Core)", color = DarkBackground)
                                 }
                             }
                             
@@ -637,7 +637,7 @@ fun SettingsScreen(
                                             }
                                             val client3n = Generation.getClient(previewConfig)
                                             client3n.download()
-                                            gemma3nStatus = "Downloading..."
+                                            gemma3nStatus = "Baixando..."
                                             showGemma3nDownload = false
                                         } catch (e: Exception) {
                                             gemma3nStatus = "Download failed: ${e.localizedMessage}"
@@ -646,7 +646,7 @@ fun SettingsScreen(
                                     colors = ButtonDefaults.buttonColors(containerColor = AccentCyan),
                                     modifier = Modifier.fillMaxWidth()
                                 ) {
-                                    Text("Download Gemma 3n (AI Core)", color = DarkBackground)
+                                    Text("Baixar Gemma 3n (AI Core)", color = DarkBackground)
                                 }
                             }
                             
@@ -684,7 +684,7 @@ fun SettingsScreen(
                                     OutlinedTextField(
                                         value = hfToken,
                                         onValueChange = { viewModel.updateHuggingFaceToken(it) },
-                                        label = { Text("Hugging Face Access Token", fontSize = 12.sp) },
+                                        label = { Text("Token de Acesso Hugging Face", fontSize = 12.sp) },
                                         singleLine = true,
                                         visualTransformation = if (showToken) VisualTransformation.None else PasswordVisualTransformation(),
                                         placeholder = { Text("hf_...", fontSize = 12.sp, color = TextSecondary) },

@@ -139,9 +139,9 @@ fun OnboardingScreen(onFinished: () -> Unit) {
             TopAppBar(
                 title = { 
                     val titleText = when (stage) {
-                        OnboardingStage.INTRODUCTION -> "About You"
-                        OnboardingStage.PERMISSION_PROMPT -> "Permissions"
-                        OnboardingStage.PERMISSIONS -> "Grant Permissions"
+                        OnboardingStage.INTRODUCTION -> "Sobre Você"
+                        OnboardingStage.PERMISSION_PROMPT -> "Permissões"
+                        OnboardingStage.PERMISSIONS -> "Conceder Permissões"
                     }
                     Text(titleText, color = AccentNeonGreen, fontWeight = FontWeight.Bold) 
                 },
@@ -280,7 +280,7 @@ fun IntroductionPanel(
         ) {
             Image(
                 painter = painterResource(id = com.opendroid.ai.R.drawable.bot),
-                contentDescription = "OpenDroid Bot Avatar",
+                contentDescription = "Axiom Avatar",
                 modifier = Modifier.size(120.dp)
             )
         }
@@ -288,7 +288,7 @@ fun IntroductionPanel(
         Spacer(modifier = Modifier.height(24.dp))
         
         Text(
-            text = "Hello! I am OpenDroid",
+            text = "Olá! Eu sou o Axiom",
             fontSize = 24.sp,
             fontWeight = FontWeight.Bold,
             color = TextPrimary
@@ -297,7 +297,7 @@ fun IntroductionPanel(
         Spacer(modifier = Modifier.height(12.dp))
         
         Text(
-            text = "Your open autonomous device assistant. Please introduce yourself so I can serve you personally.",
+            text = "Seu assistente autônomo open source. Me conte sobre você para que eu possa te ajudar melhor.",
             fontSize = 14.sp,
             color = TextSecondary,
             textAlign = androidx.compose.ui.text.style.TextAlign.Center
@@ -308,8 +308,8 @@ fun IntroductionPanel(
         OutlinedTextField(
             value = name,
             onValueChange = onNameChange,
-            label = { Text("What should I call you?", color = TextSecondary) },
-            placeholder = { Text("Enter your name", color = TextSecondary.copy(alpha = 0.6f)) },
+            label = { Text("Como devo te chamar?", color = TextSecondary) },
+            placeholder = { Text("Digite seu nome", color = TextSecondary.copy(alpha = 0.6f)) },
             colors = OutlinedTextFieldDefaults.colors(
                 focusedBorderColor = AccentNeonGreen,
                 unfocusedBorderColor = BorderColor,
@@ -329,8 +329,8 @@ fun IntroductionPanel(
         OutlinedTextField(
             value = dob,
             onValueChange = onDobChange,
-            label = { Text("When is your birthday?", color = TextSecondary) },
-            placeholder = { Text("e.g. MM/DD/YYYY", color = TextSecondary.copy(alpha = 0.6f)) },
+            label = { Text("Qual sua data de nascimento?", color = TextSecondary) },
+            placeholder = { Text("Ex: DD/MM/AAAA", color = TextSecondary.copy(alpha = 0.6f)) },
             colors = OutlinedTextFieldDefaults.colors(
                 focusedBorderColor = AccentNeonGreen,
                 unfocusedBorderColor = BorderColor,
@@ -349,7 +349,7 @@ fun IntroductionPanel(
         if (showError) {
             Spacer(modifier = Modifier.height(8.dp))
             Text(
-                text = "Please enter both your name and birth date.",
+                text = "Por favor, preencha nome e data de nascimento.",
                 color = AccentRed,
                 fontSize = 12.sp,
                 fontWeight = FontWeight.SemiBold
@@ -364,7 +364,7 @@ fun IntroductionPanel(
             colors = ButtonDefaults.buttonColors(containerColor = AccentNeonGreen, contentColor = DarkBackground),
             shape = RoundedCornerShape(8.dp)
         ) {
-            Text("Let's Go", fontWeight = FontWeight.Bold, fontSize = 16.sp)
+            Text("Vamos Lá", fontWeight = FontWeight.Bold, fontSize = 16.sp)
         }
     }
 }
@@ -392,7 +392,7 @@ fun PermissionPromptPanel(
         ) {
             Image(
                 painter = painterResource(id = com.opendroid.ai.R.drawable.bot),
-                contentDescription = "OpenDroid Bot Avatar",
+                contentDescription = "Axiom Avatar",
                 modifier = Modifier.size(120.dp)
             )
         }
@@ -400,7 +400,7 @@ fun PermissionPromptPanel(
         Spacer(modifier = Modifier.height(24.dp))
         
         Text(
-            text = "Permissions Setup",
+            text = "Configurar Permissões",
             fontSize = 24.sp,
             fontWeight = FontWeight.Bold,
             color = TextPrimary
@@ -409,7 +409,7 @@ fun PermissionPromptPanel(
         Spacer(modifier = Modifier.height(16.dp))
         
         Text(
-            text = "Let's give me permission so I can serve you well",
+            text = "Me dê as permissões necessárias para que eu possa te ajudar",
             fontSize = 16.sp,
             fontWeight = FontWeight.SemiBold,
             color = AccentCyan,
@@ -419,7 +419,7 @@ fun PermissionPromptPanel(
         Spacer(modifier = Modifier.height(12.dp))
         
         Text(
-            text = "To allow me to interact with your device, run commands, list files, and operate system features, some standard Android permissions are required.",
+            text = "Para que eu possa interagir com seu dispositivo, executar comandos e usar recursos do sistema, algumas permissões padrão do Android são necessárias.",
             fontSize = 14.sp,
             color = TextSecondary,
             textAlign = androidx.compose.ui.text.style.TextAlign.Center
@@ -433,7 +433,7 @@ fun PermissionPromptPanel(
             colors = ButtonDefaults.buttonColors(containerColor = AccentNeonGreen, contentColor = DarkBackground),
             shape = RoundedCornerShape(8.dp)
         ) {
-            Text("Grant Permissions", fontWeight = FontWeight.Bold, fontSize = 16.sp)
+            Text("Conceder Permissões", fontWeight = FontWeight.Bold, fontSize = 16.sp)
         }
     }
 }
@@ -470,14 +470,14 @@ fun PermissionsPanelContent(
             .padding(24.dp)
     ) {
         Text(
-            text = "Required Permissions",
+            text = "Permissões Necessárias",
             fontSize = 22.sp,
             fontWeight = FontWeight.Bold,
             color = TextPrimary
         )
         Spacer(modifier = Modifier.height(8.dp))
         Text(
-            text = "Configure permissions below to enable full autonomous features.",
+            text = "Configure as permissões abaixo para ativar todas as funções autônomas.",
             fontSize = 13.sp,
             color = TextSecondary
         )
@@ -489,15 +489,15 @@ fun PermissionsPanelContent(
         ) {
             item {
                 PermissionCard(
-                    title = "Microphone",
-                    desc = "Needed for wake word and speech recognition.",
+                    title = "Microfone",
+                    desc = "Necessário para wake word e reconhecimento de voz.",
                     granted = recordAudioGranted,
                     onGrant = onAudioGrant
                 )
             }
             item {
                 PermissionCard(
-                    title = "Location",
+                    title = "Localização",
                     desc = "Needed to fetch weather, directions, and maps.",
                     granted = locationGranted,
                     onGrant = onLocationGrant
@@ -505,24 +505,24 @@ fun PermissionsPanelContent(
             }
             item {
                 PermissionCard(
-                    title = "SMS & Telephony",
-                    desc = "Needed to read and send messages, and place calls.",
+                    title = "SMS & Telefonia",
+                    desc = "Necessário para ler e enviar mensagens e fazer chamadas.",
                     granted = smsGranted && phoneGranted,
                     onGrant = onSmsPhoneGrant
                 )
             }
             item {
                 PermissionCard(
-                    title = "Contacts & Calendar",
-                    desc = "Needed to resolve recipient names and manage events.",
+                    title = "Contatos & Calendário",
+                    desc = "Necessário para resolver nomes de contatos e gerenciar eventos.",
                     granted = contactsGranted && calendarGranted,
                     onGrant = onContactsCalendarGrant
                 )
             }
             item {
                 PermissionCard(
-                    title = "Camera",
-                    desc = "Needed for image input and vision capabilities.",
+                    title = "Câmera",
+                    desc = "Necessário para captura de imagens e recursos de visão.",
                     granted = cameraGranted,
                     onGrant = onCameraGrant
                 )
@@ -530,8 +530,8 @@ fun PermissionsPanelContent(
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
                 item {
                     PermissionCard(
-                        title = "Notifications",
-                        desc = "Needed to post system notifications and service status.",
+                        title = "Notificações",
+                        desc = "Necessário para enviar notificações do sistema e status do serviço.",
                         granted = notificationsGranted,
                         onGrant = onNotificationsGrant
                     )
@@ -539,24 +539,24 @@ fun PermissionsPanelContent(
             }
             item {
                 PermissionCard(
-                    title = "Storage / Files Access",
-                    desc = "Needed for agent to list, read, write, and delete files.",
+                    title = "Armazenamento / Arquivos",
+                    desc = "Necessário para listar, ler, escrever e deletar arquivos.",
                     granted = storageGranted,
                     onGrant = onStorageGrant
                 )
             }
             item {
                 PermissionCard(
-                    title = "System Settings Control",
-                    desc = "Needed to adjust brightness, volume, and other system settings.",
+                    title = "Configurações do Sistema",
+                    desc = "Necessário para ajustar brilho, volume e outras configurações.",
                     granted = writeSettingsGranted,
                     onGrant = onWriteSettingsGrant
                 )
             }
             item {
                 PermissionCard(
-                    title = "Accessibility Service",
-                    desc = "Enables full agent screen automation (clicks & inputs).",
+                    title = "Serviço de Acessibilidade",
+                    desc = "Permite automação completa da tela (cliques e digitação).",
                     granted = accessibilityGranted,
                     onGrant = onAccessibilityGrant
                 )
@@ -571,7 +571,7 @@ fun PermissionsPanelContent(
             colors = ButtonDefaults.buttonColors(containerColor = AccentNeonGreen, contentColor = DarkBackground),
             shape = RoundedCornerShape(8.dp)
         ) {
-            Text("Proceed to OpenDroid Agent", fontWeight = FontWeight.Bold, fontSize = 16.sp)
+            Text("Entrar no Axiom", fontWeight = FontWeight.Bold, fontSize = 16.sp)
         }
     }
 }
