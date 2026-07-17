@@ -249,7 +249,7 @@ class SystemActions @Inject constructor(
                         addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                     }
                     context.startActivity(intent)
-                    ActionResult(false, "I need your permission to change system settings. I've opened the settings page — just flip the switch to allow OpenDroid, then try again!", null, true)
+                    ActionResult(false, "I need your permission to change system settings. I've opened the settings page — just flip the switch to permitir o Axiom, then try again!", null, true)
                 }
             } catch (e: Exception) {
                 Log.e("SetBrightness", "Brightness failed: ${e.localizedMessage}")

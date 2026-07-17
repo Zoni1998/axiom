@@ -56,7 +56,7 @@ fun MacrosScreen(
             TopAppBar(
                 title = {
                     Text(
-                        text = "MACRO ENGINE",
+                        text = "MOTOR DE MACROS",
                         fontFamily = FontFamily.Monospace,
                         fontWeight = FontWeight.Bold,
                         color = AccentNeonGreen,
@@ -70,7 +70,7 @@ fun MacrosScreen(
                     ) {
                         Icon(
                             imageVector = Icons.Default.Add,
-                            contentDescription = "Create Macro",
+                            contentDescription = "Criar Macro",
                             tint = AccentNeonGreen
                         )
                     }
@@ -100,7 +100,7 @@ fun MacrosScreen(
                     ) {
                         Column(modifier = Modifier.padding(16.dp)) {
                             Text(
-                                text = "DEFINE CUSTOM WORKFLOW MACRO",
+                                text = "CRIAR MACRO PERSONALIZADA",
                                 fontSize = 11.sp,
                                 fontWeight = FontWeight.Bold,
                                 fontFamily = FontFamily.Monospace,
@@ -111,7 +111,7 @@ fun MacrosScreen(
                             OutlinedTextField(
                                 value = newMacroName,
                                 onValueChange = { newMacroName = it },
-                                label = { Text("Macro Name", fontSize = 12.sp) },
+                                label = { Text("Nome da Macro", fontSize = 12.sp) },
                                 singleLine = true,
                                 colors = OutlinedTextFieldDefaults.colors(
                                     focusedBorderColor = AccentNeonGreen,
@@ -160,7 +160,7 @@ fun MacrosScreen(
                             OutlinedTextField(
                                 value = stepDesc,
                                 onValueChange = { stepDesc = it },
-                                label = { Text("Step Description", fontSize = 11.sp) },
+                                label = { Text("Descrição do Passo", fontSize = 11.sp) },
                                 colors = OutlinedTextFieldDefaults.colors(
                                     focusedBorderColor = AccentNeonGreen,
                                     unfocusedBorderColor = BorderColor,
@@ -187,7 +187,7 @@ fun MacrosScreen(
                                 OutlinedTextField(
                                     value = stepParamKey,
                                     onValueChange = { stepParamKey = it },
-                                    label = { Text("Param Key", fontSize = 11.sp) },
+                                    label = { Text("Parâmetro", fontSize = 11.sp) },
                                     colors = OutlinedTextFieldDefaults.colors(
                                         focusedBorderColor = AccentNeonGreen,
                                         unfocusedBorderColor = BorderColor,
@@ -200,7 +200,7 @@ fun MacrosScreen(
                                 OutlinedTextField(
                                     value = stepParamVal,
                                     onValueChange = { stepParamVal = it },
-                                    label = { Text("Param Value", fontSize = 11.sp) },
+                                    label = { Text("Valor", fontSize = 11.sp) },
                                     colors = OutlinedTextFieldDefaults.colors(
                                         focusedBorderColor = AccentNeonGreen,
                                         unfocusedBorderColor = BorderColor,
@@ -236,7 +236,7 @@ fun MacrosScreen(
                                 shape = RoundedCornerShape(8.dp),
                                 modifier = Modifier.align(Alignment.End)
                             ) {
-                                Text("Add Step to List", fontSize = 11.sp)
+                                Text("Adicionar Passo", fontSize = 11.sp)
                             }
 
                             Spacer(modifier = Modifier.height(16.dp))
@@ -250,7 +250,7 @@ fun MacrosScreen(
                                         macroSteps.clear()
                                     }
                                 ) {
-                                    Text("Discard", color = AccentRed)
+                                    Text("Descartar", color = AccentRed)
                                 }
                                 Spacer(modifier = Modifier.width(8.dp))
                                 Button(
@@ -273,7 +273,7 @@ fun MacrosScreen(
                                     colors = ButtonDefaults.buttonColors(containerColor = AccentNeonGreen, contentColor = DarkBackground),
                                     shape = RoundedCornerShape(8.dp)
                                 ) {
-                                    Text("Save Macro", fontWeight = FontWeight.Bold)
+                                    Text("Salvar Macro", fontWeight = FontWeight.Bold)
                                 }
                             }
                         }
@@ -299,7 +299,7 @@ fun MacrosScreen(
                         contentAlignment = Alignment.Center
                     ) {
                         Text(
-                            text = "No custom macros declared.",
+                            text = "Nenhuma macro criada ainda.",
                             color = TextSecondary,
                             fontFamily = FontFamily.Monospace,
                             fontSize = 13.sp
@@ -373,7 +373,7 @@ fun MacroCard(
                 )
                 Icon(
                     imageVector = if (expanded) Icons.Default.KeyboardArrowUp else Icons.Default.KeyboardArrowDown,
-                    contentDescription = "Expand steps",
+                    contentDescription = "Expandir",
                     tint = TextSecondary,
                     modifier = Modifier.size(20.dp)
                 )
@@ -406,9 +406,9 @@ fun MacroCard(
                             shape = RoundedCornerShape(8.dp),
                             modifier = Modifier.align(Alignment.End)
                         ) {
-                            Icon(imageVector = Icons.Default.Delete, contentDescription = "Delete", modifier = Modifier.size(16.dp))
+                            Icon(imageVector = Icons.Default.Delete, contentDescription = "Deletar", modifier = Modifier.size(16.dp))
                             Spacer(modifier = Modifier.width(4.dp))
-                            Text("Delete Macro", fontSize = 11.sp, fontWeight = FontWeight.Bold)
+                            Text("Deletar Macro", fontSize = 11.sp, fontWeight = FontWeight.Bold)
                         }
                     }
                 }

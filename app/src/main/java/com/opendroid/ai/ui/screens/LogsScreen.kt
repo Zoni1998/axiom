@@ -36,7 +36,7 @@ fun LogsScreen(
     modifier: Modifier = Modifier
 ) {
     var selectedTab by remember { mutableStateOf(0) }
-    val tabs = listOf("Execution Logs", "Action Errors")
+    val tabs = listOf("Execuções", "Erros")
 
     val history by viewModel.taskHistory.collectAsState()
     val actionErrors by viewModel.unknownActions.collectAsState()
@@ -46,7 +46,7 @@ fun LogsScreen(
             TopAppBar(
                 title = {
                     Text(
-                        text = "SYSTEM LOGS",
+                        text = "REGISTROS",
                         fontFamily = FontFamily.Monospace,
                         fontWeight = FontWeight.Bold,
                         color = AccentNeonGreen,
@@ -68,7 +68,7 @@ fun LogsScreen(
                         ) {
                             Icon(
                                 imageVector = Icons.Default.Delete,
-                                contentDescription = "Clear logs",
+                                contentDescription = "Limpar",
                                 tint = AccentRed
                             )
                         }
@@ -134,8 +134,8 @@ fun LogsScreen(
                         }
                     } else {
                         EmptyStateView(
-                            title = "No executions recorded yet",
-                            subtitle = "Every step OpenDroid executes is archived here.",
+                            title = "Nenhuma execução registrada",
+                            subtitle = "Cada ação executada pelo Axiom é arquivada aqui.",
                             icon = Icons.Default.Info
                         )
                     }
@@ -152,7 +152,7 @@ fun LogsScreen(
                         }
                     } else {
                         EmptyStateView(
-                            title = "All systems fully aligned",
+                            title = "Todos os sistemas alinhados",
                             subtitle = "OpenDroid's Repair Engine has not encountered any unrecognized commands.",
                             icon = Icons.Default.CheckCircle,
                             iconColor = AccentNeonGreen
@@ -223,8 +223,8 @@ fun UnknownActionCard(error: UnknownActionEntity) {
 
     val explanation = when (error.fixStatus) {
         "AUTO_FIXED" -> "Successfully auto-corrected by OpenDroid's Repair Engine."
-        "REPLANNED" -> "Dynamically replanned and bypassed the unrecognized command."
-        "FAILED" -> "Unrecognized system command failed execution."
+        "REPLANNED" -> "Replanejado dinamicamente — comando não reconhecido contornado."
+        "FAILED" -> "Comando não reconhecido — execução falhou."
         else -> "System anomaly tracked."
     }
 
@@ -322,7 +322,7 @@ fun UnknownActionCard(error: UnknownActionEntity) {
             ) {
                 Icon(
                     imageVector = if (expanded) Icons.Default.KeyboardArrowUp else Icons.Default.KeyboardArrowDown,
-                    contentDescription = "Expand info",
+                    contentDescription = "Detalhes",
                     tint = TextSecondary,
                     modifier = Modifier.size(16.dp)
                 )
@@ -458,7 +458,7 @@ fun HistoryLogCard(log: TaskHistoryEntity) {
             ) {
                 Icon(
                     imageVector = if (expanded) Icons.Default.KeyboardArrowUp else Icons.Default.KeyboardArrowDown,
-                    contentDescription = "Expand info",
+                    contentDescription = "Detalhes",
                     tint = TextSecondary,
                     modifier = Modifier.size(16.dp)
                 )

@@ -40,7 +40,7 @@ class CalendarActions @Inject constructor() {
                     put(CalendarContract.Events.DTSTART, Calendar.getInstance().timeInMillis)
                     put(CalendarContract.Events.DTEND, Calendar.getInstance().timeInMillis + 60 * 60 * 1000) // 1 hr duration
                     put(CalendarContract.Events.TITLE, title)
-                    put(CalendarContract.Events.DESCRIPTION, params["description"] ?: "Created by OpenDroid")
+                    put(CalendarContract.Events.DESCRIPTION, params["description"] ?: "Criado pelo Axiom")
                     put(CalendarContract.Events.CALENDAR_ID, 1)
                     put(CalendarContract.Events.EVENT_TIMEZONE, TimeZone.getDefault().id)
                 }
@@ -71,7 +71,7 @@ class CalendarActions @Inject constructor() {
             val timeStr = params["time"]
                 ?: return ActionResult(false, null, "Time is required. Use format like '5 am' or '7:30'")
 
-            val label = params["label"]?.trim() ?: "OpenDroid Alarm"
+            val label = params["label"]?.trim() ?: "Alarme Axiom"
 
             // Parse time string to hour + minute
             val parsed = parseTimeString(timeStr)
@@ -251,7 +251,7 @@ class CalendarActions @Inject constructor() {
         override val name: String = "SET_TIMER"
         override suspend fun execute(params: Map<String, String>, context: Context): ActionResult {
             val durationSecs = params["duration"]?.toIntOrNull() ?: 60
-            val label = params["label"] ?: "OpenDroid Timer"
+            val label = params["label"] ?: "Timer Axiom"
             return try {
                 val intent = Intent(AlarmClock.ACTION_SET_TIMER).apply {
                     putExtra(AlarmClock.EXTRA_LENGTH, durationSecs)
@@ -338,7 +338,7 @@ class CalendarActions @Inject constructor() {
                     data = CalendarContract.Events.CONTENT_URI
                     putExtra(CalendarContract.Events.TITLE, title)
                     putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, startMillis)
-                    putExtra(CalendarContract.Events.DESCRIPTION, params["description"] ?: "Created by OpenDroid")
+                    putExtra(CalendarContract.Events.DESCRIPTION, params["description"] ?: "Criado pelo Axiom")
                     addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                 }
                 context.startActivity(intent)

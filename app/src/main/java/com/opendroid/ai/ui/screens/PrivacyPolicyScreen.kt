@@ -100,9 +100,9 @@ fun PrivacyPolicyScreen(
             item {
                 PolicySection(
                     title = "1. OVERVIEW",
-                    content = "OpenDroid is an autonomous AI assistant that runs entirely on your Android device. " +
+                    content = "Axiom is an autonomous AI assistant that runs entirely on your Android device. " +
                             "We are committed to protecting your privacy and ensuring transparency about how your data is handled. " +
-                            "This policy explains what data OpenDroid collects, how it is used, and your rights regarding that data."
+                            "This policy explains what data Axiom collects, how it is used, and your rights regarding that data."
                 )
             }
 
@@ -110,13 +110,13 @@ fun PrivacyPolicyScreen(
             item {
                 PolicySection(
                     title = "2. DATA COLLECTION",
-                    content = "OpenDroid processes the following data locally on your device:\n\n" +
+                    content = "Axiom processes the following data locally on your device:\n\n" +
                             "• Voice commands and text queries you provide\n" +
                             "• Device state information (battery level, WiFi status, connectivity)\n" +
                             "• Contact names for resolving communication actions\n" +
                             "• Conversation history for context-aware responses\n" +
                             "• User preferences and semantic memory facts you share\n\n" +
-                            "All data is stored in a local Room database on your device. No data is collected by the OpenDroid developers."
+                            "All data is stored in a local Room database on your device. No data is collected by the Axiom developers."
                 )
             }
 
@@ -124,9 +124,9 @@ fun PrivacyPolicyScreen(
             item {
                 PolicySection(
                     title = "3. THIRD-PARTY LLM PROVIDERS",
-                    content = "OpenDroid sends your queries to the LLM provider you configure (e.g., Google Gemini, OpenAI, Anthropic, Groq, etc.) " +
+                    content = "Axiom sends your queries to the LLM provider you configure (e.g., Google Gemini, OpenAI, Anthropic, Groq, etc.) " +
                             "to generate responses and action plans. Each provider has its own privacy policy governing how they handle your data.\n\n" +
-                            "• Your API keys are stored locally on your device and are never transmitted to OpenDroid servers.\n" +
+                            "• Your API keys are stored locally on your device and are never transmitted to Axiom servers.\n" +
                             "• Query data sent to LLM providers is subject to their respective privacy policies.\n" +
                             "• You can switch providers or use local models (Ollama) at any time to keep data fully on-device."
                 )
@@ -136,7 +136,7 @@ fun PrivacyPolicyScreen(
             item {
                 PolicySection(
                     title = "4. DEVICE PERMISSIONS",
-                    content = "OpenDroid requests the following permissions to function:\n\n" +
+                    content = "Axiom requests the following permissions to function:\n\n" +
                             "• Microphone — For voice command input\n" +
                             "• Accessibility Service — For automating app interactions (WhatsApp, etc.)\n" +
                             "• Contacts — For resolving contact names to phone numbers\n" +
@@ -153,17 +153,17 @@ fun PrivacyPolicyScreen(
             item {
                 PolicySection(
                     title = "4b. ACCESSIBILITY SERVICE",
-                    content = "OpenDroid uses Android Accessibility Service to automate app interactions " +
+                    content = "Axiom uses Android Accessibility Service to automate app interactions " +
                             "(such as sending WhatsApp messages) when you explicitly request it.\n\n" +
                             "The Accessibility Service:\n\n" +
                             "• Only activates when you enable it in Android Settings\n" +
-                            "• Only acts when you give OpenDroid a command\n" +
+                            "• Only acts when you give Axiom a command\n" +
                             "• Does NOT run in the background without your command\n" +
                             "• Does NOT read passwords or banking information\n" +
                             "• Does NOT record or log screen content passively\n" +
                             "• Does NOT collect, store, or transmit any data observed through the Accessibility Service to external servers\n\n" +
                             "The service is used solely to perform on-screen actions you request, such as tapping buttons or typing text in other apps. " +
-                            "You can revoke Accessibility Service access at any time from Android Settings > Accessibility > OpenDroid."
+                            "You can revoke Accessibility Service access at any time from Android Settings > Accessibility > Axiom."
                 )
             }
 
@@ -182,10 +182,10 @@ fun PrivacyPolicyScreen(
             item {
                 PolicySection(
                     title = "6. DATA SHARING",
-                    content = "OpenDroid does NOT:\n\n" +
+                    content = "Axiom does NOT:\n\n" +
                             "• Sell, rent, or share your personal data with third parties\n" +
                             "• Collect analytics, telemetry, or usage statistics\n" +
-                            "• Transmit data to any server owned by the OpenDroid team\n" +
+                            "• Transmit data to any server owned by the Axiom team\n" +
                             "• Display advertisements or use ad-tracking technologies\n\n" +
                             "The only external data transmission occurs when your queries are sent to the LLM provider you have configured."
                 )
@@ -206,7 +206,7 @@ fun PrivacyPolicyScreen(
             item {
                 PolicySection(
                     title = "8. CHILDREN'S PRIVACY",
-                    content = "OpenDroid is not intended for use by children under 13 years of age. " +
+                    content = "Axiom is not intended for use by children under 13 years of age. " +
                             "We do not knowingly collect information from children."
                 )
             }
@@ -216,7 +216,7 @@ fun PrivacyPolicyScreen(
                 PolicySection(
                     title = "9. CHANGES TO THIS POLICY",
                     content = "We may update this privacy policy from time to time. Any changes will be reflected in the app with an updated \"Last updated\" date. " +
-                            "Continued use of OpenDroid after changes constitutes acceptance of the updated policy."
+                            "Continued use of Axiom after changes constitutes acceptance of the updated policy."
                 )
             }
 
@@ -224,7 +224,7 @@ fun PrivacyPolicyScreen(
             item {
                 PolicySection(
                     title = "10. CONTACT",
-                    content = "If you have questions about this privacy policy or OpenDroid's data practices, " +
+                    content = "If you have questions about this privacy policy or Axiom's data practices, " +
                             "please open an issue on our GitHub repository (yashab-cyber/opendroid) or contact the development team.\n\n" +
                             "• Email: yashabalam707@gmail.com\n" +
                             "• You can also contact us at: opendroid.ai@gmail.com"

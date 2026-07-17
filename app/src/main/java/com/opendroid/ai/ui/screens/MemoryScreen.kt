@@ -51,7 +51,7 @@ fun MemoryScreen(
             TopAppBar(
                 title = {
                     Text(
-                        text = "PERSISTENT MEMORY",
+                        text = "MEMÓRIA PERSISTENTE",
                         fontFamily = FontFamily.Monospace,
                         fontWeight = FontWeight.Bold,
                         color = AccentNeonGreen,
@@ -61,7 +61,7 @@ fun MemoryScreen(
                 },
                 actions = {
                     TextButton(onClick = { viewModel.clearMemories(selectedTab) }) {
-                        Text("Wipe Category", color = AccentRed, fontSize = 12.sp)
+                        Text("Limpar Categoria", color = AccentRed, fontSize = 12.sp)
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(containerColor = DarkBackground)
@@ -123,7 +123,7 @@ fun MemoryScreen(
                             }
                             Text(hint, color = TextSecondary, fontSize = 13.sp)
                         },
-                        leadingIcon = { Icon(Icons.Default.Search, contentDescription = "Search", tint = TextSecondary) },
+                        leadingIcon = { Icon(Icons.Default.Search, contentDescription = "Buscar", tint = TextSecondary) },
                         singleLine = true,
                         colors = OutlinedTextFieldDefaults.colors(
                             focusedBorderColor = AccentNeonGreen,
@@ -142,7 +142,7 @@ fun MemoryScreen(
                                 .clip(RoundedCornerShape(8.dp))
                                 .background(AccentNeonGreen)
                         ) {
-                            Icon(Icons.Default.Add, contentDescription = "Add Memory", tint = DarkBackground)
+                            Icon(Icons.Default.Add, contentDescription = "Adicionar", tint = DarkBackground)
                         }
                     }
                 }
@@ -199,7 +199,7 @@ fun WorkingMemoryView(viewModel: MemoryViewModel) {
             ) {
                 Column(modifier = Modifier.padding(16.dp)) {
                     Text(
-                        text = "ACTIVE ENVIRONMENT STATE",
+                        text = "ESTADO DO AMBIENTE",
                         fontSize = 11.sp,
                         fontWeight = FontWeight.Bold,
                         fontFamily = FontFamily.Monospace,
@@ -212,23 +212,23 @@ fun WorkingMemoryView(viewModel: MemoryViewModel) {
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.SpaceBetween
                     ) {
-                        StateItem("Battery Level", "${workingMemory.batteryLevel}%", AccentNeonGreen)
-                        StateItem("WiFi State", workingMemory.wifiState, if (workingMemory.wifiState == "Active") AccentNeonGreen else if (workingMemory.wifiState == "Inactive") AccentRed else TextSecondary)
+                        StateItem("Nível da Bateria", "${workingMemory.batteryLevel}%", AccentNeonGreen)
+                        StateItem("Estado do WiFi", workingMemory.wifiState, if (workingMemory.wifiState == "Active") AccentNeonGreen else if (workingMemory.wifiState == "Inactive") AccentRed else TextSecondary)
                     }
                     Spacer(modifier = Modifier.height(12.dp))
                     Row(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.SpaceBetween
                     ) {
-                        StateItem("Connectivity", workingMemory.connectivity, AccentCyan)
-                        StateItem("Internet", if (workingMemory.isInternetAvailable) "Available" else "NOT AVAILABLE", if (workingMemory.isInternetAvailable) AccentNeonGreen else AccentRed)
+                        StateItem("Conectividade", workingMemory.connectivity, AccentCyan)
+                        StateItem("Internet", if (workingMemory.isInternetAvailable) "Disponível" else "INDISPONÍVEL", if (workingMemory.isInternetAvailable) AccentNeonGreen else AccentRed)
                     }
                     Spacer(modifier = Modifier.height(12.dp))
                     Row(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.SpaceBetween
                     ) {
-                        StateItem("Location Context", workingMemory.locationContext, TextSecondary)
+                        StateItem("Contexto de Local", workingMemory.locationContext, TextSecondary)
                     }
                 }
             }
@@ -244,7 +244,7 @@ fun WorkingMemoryView(viewModel: MemoryViewModel) {
             ) {
                 Column(modifier = Modifier.padding(16.dp)) {
                     Text(
-                        text = "ACTIVE PLAN MONITOR",
+                        text = "MONITOR DE PLANOS",
                         fontSize = 11.sp,
                         fontWeight = FontWeight.Bold,
                         fontFamily = FontFamily.Monospace,
@@ -560,7 +560,7 @@ fun SemanticMemoryView(
             ) {
                 Column(modifier = Modifier.padding(16.dp)) {
                     Text(
-                        text = "STORE NEW MEMORY FACT",
+                        text = "SALVAR NA MEMÓRIA",
                         fontSize = 11.sp,
                         fontWeight = FontWeight.Bold,
                         fontFamily = FontFamily.Monospace,
@@ -596,7 +596,7 @@ fun SemanticMemoryView(
                     Spacer(modifier = Modifier.height(12.dp))
                     Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
                         TextButton(onClick = { onIsAddingFactChange(false) }) {
-                            Text("Cancel", color = AccentRed)
+                            Text("Cancelar", color = AccentRed)
                         }
                         Spacer(modifier = Modifier.width(8.dp))
                         Button(
@@ -611,7 +611,7 @@ fun SemanticMemoryView(
                             colors = ButtonDefaults.buttonColors(containerColor = AccentNeonGreen, contentColor = DarkBackground),
                             shape = RoundedCornerShape(8.dp)
                         ) {
-                            Text("Save Fact", fontWeight = FontWeight.Bold)
+                            Text("Salvar", fontWeight = FontWeight.Bold)
                         }
                     }
                 }
@@ -696,7 +696,7 @@ fun MemoryItemCard(
             IconButton(onClick = onDelete) {
                 Icon(
                     imageVector = Icons.Default.Delete,
-                    contentDescription = "Delete Memory",
+                    contentDescription = "Deletar",
                     tint = TextSecondary.copy(alpha = 0.6f)
                 )
             }

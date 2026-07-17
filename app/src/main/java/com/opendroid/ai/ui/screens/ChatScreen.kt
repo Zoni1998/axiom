@@ -109,7 +109,7 @@ fun ChatScreen(
                 title = {
                     Column {
                         Text(
-                            text = "OPENDROID",
+                            text = "AXIOM",
                             fontFamily = FontFamily.Monospace,
                             fontWeight = FontWeight.Bold,
                             color = AccentNeonGreen,
@@ -121,7 +121,7 @@ fun ChatScreen(
                 },
                 actions = {
                     TextButton(onClick = { viewModel.clearChat() }) {
-                        Text("Clear", color = TextSecondary, fontSize = 12.sp)
+                        Text("Limpar", color = TextSecondary, fontSize = 12.sp)
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(containerColor = DarkBackground)
@@ -302,10 +302,10 @@ fun AgentStatusSubtitle(state: AgentState) {
         is AgentState.Idle -> "Online & Ready"
         is AgentState.Listening -> "Listening to voice input..."
         is AgentState.Thinking -> "Analyzing intent & planning..."
-        is AgentState.PlanProposed -> "Requires Plan Approval"
+        is AgentState.PlanProposed -> "Plano Aguardando Aprovação"
         is AgentState.ExecutingPlan -> "Executing: ${state.currentStepDesc}"
         is AgentState.Speaking -> "Speaking: ${state.text.take(30)}..."
-        is AgentState.Error -> "Execution Error"
+        is AgentState.Error -> "Erro de Execução"
     }
     
     val color = when (state) {
@@ -485,13 +485,13 @@ fun ProposedPlanPrompt(
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Icon(
                     imageVector = Icons.Default.Warning,
-                    contentDescription = "Plan Proposed",
+                    contentDescription = "Plano Proposto",
                     tint = AccentCyan,
                     modifier = Modifier.size(24.dp)
                 )
                 Spacer(modifier = Modifier.width(8.dp))
                 Text(
-                    text = "AUTONOMOUS PLAN PROPOSED",
+                    text = "PLANO AUTÔNOMO PROPOSTO",
                     fontSize = 14.sp,
                     fontWeight = FontWeight.Bold,
                     fontFamily = FontFamily.Monospace,
@@ -522,7 +522,7 @@ fun ProposedPlanPrompt(
                     border = BorderStroke(1.dp, AccentRed.copy(alpha = 0.5f)),
                     shape = RoundedCornerShape(8.dp)
                 ) {
-                    Text("Reject", fontWeight = FontWeight.Bold)
+                    Text("Rejeitar", fontWeight = FontWeight.Bold)
                 }
                 Spacer(modifier = Modifier.width(12.dp))
                 Button(

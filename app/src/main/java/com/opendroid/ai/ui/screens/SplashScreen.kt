@@ -55,7 +55,7 @@ fun SplashScreen(onNavigateNext: () -> Unit) {
         ) {
             androidx.compose.foundation.Image(
                 painter = androidx.compose.ui.res.painterResource(id = com.opendroid.ai.R.drawable.bot),
-                contentDescription = "OpenDroid Logo",
+                contentDescription = "Axiom Logo",
                 modifier = Modifier.size(120.dp)
             )
             Spacer(modifier = Modifier.height(24.dp))

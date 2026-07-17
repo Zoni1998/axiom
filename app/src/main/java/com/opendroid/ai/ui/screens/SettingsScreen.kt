@@ -107,7 +107,7 @@ fun SettingsScreen(
             TopAppBar(
                 title = {
                     Text(
-                        text = "AGENT PREFERENCES",
+                        text = "PREFERÊNCIAS DO AGENTE",
                         fontFamily = FontFamily.Monospace,
                         fontWeight = FontWeight.Bold,
                         color = AccentNeonGreen,
@@ -139,7 +139,7 @@ fun SettingsScreen(
                 ) {
                     Column(modifier = Modifier.padding(16.dp)) {
                         Text(
-                            text = "ACTIVE BRAIN PROVIDER",
+                            text = "PROVEDOR ATIVO",
                             fontSize = 11.sp,
                             fontWeight = FontWeight.Bold,
                             fontFamily = FontFamily.Monospace,
@@ -188,7 +188,7 @@ fun SettingsScreen(
                                 DropdownMenuItem(
                                     text = { 
                                         Text(
-                                            text = "OFFLINE AI", 
+                                            text = "IA OFFLINE", 
                                             color = AccentCyan, 
                                             fontWeight = FontWeight.Bold, 
                                             fontSize = 11.sp, 
@@ -211,7 +211,7 @@ fun SettingsScreen(
                                 DropdownMenuItem(
                                     text = { 
                                         Text(
-                                            text = "CLOUD AI", 
+                                            text = "IA NA NUVEM", 
                                             color = AccentCyan, 
                                             fontWeight = FontWeight.Bold, 
                                             fontSize = 11.sp, 
@@ -251,7 +251,7 @@ fun SettingsScreen(
                             verticalAlignment = Alignment.CenterVertically
                         ) {
                             Text(
-                                text = "ACTIVE MODEL",
+                                text = "MODELO ATIVO",
                                 fontSize = 11.sp,
                                 fontWeight = FontWeight.Bold,
                                 fontFamily = FontFamily.Monospace,
@@ -357,7 +357,7 @@ fun SettingsScreen(
                                                                     .padding(horizontal = 4.dp, vertical = 2.dp)
                                                             ) {
                                                                 Text(
-                                                                    text = "FREE",
+                                                                    text = "GRÁTIS",
                                                                     color = AccentCyan,
                                                                     fontSize = 9.sp,
                                                                     fontWeight = FontWeight.Bold
@@ -421,7 +421,7 @@ fun SettingsScreen(
                         Spacer(modifier = Modifier.width(12.dp))
                         Column(modifier = Modifier.weight(1f)) {
                             Text(
-                                text = "LLM RESPONSIVENESS REPORT",
+                                text = "RELATÓRIO DE DESEMPENHO",
                                 fontSize = 11.sp,
                                 fontWeight = FontWeight.Bold,
                                 fontFamily = FontFamily.Monospace,
@@ -449,7 +449,7 @@ fun SettingsScreen(
                     ) {
                         Column(modifier = Modifier.padding(16.dp)) {
                             Text(
-                                text = "OLLAMA LOCAL ENDPOINT",
+                                text = "ENDPOINT LOCAL OLLAMA",
                                 fontSize = 11.sp,
                                 fontWeight = FontWeight.Bold,
                                 fontFamily = FontFamily.Monospace,
@@ -519,7 +519,7 @@ fun SettingsScreen(
                             
                             // ─── AI Core Backend Section ───
                             Text(
-                                text = "ANDROID AI CORE",
+                                text = "NÚCLEO IA ANDROID",
                                 fontSize = 10.sp,
                                 fontWeight = FontWeight.Bold,
                                 fontFamily = FontFamily.Monospace,
@@ -656,7 +656,7 @@ fun SettingsScreen(
 
                             // ─── Hugging Face Section ───
                             Text(
-                                text = "HUGGING FACE AUTHENTICATION",
+                                text = "AUTENTICAÇÃO HUGGING FACE",
                                 fontSize = 10.sp,
                                 fontWeight = FontWeight.Bold,
                                 fontFamily = FontFamily.Monospace,
@@ -1095,7 +1095,7 @@ fun SettingsScreen(
 
                             // ─── Storage Cleanup Section ───
                             Text(
-                                text = "STORAGE CLEANUP",
+                                text = "LIMPEZA DE ARMAZENAMENTO",
                                 fontSize = 10.sp,
                                 fontWeight = FontWeight.Bold,
                                 fontFamily = FontFamily.Monospace,
@@ -1135,7 +1135,7 @@ fun SettingsScreen(
                              )
                              Spacer(modifier = Modifier.height(6.dp))
                              Text(
-                                 text = "OpenDroid models occupy ${formatBytes(usedByApp)} of on-device storage.",
+                                 text = "Os modelos do Axiom ocupam ${formatBytes(usedByApp)} of on-device storage.",
                                  fontSize = 10.sp,
                                  color = TextSecondary
                              )
@@ -1164,7 +1164,7 @@ fun SettingsScreen(
                     ) {
                         Column(modifier = Modifier.padding(16.dp)) {
                             Text(
-                                text = "COPILOT LOCAL ENDPOINT",
+                                text = "ENDPOINT LOCAL COPILOT",
                                 fontSize = 11.sp,
                                 fontWeight = FontWeight.Bold,
                                 fontFamily = FontFamily.Monospace,
@@ -1206,7 +1206,7 @@ fun SettingsScreen(
                     ) {
                         Column(modifier = Modifier.padding(16.dp)) {
                             Text(
-                                text = "CUSTOM OPENAI ENDPOINT",
+                                text = "ENDPOINT OPENAI CUSTOM",
                                 fontSize = 11.sp,
                                 fontWeight = FontWeight.Bold,
                                 fontFamily = FontFamily.Monospace,
@@ -1254,7 +1254,7 @@ fun SettingsScreen(
                             verticalAlignment = Alignment.CenterVertically
                         ) {
                             Text(
-                                text = "PROVIDER API KEYS",
+                                text = "CHAVES DE API",
                                 fontSize = 11.sp,
                                 fontWeight = FontWeight.Bold,
                                 fontFamily = FontFamily.Monospace,
@@ -1312,7 +1312,7 @@ fun SettingsScreen(
                             verticalAlignment = Alignment.CenterVertically
                         ) {
                             Text(
-                                text = "ELEVENLABS VOICE SYNTHESIS",
+                                text = "SÍNTESE DE VOZ ELEVENLABS",
                                 fontSize = 11.sp,
                                 fontWeight = FontWeight.Bold,
                                 fontFamily = FontFamily.Monospace,
@@ -1357,7 +1357,7 @@ fun SettingsScreen(
                                     modifier = Modifier.fillMaxWidth()
                                 )
                                 Text(
-                                    text = "If ElevenLabs key is not set, OpenDroid automatically falls back to native offline Android Text-to-Speech.",
+                                    text = "Se a chave ElevenLabs não estiver configurada, o Axiom usa automaticamente o Text-to-Speech nativo offline do Android.",
                                     fontSize = 10.sp,
                                     color = TextSecondary
                                 )
@@ -1377,7 +1377,7 @@ fun SettingsScreen(
                 ) {
                     Column(modifier = Modifier.padding(16.dp)) {
                         Text(
-                            text = "PLANNING & AUTOMATION",
+                            text = "PLANEJAMENTO E AUTOMAÇÃO",
                             fontSize = 11.sp,
                             fontWeight = FontWeight.Bold,
                             fontFamily = FontFamily.Monospace,
@@ -1587,7 +1587,7 @@ fun SettingsScreen(
                         Spacer(modifier = Modifier.width(12.dp))
                         Column(modifier = Modifier.weight(1f)) {
                             Text(
-                                text = "NOTIFICATION HISTORY",
+                                text = "HISTÓRICO DE NOTIFICAÇÕES",
                                 fontSize = 11.sp,
                                 fontWeight = FontWeight.Bold,
                                 fontFamily = FontFamily.Monospace,
@@ -1633,7 +1633,7 @@ fun SettingsScreen(
                         Spacer(modifier = Modifier.width(12.dp))
                         Column(modifier = Modifier.weight(1f)) {
                             Text(
-                                text = "PRIVACY POLICY",
+                                text = "POLÍTICA DE PRIVACIDADE",
                                 fontSize = 11.sp,
                                 fontWeight = FontWeight.Bold,
                                 fontFamily = FontFamily.Monospace,
@@ -1641,7 +1641,7 @@ fun SettingsScreen(
                             )
                             Spacer(modifier = Modifier.height(2.dp))
                             Text(
-                                text = "How OpenDroid handles your data and privacy.",
+                                text = "Como o Axiom gerencia seus dados e privacidade.",
                                 fontSize = 12.sp,
                                 color = TextSecondary
                             )
@@ -1679,7 +1679,7 @@ fun SettingsScreen(
                         Spacer(modifier = Modifier.width(12.dp))
                         Column(modifier = Modifier.weight(1f)) {
                             Text(
-                                text = "TERMS OF USE",
+                                text = "TERMOS DE USO",
                                 fontSize = 11.sp,
                                 fontWeight = FontWeight.Bold,
                                 fontFamily = FontFamily.Monospace,
@@ -1687,7 +1687,7 @@ fun SettingsScreen(
                             )
                             Spacer(modifier = Modifier.height(2.dp))
                             Text(
-                                text = "Usage terms and conditions for OpenDroid.",
+                                text = "Termos de uso e condições do Axiom.",
                                 fontSize = 12.sp,
                                 color = TextSecondary
                             )
@@ -1725,7 +1725,7 @@ fun SettingsScreen(
                         Spacer(modifier = Modifier.width(12.dp))
                         Column(modifier = Modifier.weight(1f)) {
                             Text(
-                                text = "HELP CENTER",
+                                text = "CENTRAL DE AJUDA",
                                 fontSize = 11.sp,
                                 fontWeight = FontWeight.Bold,
                                 fontFamily = FontFamily.Monospace,
@@ -1771,7 +1771,7 @@ fun SettingsScreen(
                         Spacer(modifier = Modifier.width(12.dp))
                         Column(modifier = Modifier.weight(1f)) {
                             Text(
-                                text = "LICENSE",
+                                text = "LICENÇA",
                                 fontSize = 11.sp,
                                 fontWeight = FontWeight.Bold,
                                 fontFamily = FontFamily.Monospace,
@@ -1817,7 +1817,7 @@ fun SettingsScreen(
                         Spacer(modifier = Modifier.width(12.dp))
                         Column(modifier = Modifier.weight(1f)) {
                             Text(
-                                text = "ABOUT OPENDROID",
+                                text = "SOBRE O AXIOM",
                                 fontSize = 11.sp,
                                 fontWeight = FontWeight.Bold,
                                 fontFamily = FontFamily.Monospace,
@@ -1849,7 +1849,7 @@ fun SettingsScreen(
                 ) {
                     Column(modifier = Modifier.padding(16.dp)) {
                         Text(
-                            text = "SYSTEM INTEGRATION PERMISSIONS",
+                            text = "PERMISSÕES DO SISTEMA",
                             fontSize = 11.sp,
                             fontWeight = FontWeight.Bold,
                             fontFamily = FontFamily.Monospace,
@@ -1857,7 +1857,7 @@ fun SettingsScreen(
                         )
                         Spacer(modifier = Modifier.height(10.dp))
                         Text(
-                            text = "To allow OpenDroid to operate other applications autonomously (e.g. WhatsApp, Calendar), verify that the accessibility service 'OpenDroid' is active in Settings -> Accessibility -> Installed Services.",
+                            text = "Para permitir que o Axiom opere outros aplicativos de forma autônoma (e.g. WhatsApp, Calendar), verify that the serviço de acessibilidade 'Axiom' is active in Settings -> Accessibility -> Installed Services.",
                             fontSize = 12.sp,
                             color = TextSecondary
                         )

@@ -99,22 +99,22 @@ fun TermsOfUseScreen(
             item {
                 PolicySection(
                     title = "1. ACCEPTANCE OF TERMS",
-                    content = "By downloading, installing, or using OpenDroid (\"the App\"), you agree to be bound by these Terms of Use. " +
+                    content = "By downloading, installing, or using Axiom (\"the App\"), you agree to be bound by these Terms of Use. " +
                             "If you do not agree to these terms, do not use the App.\n\n" +
-                            "OpenDroid is an open-source, autonomous AI assistant for Android. These terms govern your use of the App and all related services."
+                            "Axiom is an open-source, autonomous AI assistant for Android. These terms govern your use of the App and all related services."
                 )
             }
 
             item {
                 PolicySection(
                     title = "2. PERMITTED USE",
-                    content = "You may use OpenDroid for personal, non-commercial purposes including:\n\n" +
+                    content = "You may use Axiom for personal, non-commercial purposes including:\n\n" +
                             "• Automating device tasks (messaging, calls, alarms, etc.)\n" +
                             "• Managing smart home devices\n" +
                             "• Searching the web and retrieving information\n" +
                             "• File management and device control\n" +
                             "• Voice-activated commands\n\n" +
-                            "You agree NOT to use OpenDroid to:\n\n" +
+                            "You agree NOT to use Axiom to:\n\n" +
                             "• Violate any laws or regulations\n" +
                             "• Harass, spam, or harm other individuals\n" +
                             "• Attempt to bypass device security or access unauthorized systems\n" +
@@ -125,30 +125,30 @@ fun TermsOfUseScreen(
             item {
                 PolicySection(
                     title = "3. API KEYS & THIRD-PARTY SERVICES",
-                    content = "OpenDroid connects to third-party LLM providers (Google Gemini, OpenAI, Anthropic, etc.) using API keys you provide.\n\n" +
+                    content = "Axiom connects to third-party LLM providers (Google Gemini, OpenAI, Anthropic, etc.) using API keys you provide.\n\n" +
                             "• You are responsible for obtaining and managing your own API keys.\n" +
                             "• API key usage is subject to the respective provider's terms of service.\n" +
-                            "• OpenDroid is not responsible for charges incurred through third-party API usage.\n" +
-                            "• Your API keys are stored locally on your device using AES-256 encryption and are never transmitted to OpenDroid servers."
+                            "• Axiom is not responsible for charges incurred through third-party API usage.\n" +
+                            "• Your API keys are stored locally on your device using AES-256 encryption and are never transmitted to Axiom servers."
                 )
             }
 
             item {
                 PolicySection(
                     title = "4. ACCESSIBILITY SERVICE",
-                    content = "OpenDroid uses Android's Accessibility Service to perform on-screen automations on your behalf. " +
+                    content = "Axiom uses Android's Accessibility Service to perform on-screen automations on your behalf. " +
                             "By enabling this service, you acknowledge that:\n\n" +
                             "• The service can interact with other apps on your device\n" +
                             "• It only acts when you explicitly give a command\n" +
                             "• You can disable it at any time from Android Settings\n" +
-                            "• OpenDroid does not use this service to collect or transmit data"
+                            "• Axiom does not use this service to collect or transmit data"
                 )
             }
 
             item {
                 PolicySection(
                     title = "5. DISCLAIMER OF WARRANTIES",
-                    content = "OpenDroid is provided \"AS IS\" without warranties of any kind, either express or implied.\n\n" +
+                    content = "Axiom is provided \"AS IS\" without warranties of any kind, either express or implied.\n\n" +
                             "• We do not guarantee uninterrupted or error-free operation.\n" +
                             "• AI-generated responses may be inaccurate or incomplete.\n" +
                             "• Automated actions may not execute as intended in all scenarios.\n" +
@@ -159,7 +159,7 @@ fun TermsOfUseScreen(
             item {
                 PolicySection(
                     title = "6. LIMITATION OF LIABILITY",
-                    content = "To the maximum extent permitted by law, the OpenDroid developers shall not be liable for any " +
+                    content = "To the maximum extent permitted by law, the Axiom developers shall not be liable for any " +
                             "direct, indirect, incidental, special, or consequential damages arising from:\n\n" +
                             "• Use or inability to use the App\n" +
                             "• Unauthorized access to your data\n" +
@@ -171,7 +171,7 @@ fun TermsOfUseScreen(
             item {
                 PolicySection(
                     title = "7. OPEN SOURCE",
-                    content = "OpenDroid is open-source software. You are free to view, modify, and distribute the source code " +
+                    content = "Axiom is open-source software. You are free to view, modify, and distribute the source code " +
                             "in accordance with the project's license terms. Contributions to the project are welcome and governed by the project's contribution guidelines."
                 )
             }
@@ -180,7 +180,7 @@ fun TermsOfUseScreen(
                 PolicySection(
                     title = "8. CHANGES TO TERMS",
                     content = "We may update these terms from time to time. Changes will be reflected in the App with an updated effective date. " +
-                            "Continued use of OpenDroid after changes constitutes acceptance of the updated terms."
+                            "Continued use of Axiom after changes constitutes acceptance of the updated terms."
                 )
             }
 

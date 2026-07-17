@@ -52,7 +52,7 @@ fun PlanScreen(
             TopAppBar(
                 title = {
                     Text(
-                        text = "PLAN ENGINE",
+                        text = "MOTOR DE PLANOS",
                         fontFamily = FontFamily.Monospace,
                         fontWeight = FontWeight.Bold,
                         color = AccentNeonGreen,
@@ -86,7 +86,7 @@ fun PlanScreen(
 
                 item {
                     Text(
-                        text = "PLAN SEQUENCE STAGE",
+                        text = "ETAPA DO PLANO",
                         fontSize = 12.sp,
                         fontWeight = FontWeight.Bold,
                         fontFamily = FontFamily.Monospace,
@@ -108,7 +108,7 @@ fun PlanScreen(
             if (planHistory.isNotEmpty()) {
                 item {
                     Text(
-                        text = "AUTONOMOUS EXECUTION HISTORY",
+                        text = "HISTÓRICO DE EXECUÇÃO",
                         fontSize = 12.sp,
                         fontWeight = FontWeight.Bold,
                         fontFamily = FontFamily.Monospace,
@@ -173,7 +173,7 @@ fun PlanHeaderCard(
                 }
                 if (!isCurrentActive) {
                     Text(
-                        text = "Viewing Past Run",
+                        text = "Visualizando Execução Anterior",
                         fontSize = 10.sp,
                         color = AccentPurple,
                         fontWeight = FontWeight.Bold,
@@ -186,7 +186,7 @@ fun PlanHeaderCard(
                     )
                 } else {
                     Text(
-                        text = "ACTIVE RUN",
+                        text = "EXECUÇÃO ATIVA",
                         fontSize = 10.sp,
                         color = AccentNeonGreen,
                         fontWeight = FontWeight.Bold,
@@ -213,11 +213,11 @@ fun PlanHeaderCard(
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Column {
-                    Text("Steps", fontSize = 10.sp, color = TextSecondary)
+                    Text("Passos", fontSize = 10.sp, color = TextSecondary)
                     Text("${plan.steps.size} scheduled", fontSize = 13.sp, fontWeight = FontWeight.Bold, color = TextPrimary)
                 }
                 Column(horizontalAlignment = Alignment.End) {
-                    Text("Estimated duration", fontSize = 10.sp, color = TextSecondary)
+                    Text("Duração estimada", fontSize = 10.sp, color = TextSecondary)
                     Text(plan.estimatedDuration, fontSize = 13.sp, fontWeight = FontWeight.Bold, color = TextPrimary)
                 }
             }
@@ -241,13 +241,13 @@ fun EmptyPlanPlaceholder() {
         ) {
             Icon(
                 imageVector = Icons.Default.Info,
-                contentDescription = "No plan",
+                contentDescription = "Sem plano",
                 tint = TextSecondary,
                 modifier = Modifier.size(36.dp)
             )
             Spacer(modifier = Modifier.height(12.dp))
             Text(
-                text = "No active plans running",
+                text = "Nenhum plano ativo",
                 fontSize = 14.sp,
                 fontWeight = FontWeight.Bold,
                 color = TextPrimary
@@ -329,7 +329,7 @@ fun PastPlanRow(
             ) {
                 Icon(
                     imageVector = Icons.Default.Delete,
-                    contentDescription = "Delete Plan",
+                    contentDescription = "Deletar Plano",
                     tint = TextSecondary.copy(alpha = 0.5f),
                     modifier = Modifier.size(16.dp)
                 )

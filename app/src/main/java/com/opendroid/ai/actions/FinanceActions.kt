@@ -24,7 +24,7 @@ class FinanceActions @Inject constructor() {
         override suspend fun execute(params: Map<String, String>, context: Context): ActionResult {
             val to = params["to"] ?: return ActionResult(false, null, "to UPI ID parameter is missing")
             val amount = params["amount"] ?: return ActionResult(false, null, "amount parameter is missing")
-            val note = params["note"] ?: "Sent via OpenDroid"
+            val note = params["note"] ?: "Enviado via Axiom"
             val app = params["app"] ?: "gpay"
             
             return try {
