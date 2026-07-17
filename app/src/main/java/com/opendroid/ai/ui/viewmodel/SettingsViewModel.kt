@@ -433,6 +433,13 @@ class SettingsViewModel @Inject constructor(
         }
     }
 
+    fun toggleSpeakResponses(enabled: Boolean) {
+        _llmConfig.value = _llmConfig.value.copy(speakResponsesEnabled = enabled)
+        viewModelScope.launch {
+            settingsRepository.updateSpeakResponses(enabled)
+        }
+    }
+
     fun updateDarkMode(enabled: Boolean) {
         _llmConfig.value = _llmConfig.value.copy(isDarkMode = enabled)
         viewModelScope.launch {
