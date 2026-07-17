@@ -31,7 +31,8 @@ class NvidiaNimProvider @Inject constructor(
 
     override suspend fun complete(request: LLMRequest): LLMResponse {
         val config = settingsRepository.llmConfig.first()
-        val apiKey = (config.apiKeys[name] ?: "").trim()
+        val rawKey = config.apiKeys[name] ?: ""
+        val apiKey = rawKey.trim().replace("\n", "").replace("\r", "").replace(" ", "")
         val baseUrl = formatBaseUrl(config.customEndpoints[name] ?: "", "https://integrate.api.nvidia.com/v1")
 
         val startTime = System.currentTimeMillis()
