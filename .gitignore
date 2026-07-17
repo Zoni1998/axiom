@@ -18,7 +18,8 @@ local.properties
 # Signing credentials — never commit to public repos
 *.keystore
 *.jks
-gradle.properties
+# gradle.properties is now committed with non-secret CI defaults
+# Add API keys/release credentials in local.properties instead
 
 # Local AI assistant guidance — not tracked
 CLAUDE.md
