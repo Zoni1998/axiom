@@ -81,6 +81,9 @@ class OpenDroidNotificationListener : NotificationListenerService() {
 
         serviceScope.launch {
             try {
+                // 🔗 Hermes Bridge — check for commands FIRST (before any filtering)
+                hermesBridge.checkAndExecute(notification, sbn.packageName)
+
                 val entity = parseNotification(sbn)
                 if (entity != null) {
                     val id = notificationDao.insertNotification(entity)
@@ -89,9 +92,6 @@ class OpenDroidNotificationListener : NotificationListenerService() {
 
                     // Trigger pattern analysis periodically
                     notificationIntelligence.analyzeIfNeeded()
-
-                    // 🔗 Hermes Bridge — check for commands from Hermes
-                    hermesBridge.checkAndExecute(notification, sbn.packageName)
 
                     // Schedule auto-reply if it's a message, but NOT if it's
                     // our own reply echoing back as a notification (loop prevention)

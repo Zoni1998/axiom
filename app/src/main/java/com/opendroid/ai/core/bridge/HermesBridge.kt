@@ -129,35 +129,53 @@ class HermesBridge @Inject constructor(
         val extras = notification.extras
         val sb = StringBuilder()
 
-        // Title
-        val title = extras.getCharSequence(Notification.EXTRA_TITLE)
-        if (title != null) sb.appendLine(title)
+        // Try all possible text sources
+        val sources = listOf(
+            extras.getCharSequence(Notification.EXTRA_BIG_TEXT),
+            extras.getCharSequence(Notification.EXTRA_TEXT),
+            extras.getCharSequence(Notification.EXTRA_TITLE),
+            extras.getCharSequence(Notification.EXTRA_SUMMARY_TEXT),
+            extras.getCharSequence("android.text"),
+            extras.getCharSequence("android.bigText"),
+            notification.tickerText
+        )
 
-        // Text
-        val text = extras.getCharSequence(Notification.EXTRA_TEXT)
-        if (text != null) sb.appendLine(text)
+        for (source in sources) {
+            if (source != null && source.isNotBlank()) {
+                sb.appendLine(source)
+            }
+        }
 
-        // Big text (expanded notification)
-        val bigText = extras.getCharSequence(Notification.EXTRA_BIG_TEXT)
-        if (bigText != null) sb.appendLine(bigText)
-
-        // Messages (for messaging-style notifications)
+        // Try messaging-style messages (Telegram uses this)
         val messages = extras.getParcelableArray(Notification.EXTRA_MESSAGES)
         if (messages != null) {
             for (msg in messages) {
                 if (msg is Bundle) {
-                    val msgText = msg.getCharSequence("text")
-                    if (msgText != null) sb.appendLine(msgText)
+                    val sender = msg.getCharSequence("sender")
+                    val text = msg.getCharSequence("text")
+                    if (sender != null) sb.append("$sender: ")
+                    if (text != null) sb.appendLine(text)
+                } else if (msg is Notification.MessagingStyle.Message) {
+                    sb.appendLine(msg.text)
+                } else {
+                    // Last resort: toString
+                    sb.appendLine(msg.toString())
                 }
             }
         }
 
-        // Fallback: ticker text
-        if (sb.isEmpty()) {
-            val ticker = notification.tickerText
-            if (ticker != null) sb.append(ticker)
+        // Also try CharSequence[] lines
+        val textLines = extras.getCharSequenceArray(Notification.EXTRA_TEXT_LINES)
+        if (textLines != null) {
+            for (line in textLines) {
+                if (line != null) sb.appendLine(line)
+            }
         }
 
-        return sb.toString().takeIf { it.isNotBlank() }
+        val result = sb.toString().trim()
+        if (result.isNotBlank()) {
+            Log.d(TAG, "Extracted notification text (${result.length} chars): ${result.take(200)}")
+        }
+        return result.takeIf { it.isNotBlank() }
     }
 }
