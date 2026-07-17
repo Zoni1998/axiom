@@ -1,284 +1,126 @@
 <p align="center">
-  <img src="assets/backgroundremoved.png" alt="OpenDroid Logo" width="200px">
+  <img src="assets/backgroundremoved.png" alt="Axiom Logo" width="200px">
 </p>
 
-<h1 align="center">OpenDroid</h1>
+<h1 align="center">Axiom</h1>
 
 <p align="center">
-  <strong>🤖 The Open-Source Autonomous AI Agent for Android</strong>
-</p>
-
-<p align="center">
-  <em>Your phone. Your rules. Your AI.</em>
+  <strong>🤖 Assistente de IA Autônomo para Android</strong>
 </p>
 
 <p align="center">
-  <a href="https://github.com/yashab-cyber/opendroid/releases"><img src="https://img.shields.io/github/v/release/yashab-cyber/opendroid?style=for-the-badge&color=00FF88&labelColor=0D1117&logo=android&logoColor=white" alt="Release"></a>
-  <a href="https://github.com/yashab-cyber/opendroid/stargazers"><img src="https://img.shields.io/github/stars/yashab-cyber/opendroid?style=for-the-badge&color=FFD700&labelColor=0D1117&logo=github&logoColor=white" alt="Stars"></a>
-  <a href="https://github.com/yashab-cyber/opendroid/blob/main/LICENSE"><img src="https://img.shields.io/github/license/yashab-cyber/opendroid?style=for-the-badge&color=00BFFF&labelColor=0D1117" alt="License"></a>
-  <a href="https://discord.gg/knRMyFmvpp"><img src="https://img.shields.io/badge/Discord-Join%20Us-5865F2?style=for-the-badge&logo=discord&logoColor=white&labelColor=0D1117" alt="Discord"></a>
+  <em>Seu assistente pessoal. Open source. 100% autônomo.</em>
 </p>
 
 <p align="center">
-  <a href="#-features">Features</a> •
-  <a href="#-architecture">Architecture</a> •
-  <a href="#%EF%B8%8F-getting-started">Get Started</a> •
-  <a href="#-supported-llm-providers">Providers</a> •
-  <a href="#-donate">Donate</a> •
-  <a href="#-license">License</a>
+  <a href="https://github.com/Zoni1998/axiom/releases"><img src="https://img.shields.io/github/v/release/Zoni1998/axiom?style=for-the-badge&color=00FF88&labelColor=0D1117&logo=android&logoColor=white" alt="Release"></a>
+  <a href="https://github.com/Zoni1998/axiom/stargazers"><img src="https://img.shields.io/github/stars/Zoni1998/axiom?style=for-the-badge&color=FFD700&labelColor=0D1117&logo=github&logoColor=white" alt="Stars"></a>
+  <a href="https://github.com/Zoni1998/axiom/blob/main/LICENSE"><img src="https://img.shields.io/github/license/Zoni1998/axiom?style=for-the-badge&color=7C4DFF&labelColor=0D1117" alt="License"></a>
 </p>
 
 ---
 
-## 🎯 What is OpenDroid?
+## 🎯 O que é o Axiom?
 
-OpenDroid isn't just another chatbot. It's a **fully autonomous AI agent** that lives on your Android phone and actually *does things* for you.
+O Axiom não é só mais um chatbot. É um **agente de IA totalmente autônomo** que vive no seu Android e realmente *faz coisas* por você.
 
-> *"Check if it's going to rain tomorrow, and if so, text my wife that I'll be late and set an alarm for 6 PM."*
+> *"Me avisa se vai chover amanhã e manda mensagem pro meu irmão avisando que vou me atrasar."*
 
-OpenDroid will **plan** this as 3 steps, **execute** each one, **verify** the results, and **adapt** if anything fails — all without you lifting a finger.
-
----
-
-## ✨ Features
-
-### 🧠 Autonomous Agent Engine
-| Capability | Description |
-|------------|-------------|
-| **Self-Planning** | Breaks complex commands into sequential steps with dependency tracking |
-| **Re-Evaluation** | Monitors execution results and dynamically replans when steps fail |
-| **Compound Intent Guard** | Smart detection of multi-action commands (e.g. "open WhatsApp *and* send message") |
-| **Contact Disambiguation** | 4-tier contact resolution with fuzzy matching and relationship aliases ("call dad") |
-
-### 🛠️ On-Device Model Manager (LiteRT-LM)
-| Capability | Description |
-|------------|-------------|
-| **Background Downloader** | Real network downloads (via WorkManager) with Pause/Resume, speed tracking, and ETA |
-| **Secure Authentication** | Encrypted token storage (EncryptedSharedPreferences) to securely fetch gated Hugging Face models |
-| **Integrity Verification** | Computes SHA-256 hashes and verifies LiteRT engine loading compatibility before marking READY |
-| **Local Model Import** | Direct offline importing of custom `.task` or `.litertlm` files with JNI verification checks |
-
-### 📱 Full Device Control
-| Action | Examples |
-|--------|----------|
-| **System** | Brightness, WiFi, Bluetooth, Flashlight, DND, Volume, Screenshot |
-| **Communication** | Calls, SMS, WhatsApp messages, Email drafts |
-| **Productivity** | Alarms, Timers, Reminders, Calendar events, Notes |
-| **Navigation** | Google Maps directions, Uber/Ola booking |
-| **Media** | Play/pause music, YouTube search, camera |
-| **Finance** | UPI payments, bill splitting, currency conversion |
-| **Smart Home** | Google Home device control |
-
-### 👁️ Vision Engine
-Captures screenshots via Accessibility API and feeds them to vision-capable LLMs for real-time screen analysis. Falls back to accessibility tree text-scraping on older devices.
-
-### 🗄️ Multi-Tier Memory System
-
-```
-┌─────────────────────────────────────────────────┐
-│                  Memory System                   │
-├──────────────┬──────────────┬───────────────────┤
-│   Working    │   Episodic   │     Semantic      │
-│  (current    │ (past task   │ (long-term facts  │
-│   context)   │   results)   │  & preferences)   │
-├──────────────┴──────────────┴───────────────────┤
-│              Procedural Memory                   │
-│         (user-defined macro workflows)           │
-└─────────────────────────────────────────────────┘
-```
-
-### 🎙️ Voice Interface
-- **Offline wake word** detection — say *"OpenDroid"* to activate
-- **Speech-to-text** for hands-free commands
-- **Text-to-speech** with ElevenLabs premium voice support
-
-### 🎨 Premium UI
-Built with **Jetpack Compose** featuring a futuristic glassmorphic design:
-- Deep navy (`#080C10`) + Neon green (`#00FF88`) color system
-- Pulsing audio orb animation during listening
-- Live latency benchmarks for each provider
-- Dark mode by default
-
-### 🎬 Meet OpenDroid in 3D
-
-<p align="center">
-  <img src="assets/gemini_generated_video_90af62cc.mp4" alt="OpenDroid 3D Greeting" width="400px">
-</p>
-
-<p align="center">
-  <em>OpenDroid saying hi — rendered in 3D!</em>
-</p>
-
-> **Note:** If the video doesn't play inline on GitHub, [click here to download and watch it](assets/gemini_generated_video_90af62cc.mp4).
-
-### 📸 Screenshots
-
-<p align="center">
-  <img src="assets/screenshot/Screenshot_20260528-234508_OpenDroid.png" alt="Chat Screen" width="220px">
-  &nbsp;&nbsp;
-  <img src="assets/screenshot/Screenshot_20260528-234521_OpenDroid.png" alt="Plan Engine" width="220px">
-  &nbsp;&nbsp;
-  <img src="assets/screenshot/Screenshot_20260528-234535_OpenDroid.png" alt="Persistent Memory" width="220px">
-  &nbsp;&nbsp;
-  <img src="assets/screenshot/Screenshot_20260528-234615_OpenDroid.png" alt="Set Alarm" width="220px">
-</p>
-
-<p align="center">
-  <em>Chat &bull; Plan Engine &bull; Memory System &bull; Alarm Control</em>
-</p>
+O Axiom vai **planejar** isso em 3 passos, **executar** cada um, **verificar** os resultados e **se adaptar** se algo falhar — tudo sem você levantar um dedo.
 
 ---
 
-## 🏗️ Architecture
+## ✨ Funcionalidades
 
-Clean architecture with **Dagger-Hilt** dependency injection:
+### 🧠 Motor de Agente Autônomo
+| Capacidade | Descrição |
+|---|---|
+| **Auto-planejamento** | Divide comandos complexos em passos sequenciais |
+| **Re-avaliação** | Monitora resultados e replaneja quando algo falha |
+| **Detecção de intenção composta** | Identifica comandos com múltiplas ações |
+| **Resolução de contatos** | Busca inteligente com apelidos ("liga pro pai") |
 
-```
-com.opendroid.ai
-│
-├── 🤖 accessibility/      App automators (WhatsApp, SMS, Calls)
-├── ⚡ actions/             60+ action executors across 10 modules
-├── 🧠 core/
-│   ├── agent/              AgentLoop, PlanManager, IntentClassifier, VisionEngine
-│   ├── llm/                12 LLM providers, fallback chain, prompt engine
-│   ├── memory/             4-tier memory system + notification intelligence
-│   ├── security/           Encrypted SharedPreferences (EncryptedSharedPreferences)
-│   ├── service/            Foreground service, notification listener, boot receiver
-│   └── voice/              Wake word, speech recognition, TTS engine
-│
-├── 💾 data/
-│   ├── db/                 Room database (7 DAOs, 7 entities, 3 migrations)
-│   ├── models/             Unified data models (Plan, Memory, ChatMessage)
-│   └── repository/         Repositories backed by Room & DataStore
-│
-├── 💉 di/                  Hilt modules (App, Database, LLM)
-└── 🎨 ui/
-    ├── theme/              Glassmorphic design system
-    ├── screens/            16 screens (Chat, Plan, Memory, Settings, etc.)
-    ├── viewmodel/          8 ViewModels
-    └── components/         Reusable Compose components
-```
+### 🛠️ Modelos On-Device (LiteRT-LM)
+| Capacidade | Descrição |
+|---|---|
+| **Download em background** | Download real com Pausa/Retomar, velocidade, ETA |
+| **Verificação de integridade** | SHA-256 + verificação de compatibilidade |
+| **Importação local** | Importa modelos `.task` ou `.litertlm` offline |
+
+### 📱 Controle Total do Dispositivo
+| Ação | Exemplos |
+|---|---|
+| **Sistema** | Brilho, WiFi, Bluetooth, Lanterna, Volume, Screenshot |
+| **Comunicação** | Chamadas, SMS, WhatsApp, Email |
+| **Produtividade** | Alarmes, Timers, Lembretes, Calendário, Notas |
+| **Navegação** | Google Maps, Uber |
+| **Mídia** | Tocar música, YouTube, câmera |
+
+### 👁️ Motor de Visão
+Captura screenshots via Accessibility API e alimenta LLMs com capacidade de visão para análise de tela em tempo real.
+
+### 🗄️ Sistema de Memória Multi-Camada
+- **Working** (contexto atual)
+- **Episodic** (resultados de tarefas passadas)
+- **Semantic** (fatos e preferências de longo prazo)
+- **Procedural** (macros e workflows definidos pelo usuário)
+
+### 🎙️ Interface de Voz
+- Wake word offline — diga *"Axiom"* para ativar
+- Speech-to-text para comandos mãos-livres
+- Text-to-speech com vozes premium
+
+### 🎨 UI Premium
+- Design glassmórfico escuro
+- Preto profundo + Verde neon (#00FF88) + Roxo (#7C4DFF)
+- Animações fluidas com Jetpack Compose
+- Modo escuro por padrão
 
 ---
 
-## 🔌 Supported LLM Providers
+## 🔌 Provedores LLM Suportados
 
-OpenDroid supports **12 LLM providers** with automatic failover:
-
-| Provider | Models | Type |
-|----------|--------|------|
+| Provedor | Modelos | Tipo |
+|---|---|---|
 | 🟢 **Google Gemini** | Gemini 2.0 Flash, Pro, Nano | Cloud + On-device |
 | 🟣 **Anthropic Claude** | Claude Sonnet 4, Opus 4 | Cloud |
-| 🔵 **OpenAI** | GPT-4o, GPT-4.1, o3 | Cloud |
-| ⚡ **Groq** | LLaMA 3, Mixtral (ultra-fast) | Cloud |
+| 🔵 **OpenAI** | GPT-4o, o3 | Cloud |
+| ⚡ **Groq** | LLaMA 3, Mixtral | Cloud |
 | 🔷 **DeepSeek** | DeepSeek V3, R1 | Cloud |
 | 🟠 **Mistral AI** | Mistral Large, Medium | Cloud |
-| 🌐 **OpenRouter** | 200+ models via unified API | Cloud |
-| 🤝 **Together AI** | Open-source model hosting | Cloud |
-| 🔴 **Cohere** | Command R+ | Cloud |
-| 🐙 **GitHub Copilot** | GPT-4.1, Claude via Copilot API | Cloud |
-| 🏠 **Ollama** | Any local model (LLaMA, Phi, etc.) | Local |
-| 🔧 **Custom OpenAI** | Any OpenAI-compatible endpoint | Self-hosted |
+| 🌐 **OpenRouter** | 200+ modelos via API unificada | Cloud |
+| 🏠 **Ollama** | Qualquer modelo local | Local |
+| 🔧 **Custom OpenAI** | Qualquer endpoint compatível | Self-hosted |
 
-> **Smart Fallback**: If your primary provider fails, OpenDroid automatically tries the next available provider in the chain.
+> **Fallback inteligente**: Se seu provedor principal falhar, o Axiom tenta automaticamente o próximo.
 
 ---
 
-## ⚡️ Getting Started
+## ⚡ Instalação
 
-### Prerequisites
+### Pré-requisitos
 - **JDK 21+**
 - **Android SDK 35** (Android 15)
 
-### Build & Install
+### Build & Instalar
 
 ```bash
-# Clone the repository
-git clone https://github.com/yashab-cyber/opendroid.git
-cd opendroid
-
-# Build debug APK
+git clone https://github.com/Zoni1998/axiom.git
+cd axiom
 ./gradlew assembleDebug
-
-# APK output location
-# → app/build/outputs/apk/debug/app-debug.apk
+# APK em: app/build/outputs/apk/debug/app-debug.apk
 ```
 
-### Required Permissions
-
-On first launch, OpenDroid will guide you through granting:
-
-| Permission | Why |
-|------------|-----|
-| 🔓 **Accessibility Service** | UI automation, screen reading, app control |
-| ⚙️ **Write Settings** | Toggle WiFi, Bluetooth, brightness |
-| 🎤 **Record Audio** | Wake word detection & voice commands |
-| 🔔 **Notification Access** | Smart notification reading & auto-reply |
-| 📱 **Post Notifications** | Foreground service status |
-
-### Configure LLM
-
-In **Settings**, add your API key for any supported provider. OpenDroid works best with:
-- **Gemini** (free tier available)
-- **Groq** (fastest inference)
-- **Ollama** (fully offline)
-
 ---
 
-## 💚 Donate
+## 📜 Licença
 
-OpenDroid is free, open-source, and maintained by a solo developer. If it's helped you, consider supporting the project!
+Apache License 2.0 — mesmo código do OpenDroid original por Yashab Alam.
 
-**UPI (India):** `8960457971`
-**Email:** `yashabalam707@gmail.com`
-
-[→ See DONATE.md for more ways to support](DONATE.md)
-
----
-
-## 🤝 Contributing
-
-Contributions are welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
-
-1. Fork the repo
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
----
-
-## 🔒 Security
-
-Found a vulnerability? Please report it responsibly.
-See [SECURITY.md](SECURITY.md) for details.
-
----
-
-## 📜 License
-
-```
-Copyright 2026 OpenDroid Contributors
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-```
+Fork mantido por [Victor (Zoni1998)](https://github.com/Zoni1998).
 
 ---
 
 <p align="center">
-  Made with ❤️ by <a href="https://github.com/yashab-cyber"><strong>Yashab Alam</strong></a>
-</p>
-
-<p align="center">
-  <a href="https://github.com/yashab-cyber/opendroid">⭐ Star this repo</a> if OpenDroid has helped you!
+  Feito com ❤️ baseado no <a href="https://github.com/yashab-cyber/opendroid"><strong>OpenDroid</strong></a>
 </p>

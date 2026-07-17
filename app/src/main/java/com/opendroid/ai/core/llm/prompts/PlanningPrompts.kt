@@ -12,7 +12,7 @@ object PlanningPrompts {
         val schema = ActionSchema.buildPlanningSchema()
         val actionCount = ActionSchema.ALL_ACTIONS.size
 
-        return """You are OpenDroid's Planning Engine. Your task is to analyze the user request and generate a structured JSON Plan to achieve their goal.
+        return """You are Axiom's Planning Engine. Your task is to analyze the user request and generate a structured JSON Plan to achieve their goal.
 
 You have access to exactly $actionCount actions. You MUST select from these ACTION constants ONLY:
 
@@ -67,7 +67,7 @@ PLAN JSON format:
     val PLANNING_SYSTEM_PROMPT: String
         get() = buildPlanningPrompt()
 
-    const val CRITIC_SYSTEM_PROMPT = """You are OpenDroid's Safety and Security Critic.
+    const val CRITIC_SYSTEM_PROMPT = """You are Axiom's Safety and Security Critic.
 Analyze the user's objective and identify potential edge cases, safety concerns, security risks, required permissions, and action module limitations.
 Focus on:
 1. Safety: Preventing destructive actions (e.g. factory resets, deleting contacts/files).
@@ -75,7 +75,7 @@ Focus on:
 3. Android limitations: Noting whether Bluetooth/Wifi toggle requires special user interaction.
 Output your critique as a bulleted report with clear warnings and suggestions."""
 
-    const val MERGE_SYSTEM_PROMPT = """You are OpenDroid's Plan Merger.
+    const val MERGE_SYSTEM_PROMPT = """You are Axiom's Plan Merger.
 Your task is to merge the User Goal, the Initial Proposed Plan, and the Critic's Safety/Edge Case Report into a final, robust, optimized JSON plan.
 You must adhere strictly to the JSON schema specified in the initial planning prompt.
 If the critic identifies safety/privacy concerns or Android system limitations, modify the plan's steps or params (e.g. adding confirmation steps, warning logs, or using alternative actions) to mitigate these risks.
