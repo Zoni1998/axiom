@@ -155,10 +155,8 @@ class HermesBridge @Inject constructor(
                     val text = msg.getCharSequence("text")
                     if (sender != null) sb.append("$sender: ")
                     if (text != null) sb.appendLine(text)
-                } else if (msg is Notification.MessagingStyle.Message) {
-                    sb.appendLine(msg.text)
                 } else {
-                    // Last resort: toString
+                    // Fallback: toString
                     sb.appendLine(msg.toString())
                 }
             }
