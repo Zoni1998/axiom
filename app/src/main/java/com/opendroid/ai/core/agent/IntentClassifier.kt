@@ -18,74 +18,74 @@ class IntentClassifier @Inject constructor(
     private val llmProviderFactory: dagger.Lazy<LLMProviderFactory>
 ) {
     suspend fun requiresAction(query: String): Boolean {
-        // Broad local heuristic check for action words (EN + PT)
-        val actionKeywords = listOf(
-            "open", "launch", "start", "turn", "toggle", "enable", "disable", "set", "lock", "restart",
-            "take", "record", "send", "make", "play", "pause", "resume", "next", "prev", "order", "search",
-            "pay", "check", "split", "run", "create", "schedule", "list", "read", "write", "delete", "click",
-            "type", "scroll", "get", "show", "whatsapp", "call", "sms", "email", "alarm", "timer", "reminder",
-            "note", "notes", "calendar", "weather", "news", "flashlight", "flash", "wifi", "bluetooth",
-            "brightness", "volume", "screenshot", "dnd", "mute", "unmute",
-            // PT-BR
-            "abrir", "abre", "liga", "ligar", "desliga", "desligar", "manda", "mandar", "enviar", "envia",
-            "tira", "tirar", "aumenta", "aumentar", "diminui", "diminuir", "toca", "tocar",
-            "pesquisa", "pesquisar", "busca", "buscar", "calcula", "calcular", "traduz", "traduzir",
-            "zap", "mensagem", "whatsapp", "print", "lanterna", "brilho", "câmera", "camera",
-            "mapas", "maps", "youtube", "instagram", "chrome", "navegador"
+        // Aggressive keyword matching — skip LLM, always route actions correctly
+        val lower = query.lowercase()
+        
+        // PT-BR action patterns — most common
+        val ptPatterns = listOf(
+            "abrir", "abre", "abra", "aberto", "abrindo",
+            "ligar", "liga", "ligue", "ligado", "ligando",
+            "desligar", "desliga", "desligue",
+            "enviar", "envia", "envie", "manda", "mandar", "mande",
+            "aumentar", "aumenta", "aumente", "diminuir", "diminui", "diminua",
+            "tirar", "tira", "tire", "tirando",
+            "tocar", "toca", "toque", "tocando",
+            "mostrar", "mostra", "mostre", "exibir", "exibe", "exiba",
+            "calcular", "calcula", "calcule", "calculando",
+            "pesquisar", "pesquisa", "pesquise", "buscar", "busca", "busque",
+            "traduzir", "traduz", "traduza",
+            "copiar", "copia", "copie", "colar", "cola", "cole",
+            "bloquear", "bloqueia", "bloqueie", "travar", "trava", "trave",
+            "silenciar", "silencia", "mutar", "muta",
+            "acender", "acende", "apagar", "apaga",
+            "gravar", "grava", "grave", "filmar", "filma", "filme",
         )
-        val hasActionKeyword = actionKeywords.any { query.contains(it, ignoreCase = true) }
-
-        // FORCED action queries — these should NEVER be treated as conversational
-        // even if the LLM classifier says so. They always need device actions.
-        val forcedActionPatterns = listOf(
-            "weather", "search", "search for", "google", "look up", "find",
-            "call", "dial", "ring", "phone",
-            "message", "text", "sms", "whatsapp", "send",
-            "open", "launch",
-            "navigate", "directions", "take me to",
-            "play", "music", "youtube",
-            "set alarm", "set timer", "set reminder",
-            "screenshot", "flashlight", "torch", "flash",
-            "wifi", "bluetooth", "brightness", "volume", "dnd", "hotspot",
-            "news", "translate", "convert", "calculate",
-            "book uber", "book ola"
+        
+        // EN action patterns  
+        val enPatterns = listOf(
+            "open", "launch", "start", "turn", "toggle", "enable", "disable",
+            "set", "lock", "restart", "take", "record", "send", "make",
+            "play", "pause", "resume", "order", "search", "pay", "check",
+            "split", "run", "create", "schedule", "read", "write", "delete",
+            "click", "type", "scroll", "get", "show",
         )
-        val isForcedAction = forcedActionPatterns.any { query.contains(it, ignoreCase = true) }
-        if (isForcedAction) return true
-
-        return try {
-            val provider = llmProviderFactory.get().getActiveProvider()
-            val prompt = """
-                Classify the user's intent: "$query".
-                Does this request require executing one or more device/app actions (e.g. opening an app, toggling a setting like flashlight/wifi/bluetooth, setting volume/brightness, sending a message/email, making a call, setting an alarm/timer/reminder, playing music, booking a ride, checking weather/news, paying via UPI, etc.)?
-                Return strictly "ACTION" if it requires executing an action, or "CONVERSATIONAL" if it is a general chat, question, or statement that can be answered directly with a conversational text response.
-            """.trimIndent()
-
-            val response = provider.complete(
-                LLMRequest(
-                    systemPrompt = "You are an intent classification routing helper.",
-                    messages = listOf(
-                        ChatMessage(
-                            id = UUID.randomUUID().toString(),
-                            text = prompt,
-                            sender = ChatMessage.Sender.USER
-                        )
-                    ),
-                    temperature = 0.0f,
-                    maxTokens = 5,
-                    responseFormat = ResponseFormat.TEXT
-                )
-            )
-            val responseText = response.content.uppercase()
-            when {
-                responseText.contains("ACTION") -> true
-                responseText.contains("CONVERSATIONAL") -> false
-                else -> hasActionKeyword
-            }
-        } catch (e: Exception) {
-            // Fallback to keyword heuristics if LLM is unreachable or offline
-            hasActionKeyword
-        }
+        
+        // App/service names that imply actions
+        val appNames = listOf(
+            "whatsapp", "zap", "telegram", "instagram", "facebook", "twitter",
+            "youtube", "spotify", "netflix", "chrome", "firefox", "navegador",
+            "mapas", "maps", "google maps", "waze", "uber", "câmera", "camera",
+            "galeria", "gallery", "calculadora", "bloco de notas", "notepad",
+            "configurações", "settings", "ajustes"
+        )
+        
+        // Target objects that imply actions
+        val targetObjects = listOf(
+            "lanterna", "flashlight", "flash", "torch", "brilho", "brightness",
+            "volume", "som", "áudio", "audio", "wifi", "bluetooth", "dados móveis",
+            "hotspot", "não perturbe", "dnd", "alarme", "alarm", "timer",
+            "lembrete", "reminder", "print", "screenshot", "captura", "tela",
+            "notificação", "notification", "mensagem", "message", "mensagens",
+            "foto", "photo", "fotos", "photos", "vídeo", "video"
+        )
+        
+        val hasPtAction = ptPatterns.any { lower.contains(it) }
+        val hasEnAction = enPatterns.any { lower.contains(it) }
+        val hasApp = appNames.any { lower.contains(it) }
+        val hasTarget = targetObjects.any { lower.contains(it) }
+        
+        // If the query has an action verb + target/app, it's an action
+        if ((hasPtAction || hasEnAction) && (hasApp || hasTarget)) return true
+        // If it has both PT and EN markers, likely an action
+        if (hasPtAction && hasEnAction) return true
+        // If it mentions an app with imperative tone, it's an action
+        if (hasApp && (lower.contains("me") || lower.contains("pra") || lower.contains("para"))) return true
+        
+        // Default: if the query is short and looks like a command, treat as action
+        if (lower.length < 50 && (hasPtAction || hasEnAction || hasApp || hasTarget)) return true
+        
+        // Only pure conversation goes to chat mode
+        return false
     }
 
     fun classifyComplexity(query: String): QueryComplexity {
