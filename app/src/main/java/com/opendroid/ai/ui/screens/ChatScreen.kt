@@ -248,7 +248,7 @@ fun ChatScreen(
                             TextField(
                                 value = inputQuery,
                                 onValueChange = { inputQuery = it },
-                                placeholder = { Text("Ask OpenDroid to run an autonomous task...", color = TextSecondary, fontSize = 14.sp) },
+                                placeholder = { Text("Peça ao Axiom para executar uma tarefa...", color = TextSecondary, fontSize = 14.sp) },
                                 colors = TextFieldDefaults.colors(
                                     focusedContainerColor = Color.Transparent,
                                     unfocusedContainerColor = Color.Transparent,
@@ -299,12 +299,12 @@ fun ChatScreen(
 @Composable
 fun AgentStatusSubtitle(state: AgentState) {
     val text = when (state) {
-        is AgentState.Idle -> "Online & Ready"
-        is AgentState.Listening -> "Listening to voice input..."
-        is AgentState.Thinking -> "Analyzing intent & planning..."
+        is AgentState.Idle -> "Online e Pronto"
+        is AgentState.Listening -> "Ouvindo..."
+        is AgentState.Thinking -> "Analisando e planejando..."
         is AgentState.PlanProposed -> "Plano Aguardando Aprovação"
-        is AgentState.ExecutingPlan -> "Executing: ${state.currentStepDesc}"
-        is AgentState.Speaking -> "Speaking: ${state.text.take(30)}..."
+        is AgentState.ExecutingPlan -> "Executando: ${state.currentStepDesc}"
+        is AgentState.Speaking -> "Falando: ${state.text.take(30)}..."
         is AgentState.Error -> "Erro de Execução"
     }
     
