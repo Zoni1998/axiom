@@ -18,14 +18,20 @@ class IntentClassifier @Inject constructor(
     private val llmProviderFactory: dagger.Lazy<LLMProviderFactory>
 ) {
     suspend fun requiresAction(query: String): Boolean {
-        // Broad local heuristic check for action words
+        // Broad local heuristic check for action words (EN + PT)
         val actionKeywords = listOf(
             "open", "launch", "start", "turn", "toggle", "enable", "disable", "set", "lock", "restart",
             "take", "record", "send", "make", "play", "pause", "resume", "next", "prev", "order", "search",
             "pay", "check", "split", "run", "create", "schedule", "list", "read", "write", "delete", "click",
             "type", "scroll", "get", "show", "whatsapp", "call", "sms", "email", "alarm", "timer", "reminder",
             "note", "notes", "calendar", "weather", "news", "flashlight", "flash", "wifi", "bluetooth",
-            "brightness", "volume", "screenshot", "dnd", "mute", "unmute"
+            "brightness", "volume", "screenshot", "dnd", "mute", "unmute",
+            // PT-BR
+            "abrir", "abre", "liga", "ligar", "desliga", "desligar", "manda", "mandar", "enviar", "envia",
+            "tira", "tirar", "aumenta", "aumentar", "diminui", "diminuir", "toca", "tocar",
+            "pesquisa", "pesquisar", "busca", "buscar", "calcula", "calcular", "traduz", "traduzir",
+            "zap", "mensagem", "whatsapp", "print", "lanterna", "brilho", "câmera", "camera",
+            "mapas", "maps", "youtube", "instagram", "chrome", "navegador"
         )
         val hasActionKeyword = actionKeywords.any { query.contains(it, ignoreCase = true) }
 
@@ -99,7 +105,16 @@ class IntentClassifier @Inject constructor(
             "toggle flashlight", "toggle wifi", "toggle bluetooth", "toggle hotspot", "toggle dnd",
             "open settings", "open camera", "lock screen", "lock phone",
             "play music", "pause music", "resume music", "next song", "previous song",
-            "mute phone", "unmute phone", "set wallpaper"
+            "mute phone", "unmute phone", "set wallpaper",
+            // PT-BR
+            "aumenta o brilho", "aumentar brilho", "diminui o brilho", "diminuir brilho",
+            "liga a lanterna", "ligar lanterna", "desliga a lanterna", "desligar lanterna",
+            "tira um print", "tirar print", "capturar tela",
+            "aumenta o volume", "aumentar volume", "diminui o volume", "diminuir volume",
+            "liga o wifi", "ligar wifi", "desliga o wifi", "desligar wifi",
+            "abrir whatsapp", "abrir zap", "abrir maps", "abrir camera", "abrir câmera",
+            "abrir configurações", "abrir ajustes", "abrir chrome", "abrir youtube",
+            "modo silencioso", "modo vibrar", "não perturbe", "bloquear tela"
         )
         if (singleIntentPatterns.any { lowercaseQuery.startsWith(it) || lowercaseQuery == it }) {
             return QueryComplexity.SIMPLE
