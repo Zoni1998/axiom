@@ -262,6 +262,16 @@ class SystemActions @Inject constructor(
         override val name: String = "OPEN_APP"
         override suspend fun execute(params: Map<String, String>, context: Context): ActionResult {
             val appName = params["appName"] ?: return ActionResult(false, null, "appName parameter missing")
+            // Normalize common app name aliases
+            val normalizedAppName = when (appName.lowercase().trim()) {
+                "google maps", "gmaps", "mapas" -> "Maps"
+                "whatsapp", "zap" -> "WhatsApp"
+                "chrome", "navegador" -> "Chrome"
+                "youtube", "yt" -> "YouTube"
+                "instagram", "insta" -> "Instagram"
+                "configurações", "configuracoes", "settings" -> "Configurações"
+                else -> appName
+            }
             val pm = context.packageManager
             val mainIntent = Intent(Intent.ACTION_MAIN, null).apply {
                 addCategory(Intent.CATEGORY_LAUNCHER)
@@ -272,7 +282,9 @@ class SystemActions @Inject constructor(
             var matchedPackage = resolveInfos.find {
                 val label = it.loadLabel(pm).toString()
                 val pkgName = it.activityInfo.packageName
-                label.contains(appName, ignoreCase = true) || pkgName.contains(appName, ignoreCase = true)
+                label.contains(normalizedAppName, ignoreCase = true) || 
+                pkgName.contains(normalizedAppName, ignoreCase = true) ||
+                normalizedAppName.contains(label, ignoreCase = true)
             }?.activityInfo?.packageName
 
             // 2. If not found in launcher apps, try matching installed applications as a fallback
@@ -281,7 +293,9 @@ class SystemActions @Inject constructor(
                     val packages = pm.getInstalledApplications(0)
                     matchedPackage = packages.find {
                         val label = pm.getApplicationLabel(it).toString()
-                        label.contains(appName, ignoreCase = true) || it.packageName.contains(appName, ignoreCase = true)
+                        label.contains(normalizedAppName, ignoreCase = true) || 
+                        it.packageName.contains(normalizedAppName, ignoreCase = true) ||
+                        normalizedAppName.contains(label, ignoreCase = true)
                     }?.packageName
                 } catch (e: Exception) {
                     // Ignore installed applications check exceptions
