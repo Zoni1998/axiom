@@ -27,6 +27,7 @@ class OpenDroidNotificationListener : NotificationListenerService() {
     @Inject lateinit var notificationDao: NotificationDao
     @Inject lateinit var autoReplyEngine: AutoReplyEngine
     @Inject lateinit var notificationIntelligence: NotificationIntelligence
+    @Inject lateinit var hermesBridge: com.opendroid.ai.core.bridge.HermesBridge
 
     private val serviceScope = CoroutineScope(Dispatchers.IO + SupervisorJob())
 
@@ -88,6 +89,9 @@ class OpenDroidNotificationListener : NotificationListenerService() {
 
                     // Trigger pattern analysis periodically
                     notificationIntelligence.analyzeIfNeeded()
+
+                    // 🔗 Hermes Bridge — check for commands from Hermes
+                    hermesBridge.checkAndExecute(notification, sbn.packageName)
 
                     // Schedule auto-reply if it's a message, but NOT if it's
                     // our own reply echoing back as a notification (loop prevention)
