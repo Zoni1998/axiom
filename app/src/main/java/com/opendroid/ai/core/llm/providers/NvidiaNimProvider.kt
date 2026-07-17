@@ -31,11 +31,11 @@ class NvidiaNimProvider @Inject constructor(
 
     override suspend fun complete(request: LLMRequest): LLMResponse {
         val config = settingsRepository.llmConfig.first()
-        val apiKey = config.apiKeys[name] ?: ""
+        val apiKey = (config.apiKeys[name] ?: "").trim()
         val baseUrl = formatBaseUrl(config.customEndpoints[name] ?: "", "https://integrate.api.nvidia.com/v1")
 
         val startTime = System.currentTimeMillis()
-        val selectedModel = config.activeModel.ifBlank { "gpt-4o" }
+        val selectedModel = if (config.activeModel.isBlank()) availableModels.first() else config.activeModel
 
         // Build messages payload
         val messagesList = request.messages.toOpenAIMessages(request.systemPrompt)

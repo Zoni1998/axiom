@@ -384,6 +384,15 @@ class ModelFetcher @Inject constructor(
                         Result.success(emptyList())
                     }
                 }
+                "NVIDIA NIM" -> {
+                    Result.success(listOf(
+                        AIModel("mistralai/mistral-small-4-119b-2603", "Mistral Small 4", provider, isRecommended = true),
+                        AIModel("moonshotai/kimi-k2.6", "Kimi K2.6", provider),
+                        AIModel("deepseek-ai/deepseek-v4-flash", "DeepSeek V4 Flash", provider),
+                        AIModel("deepseek-ai/deepseek-v4-pro", "DeepSeek V4 Pro", provider),
+                        AIModel("qwen/qwen3.5-122b-a10b", "Qwen 3.5 122B", provider)
+                    ))
+                }
                 else -> Result.success(emptyList())
             }
         } catch (e: Exception) {

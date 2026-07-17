@@ -219,6 +219,7 @@ class SettingsViewModel @Inject constructor(
             "Ollama" -> "llama3"
             "Copilot API" -> "gpt-4o"
             "Custom OpenAI Compatible" -> "gpt-4o"
+            "NVIDIA NIM" -> "mistralai/mistral-small-4-119b-2603"
             "On-Device AI",
             "Gemma 4 (On-device)" -> "gemma-4-on-device"
             "Mistral AI" -> "mistral-large-latest"
