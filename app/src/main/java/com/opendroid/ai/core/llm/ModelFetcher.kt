@@ -385,13 +385,15 @@ class ModelFetcher @Inject constructor(
                     }
                 }
                 "NVIDIA NIM" -> {
-                    if (apiKey.isNullOrBlank()) return@withContext Result.success(emptyList())
                     val baseUrl = "https://integrate.api.nvidia.com/v1"
-                    val request = Request.Builder()
+                    val requestBuilder = Request.Builder()
                         .url("$baseUrl/models")
-                        .header("Authorization", "Bearer ${apiKey.trim()}")
                         .get()
-                        .build()
+                    // API key is optional for listing models
+                    if (!apiKey.isNullOrBlank()) {
+                        requestBuilder.header("Authorization", "Bearer ${apiKey.trim()}")
+                    }
+                    val request = requestBuilder.build()
                     try {
                         httpClient.newCall(request).execute().use { response ->
                             if (!response.isSuccessful) throw Exception("HTTP ${response.code}")
