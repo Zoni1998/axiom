@@ -385,13 +385,42 @@ class ModelFetcher @Inject constructor(
                     }
                 }
                 "NVIDIA NIM" -> {
-                    Result.success(listOf(
-                        AIModel("mistralai/mistral-small-4-119b-2603", "Mistral Small 4", provider, isRecommended = true),
-                        AIModel("moonshotai/kimi-k2.6", "Kimi K2.6", provider),
-                        AIModel("deepseek-ai/deepseek-v4-flash", "DeepSeek V4 Flash", provider),
-                        AIModel("deepseek-ai/deepseek-v4-pro", "DeepSeek V4 Pro", provider),
-                        AIModel("qwen/qwen3.5-122b-a10b", "Qwen 3.5 122B", provider)
-                    ))
+                    if (apiKey.isNullOrBlank()) return@withContext Result.success(emptyList())
+                    val baseUrl = "https://integrate.api.nvidia.com/v1"
+                    val request = Request.Builder()
+                        .url("$baseUrl/models")
+                        .header("Authorization", "Bearer ${apiKey.trim()}")
+                        .get()
+                        .build()
+                    try {
+                        httpClient.newCall(request).execute().use { response ->
+                            if (!response.isSuccessful) throw Exception("HTTP ${response.code}")
+                            val json = JSONObject(response.body?.string() ?: "")
+                            val dataArray = json.getJSONArray("data")
+                            val list = mutableListOf<AIModel>()
+                            for (i in 0 until dataArray.length()) {
+                                val obj = dataArray.getJSONObject(i)
+                                val id = obj.getString("id")
+                                val isRec = id.contains("mistral-small") || id.contains("kimi-k2")
+                                list.add(AIModel(
+                                    id = id,
+                                    displayName = formatModelName(id),
+                                    provider = provider,
+                                    isRecommended = isRec
+                                ))
+                            }
+                            Result.success(list.sortedBy { it.displayName })
+                        }
+                    } catch (e: Exception) {
+                        Log.w(tag, "NVIDIA NIM fetch failed, fallback: ${e.message}")
+                        Result.success(listOf(
+                            AIModel("mistralai/mistral-small-4-119b-2603", "Mistral Small 4", provider, isRecommended = true),
+                            AIModel("moonshotai/kimi-k2.6", "Kimi K2.6", provider),
+                            AIModel("deepseek-ai/deepseek-v4-flash", "DeepSeek V4 Flash", provider),
+                            AIModel("deepseek-ai/deepseek-v4-pro", "DeepSeek V4 Pro", provider),
+                            AIModel("qwen/qwen3.5-122b-a10b", "Qwen 3.5 122B", provider)
+                        ))
+                    }
                 }
                 else -> Result.success(emptyList())
             }
