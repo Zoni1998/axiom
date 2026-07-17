@@ -98,19 +98,8 @@ class AgentLoop @Inject constructor(
                 // Capture screenshot of the active screen if accessibility service is active
                 val screenshotBase64 = com.opendroid.ai.accessibility.OpenDroidAccessibilityService.getInstance()?.takeScreenshotAndEncode()
 
-                // 🌐 Translation layer: detect PT-BR → translate to EN for LLM processing
-                val isPortuguese = query.any { it in "áàãâéêíóôõúç" } || 
-                    query.contains(Regex("\\b(o|a|os|as|que|não|para|com|mas|por|uma|está|você|isso|aqui|meu|minha)\\b", RegexOption.IGNORE_CASE))
-                
-                val processingQuery = if (isPortuguese) {
-                    try {
-                        translateToEnglish(query)
-                    } catch (e: Exception) {
-                        query // Fallback to original
-                    }
-                } else {
-                    query
-                }
+                // 🌐 Use original query — PT-BR aliases and IntentClassifier handle it natively
+                val processingQuery = query
 
                 // Save user message (original text for display)
                 val userMsg = ChatMessage(
@@ -867,27 +856,6 @@ class AgentLoop @Inject constructor(
 
         _agentState.value = AgentState.Speaking(summaryText)
         onSpeakCallback?.invoke(summaryText)
-    }
-
-    /**
-     * 🌐 Quick PT-BR → EN translation using the active LLM provider.
-     * Falls back to original text if translation fails.
-     */
-    private suspend fun translateToEnglish(text: String): String {
-        val provider = llmProviderFactory.getActiveProvider()
-        val prompt = "Translate this Portuguese text to English. Return ONLY the translation, nothing else: \"$text\""
-        val request = LLMRequest(
-            systemPrompt = "You are a translator. Translate Portuguese to English. Return ONLY the translated text, no explanations.",
-            messages = listOf(ChatMessage(id = "t1", text = prompt, sender = ChatMessage.Sender.USER)),
-            temperature = 0.1f,
-            maxTokens = 500,
-            responseFormat = ResponseFormat.TEXT
-        )
-        return try {
-            provider.complete(request).content.trim()
-        } catch (e: Exception) {
-            text // fallback to original
-        }
     }
 
     private fun cleanPlanJson(raw: String): String {
