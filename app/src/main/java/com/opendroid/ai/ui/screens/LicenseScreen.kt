@@ -31,7 +31,7 @@ fun LicenseScreen(
                         text = "LICENSE",
                         fontFamily = FontFamily.Monospace,
                         fontWeight = FontWeight.Bold,
-                        color = AccentNeonGreen,
+                        color = AccentSecondary,
                         fontSize = 20.sp,
                         letterSpacing = 2.sp
                     )
@@ -41,7 +41,7 @@ fun LicenseScreen(
                         Icon(
                             imageVector = Icons.Default.ArrowBack,
                             contentDescription = "Back",
-                            tint = AccentNeonGreen
+                            tint = AccentSecondary
                         )
                     }
                 },
@@ -63,7 +63,7 @@ fun LicenseScreen(
                 Card(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .border(1.dp, AccentPurple.copy(alpha = 0.3f), RoundedCornerShape(12.dp)),
+                        .border(1.dp, AccentPrimary.copy(alpha = 0.3f), RoundedCornerShape(12.dp)),
                     colors = CardDefaults.cardColors(containerColor = CardBackground)
                 ) {
                     Row(
@@ -75,7 +75,7 @@ fun LicenseScreen(
                         Icon(
                             imageVector = Icons.Default.Code,
                             contentDescription = "License",
-                            tint = AccentPurple,
+                            tint = AccentPrimary,
                             modifier = Modifier.size(32.dp)
                         )
                         Spacer(modifier = Modifier.width(12.dp))
@@ -89,7 +89,7 @@ fun LicenseScreen(
                             Text(
                                 text = "MIT License",
                                 fontSize = 12.sp,
-                                color = AccentPurple
+                                color = AccentPrimary
                             )
                         }
                     }

@@ -111,7 +111,7 @@ fun NotificationHistoryScreen(
                             )
                         },
                         colors = FilterChipDefaults.filterChipColors(
-                            selectedContainerColor = themeColors.accentPurple,
+                            selectedContainerColor = themeColors.accentPrimary,
                             selectedLabelColor = Color.White,
                             containerColor = themeColors.cardBackground,
                             labelColor = themeColors.textSecondary
@@ -210,7 +210,7 @@ private fun NotificationCard(
         shape = RoundedCornerShape(14.dp),
         colors = CardDefaults.cardColors(
             containerColor = if (notification.isAutoReplied) {
-                themeColors.accentPurple.copy(alpha = 0.08f)
+                themeColors.accentPrimary.copy(alpha = 0.08f)
             } else {
                 themeColors.cardBackground
             }
@@ -229,7 +229,7 @@ private fun NotificationCard(
                         notification.appName,
                         fontSize = 14.sp,
                         fontWeight = FontWeight.SemiBold,
-                        color = themeColors.accentPurple
+                        color = themeColors.accentPrimary
                     )
                 }
                 Text(
@@ -262,14 +262,14 @@ private fun NotificationCard(
                     modifier = Modifier
                         .fillMaxWidth()
                         .clip(RoundedCornerShape(8.dp))
-                        .background(themeColors.accentPurple.copy(alpha = 0.15f))
+                        .background(themeColors.accentPrimary.copy(alpha = 0.15f))
                         .padding(8.dp)
                 ) {
                     Text("🤖 ", fontSize = 13.sp)
                     Text(
                         notification.autoReplyText,
                         fontSize = 13.sp,
-                        color = themeColors.accentPurple,
+                        color = themeColors.accentPrimary,
                         maxLines = 2,
                         overflow = TextOverflow.Ellipsis
                     )

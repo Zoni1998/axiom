@@ -53,14 +53,14 @@ fun BenchmarkScreen(
                         text = "BRAIN BENCHMARK",
                         fontFamily = FontFamily.Monospace,
                         fontWeight = FontWeight.Bold,
-                        color = AccentNeonGreen,
+                        color = AccentSecondary,
                         fontSize = 18.sp,
                         letterSpacing = 2.sp
                     )
                 },
                 navigationIcon = {
                     IconButton(onClick = onNavigateBack) {
-                        Icon(Icons.Default.ArrowBack, contentDescription = "Back", tint = AccentNeonGreen)
+                        Icon(Icons.Default.ArrowBack, contentDescription = "Back", tint = AccentSecondary)
                     }
                 },
                 actions = {
@@ -70,7 +70,7 @@ fun BenchmarkScreen(
                                 viewModel.testProviderLatency(providerName)
                             }
                         },
-                        colors = ButtonDefaults.buttonColors(containerColor = AccentNeonGreen, contentColor = DarkBackground),
+                        colors = ButtonDefaults.buttonColors(containerColor = AccentSecondary, contentColor = DarkBackground),
                         shape = RoundedCornerShape(8.dp),
                         contentPadding = PaddingValues(horizontal = 12.dp, vertical = 6.dp)
                     ) {
@@ -131,9 +131,9 @@ fun ProviderLatencyRow(providerName: String, latencyMs: Long?) {
     val barColor = when {
         latencyMs == null -> BorderColor
         latencyMs == 9999L -> AccentRed
-        latencyMs < 500L -> AccentNeonGreen
+        latencyMs < 500L -> AccentSecondary
         latencyMs < 1500L -> AccentCyan
-        else -> AccentPurple
+        else -> AccentPrimary
     }
 
     val ratingText = when {

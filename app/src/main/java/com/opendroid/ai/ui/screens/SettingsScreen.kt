@@ -111,7 +111,7 @@ fun SettingsScreen(
                         text = "PREFERÊNCIAS DO AGENTE",
                         fontFamily = FontFamily.Monospace,
                         fontWeight = FontWeight.Bold,
-                        color = AccentNeonGreen,
+                        color = AccentSecondary,
                         fontSize = 20.sp,
                         letterSpacing = 2.sp
                     )
@@ -174,7 +174,7 @@ fun SettingsScreen(
                                 Icon(
                                     imageVector = Icons.Default.ArrowDropDown,
                                     contentDescription = "Dropdown",
-                                    tint = AccentNeonGreen
+                                    tint = AccentSecondary
                                 )
                             }
 
@@ -256,12 +256,12 @@ fun SettingsScreen(
                                 fontSize = 11.sp,
                                 fontWeight = FontWeight.Bold,
                                 fontFamily = FontFamily.Monospace,
-                                color = AccentNeonGreen
+                                color = AccentSecondary
                             )
                             if (modelsLoading) {
                                 CircularProgressIndicator(
                                     modifier = Modifier.size(14.dp),
-                                    color = AccentNeonGreen,
+                                    color = AccentSecondary,
                                     strokeWidth = 2.dp
                                 )
                             } else {
@@ -292,12 +292,12 @@ fun SettingsScreen(
                                         Icon(
                                             imageVector = Icons.Default.ArrowDropDown,
                                             contentDescription = "Show models dropdown",
-                                            tint = AccentNeonGreen
+                                            tint = AccentSecondary
                                         )
                                     }
                                 },
                                 colors = OutlinedTextFieldDefaults.colors(
-                                    focusedBorderColor = AccentNeonGreen,
+                                    focusedBorderColor = AccentSecondary,
                                     unfocusedBorderColor = BorderColor,
                                     focusedTextColor = TextPrimary,
                                     unfocusedTextColor = TextPrimary
@@ -335,14 +335,14 @@ fun SettingsScreen(
                                                             Box(
                                                                 modifier = Modifier
                                                                     .background(
-                                                                        AccentNeonGreen.copy(alpha = 0.15f),
+                                                                        AccentSecondary.copy(alpha = 0.15f),
                                                                         RoundedCornerShape(4.dp)
                                                                     )
                                                                     .padding(horizontal = 4.dp, vertical = 2.dp)
                                                             ) {
                                                                 Text(
                                                                     text = "REC",
-                                                                    color = AccentNeonGreen,
+                                                                    color = AccentSecondary,
                                                                     fontSize = 9.sp,
                                                                     fontWeight = FontWeight.Bold
                                                                 )
@@ -454,7 +454,7 @@ fun SettingsScreen(
                                 fontSize = 11.sp,
                                 fontWeight = FontWeight.Bold,
                                 fontFamily = FontFamily.Monospace,
-                                color = AccentNeonGreen
+                                color = AccentSecondary
                             )
                             Spacer(modifier = Modifier.height(12.dp))
                             OutlinedTextField(
@@ -463,7 +463,7 @@ fun SettingsScreen(
                                 label = { Text("URL do Servidor Ollama", fontSize = 12.sp) },
                                 singleLine = true,
                                 colors = OutlinedTextFieldDefaults.colors(
-                                    focusedBorderColor = AccentNeonGreen,
+                                    focusedBorderColor = AccentSecondary,
                                     unfocusedBorderColor = BorderColor,
                                     focusedTextColor = TextPrimary,
                                     unfocusedTextColor = TextPrimary
@@ -496,7 +496,7 @@ fun SettingsScreen(
                                 fontSize = 11.sp,
                                 fontWeight = FontWeight.Bold,
                                 fontFamily = FontFamily.Monospace,
-                                color = AccentNeonGreen
+                                color = AccentSecondary
                             )
                             Spacer(modifier = Modifier.height(4.dp))
                             
@@ -587,7 +587,7 @@ fun SettingsScreen(
                                 Text(
                                     text = gemma4Status,
                                     fontSize = 11.sp,
-                                    color = if (gemma4Status.contains("ready")) AccentNeonGreen else TextSecondary
+                                    color = if (gemma4Status.contains("ready")) AccentSecondary else TextSecondary
                                 )
                             }
                             if (showGemma4Download) {
@@ -603,7 +603,7 @@ fun SettingsScreen(
                                             gemma4Status = "Download failed: ${e.localizedMessage}"
                                         }
                                     },
-                                    colors = ButtonDefaults.buttonColors(containerColor = AccentNeonGreen),
+                                    colors = ButtonDefaults.buttonColors(containerColor = AccentSecondary),
                                     modifier = Modifier.fillMaxWidth()
                                 ) {
                                     Text("Baixar Gemma 4 (AI Core)", color = DarkBackground)
@@ -622,7 +622,7 @@ fun SettingsScreen(
                                 Text(
                                     text = gemma3nStatus,
                                     fontSize = 11.sp,
-                                    color = if (gemma3nStatus.contains("ready")) AccentNeonGreen else TextSecondary
+                                    color = if (gemma3nStatus.contains("ready")) AccentSecondary else TextSecondary
                                 )
                             }
                             if (showGemma3nDownload) {
@@ -752,7 +752,7 @@ fun SettingsScreen(
                                     }
 
                                     val statusColor = when (validationStatus) {
-                                        "Valid" -> AccentNeonGreen
+                                        "Valid" -> AccentSecondary
                                         "Invalid" -> Color.Red
                                         "Verifying..." -> AccentCyan
                                         "Unable to verify" -> Color.Yellow
@@ -835,7 +835,7 @@ fun SettingsScreen(
                                         .padding(vertical = 6.dp)
                                         .border(
                                             1.dp,
-                                            if (config.activeModel == spec.id) AccentNeonGreen.copy(alpha = 0.5f) else BorderColor,
+                                            if (config.activeModel == spec.id) AccentSecondary.copy(alpha = 0.5f) else BorderColor,
                                             RoundedCornerShape(10.dp)
                                         )
                                         .clickable { if (isApiCompatible) expanded = !expanded },
@@ -881,7 +881,7 @@ fun SettingsScreen(
                                             }
                                             
                                             val badgeColor = when (status) {
-                                                ModelStatus.READY -> AccentNeonGreen
+                                                ModelStatus.READY -> AccentSecondary
                                                 ModelStatus.DOWNLOADING -> Color(0xFFFF9800)
                                                 ModelStatus.PAUSED -> Color.Yellow
                                                 ModelStatus.LOADING -> AccentCyan
@@ -1048,7 +1048,7 @@ fun SettingsScreen(
                                                          Button(
                                                              onClick = { viewModel.loadModel(spec.id) },
                                                              colors = ButtonDefaults.buttonColors(
-                                                                 containerColor = if (config.activeModel == spec.id) AccentNeonGreen else AccentCyan
+                                                                 containerColor = if (config.activeModel == spec.id) AccentSecondary else AccentCyan
                                                              ),
                                                              modifier = Modifier.weight(1f).height(32.dp),
                                                              contentPadding = PaddingValues(horizontal = 4.dp)
@@ -1169,7 +1169,7 @@ fun SettingsScreen(
                                 fontSize = 11.sp,
                                 fontWeight = FontWeight.Bold,
                                 fontFamily = FontFamily.Monospace,
-                                color = AccentNeonGreen
+                                color = AccentSecondary
                             )
                             Spacer(modifier = Modifier.height(12.dp))
                             OutlinedTextField(
@@ -1178,7 +1178,7 @@ fun SettingsScreen(
                                 label = { Text("Copilot Server URL", fontSize = 12.sp) },
                                 singleLine = true,
                                 colors = OutlinedTextFieldDefaults.colors(
-                                    focusedBorderColor = AccentNeonGreen,
+                                    focusedBorderColor = AccentSecondary,
                                     unfocusedBorderColor = BorderColor,
                                     focusedTextColor = TextPrimary,
                                     unfocusedTextColor = TextPrimary
@@ -1211,7 +1211,7 @@ fun SettingsScreen(
                                 fontSize = 11.sp,
                                 fontWeight = FontWeight.Bold,
                                 fontFamily = FontFamily.Monospace,
-                                color = AccentNeonGreen
+                                color = AccentSecondary
                             )
                             Spacer(modifier = Modifier.height(12.dp))
                             OutlinedTextField(
@@ -1220,7 +1220,7 @@ fun SettingsScreen(
                                 label = { Text("Base URL (e.g. https://api.openai.com/v1)", fontSize = 12.sp) },
                                 singleLine = true,
                                 colors = OutlinedTextFieldDefaults.colors(
-                                    focusedBorderColor = AccentNeonGreen,
+                                    focusedBorderColor = AccentSecondary,
                                     unfocusedBorderColor = BorderColor,
                                     focusedTextColor = TextPrimary,
                                     unfocusedTextColor = TextPrimary
@@ -1282,7 +1282,7 @@ fun SettingsScreen(
                                         label = { Text("$providerName API Key", fontSize = 12.sp) },
                                         singleLine = true,
                                         colors = OutlinedTextFieldDefaults.colors(
-                                            focusedBorderColor = AccentNeonGreen,
+                                            focusedBorderColor = AccentSecondary,
                                             unfocusedBorderColor = BorderColor,
                                             focusedTextColor = TextPrimary,
                                             unfocusedTextColor = TextPrimary
@@ -1337,7 +1337,7 @@ fun SettingsScreen(
                                     label = { Text("ElevenLabs API Key", fontSize = 12.sp) },
                                     singleLine = true,
                                     colors = OutlinedTextFieldDefaults.colors(
-                                        focusedBorderColor = AccentNeonGreen,
+                                        focusedBorderColor = AccentSecondary,
                                         unfocusedBorderColor = BorderColor,
                                         focusedTextColor = TextPrimary,
                                         unfocusedTextColor = TextPrimary
@@ -1350,7 +1350,7 @@ fun SettingsScreen(
                                     label = { Text("ElevenLabs Voice ID", fontSize = 12.sp) },
                                     singleLine = true,
                                     colors = OutlinedTextFieldDefaults.colors(
-                                        focusedBorderColor = AccentNeonGreen,
+                                        focusedBorderColor = AccentSecondary,
                                         unfocusedBorderColor = BorderColor,
                                         focusedTextColor = TextPrimary,
                                         unfocusedTextColor = TextPrimary
@@ -1407,8 +1407,8 @@ fun SettingsScreen(
                                 checked = config.speakResponsesEnabled,
                                 onCheckedChange = { viewModel.toggleSpeakResponses(it) },
                                 colors = SwitchDefaults.colors(
-                                    checkedThumbColor = AccentNeonGreen,
-                                    checkedTrackColor = AccentNeonGreen.copy(alpha = 0.3f),
+                                    checkedThumbColor = AccentSecondary,
+                                    checkedTrackColor = AccentSecondary.copy(alpha = 0.3f),
                                     uncheckedThumbColor = TextSecondary,
                                     uncheckedTrackColor = TextSecondary.copy(alpha = 0.2f)
                                 )
@@ -1448,8 +1448,8 @@ fun SettingsScreen(
                                 checked = config.autoConfirmPlans,
                                 onCheckedChange = { viewModel.updateAutoConfirmPlans(it) },
                                 colors = SwitchDefaults.colors(
-                                    checkedThumbColor = AccentNeonGreen,
-                                    checkedTrackColor = AccentNeonGreen.copy(alpha = 0.5f)
+                                    checkedThumbColor = AccentSecondary,
+                                    checkedTrackColor = AccentSecondary.copy(alpha = 0.5f)
                                 )
                             )
                         }
@@ -1485,8 +1485,8 @@ fun SettingsScreen(
                                 checked = config.multiAgentModeEnabled,
                                 onCheckedChange = { viewModel.updateMultiAgentMode(it) },
                                 colors = SwitchDefaults.colors(
-                                    checkedThumbColor = AccentNeonGreen,
-                                    checkedTrackColor = AccentNeonGreen.copy(alpha = 0.5f)
+                                    checkedThumbColor = AccentSecondary,
+                                    checkedTrackColor = AccentSecondary.copy(alpha = 0.5f)
                                 )
                             )
                         }
@@ -1522,8 +1522,8 @@ fun SettingsScreen(
                                 checked = config.showFloatingButton,
                                 onCheckedChange = { viewModel.updateShowFloatingButton(it) },
                                 colors = SwitchDefaults.colors(
-                                    checkedThumbColor = AccentNeonGreen,
-                                    checkedTrackColor = AccentNeonGreen.copy(alpha = 0.5f)
+                                    checkedThumbColor = AccentSecondary,
+                                    checkedTrackColor = AccentSecondary.copy(alpha = 0.5f)
                                 )
                             )
                         }
@@ -1559,8 +1559,8 @@ fun SettingsScreen(
                                 checked = config.isDarkMode,
                                 onCheckedChange = { viewModel.updateDarkMode(it) },
                                 colors = SwitchDefaults.colors(
-                                    checkedThumbColor = AccentNeonGreen,
-                                    checkedTrackColor = AccentNeonGreen.copy(alpha = 0.5f)
+                                    checkedThumbColor = AccentSecondary,
+                                    checkedTrackColor = AccentSecondary.copy(alpha = 0.5f)
                                 )
                             )
                         }
@@ -1573,7 +1573,7 @@ fun SettingsScreen(
                 Card(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .border(1.dp, AccentPurple.copy(alpha = 0.3f), RoundedCornerShape(12.dp))
+                        .border(1.dp, AccentPrimary.copy(alpha = 0.3f), RoundedCornerShape(12.dp))
                         .clickable { onNavigateToAutoReply() },
                     colors = CardDefaults.cardColors(containerColor = CardBackground)
                 ) {
@@ -1591,7 +1591,7 @@ fun SettingsScreen(
                                 fontSize = 11.sp,
                                 fontWeight = FontWeight.Bold,
                                 fontFamily = FontFamily.Monospace,
-                                color = AccentPurple
+                                color = AccentPrimary
                             )
                             Spacer(modifier = Modifier.height(2.dp))
                             Text(
@@ -1668,7 +1668,7 @@ fun SettingsScreen(
                         Icon(
                             imageVector = Icons.Default.Lock,
                             contentDescription = "Privacy Policy",
-                            tint = AccentNeonGreen,
+                            tint = AccentSecondary,
                             modifier = Modifier.size(24.dp)
                         )
                         Spacer(modifier = Modifier.width(12.dp))
@@ -1678,7 +1678,7 @@ fun SettingsScreen(
                                 fontSize = 11.sp,
                                 fontWeight = FontWeight.Bold,
                                 fontFamily = FontFamily.Monospace,
-                                color = AccentNeonGreen
+                                color = AccentSecondary
                             )
                             Spacer(modifier = Modifier.height(2.dp))
                             Text(
@@ -1760,7 +1760,7 @@ fun SettingsScreen(
                         Icon(
                             imageVector = Icons.Default.Info,
                             contentDescription = "Help Center",
-                            tint = AccentNeonGreen,
+                            tint = AccentSecondary,
                             modifier = Modifier.size(24.dp)
                         )
                         Spacer(modifier = Modifier.width(12.dp))
@@ -1770,7 +1770,7 @@ fun SettingsScreen(
                                 fontSize = 11.sp,
                                 fontWeight = FontWeight.Bold,
                                 fontFamily = FontFamily.Monospace,
-                                color = AccentNeonGreen
+                                color = AccentSecondary
                             )
                             Spacer(modifier = Modifier.height(2.dp))
                             Text(
@@ -1806,7 +1806,7 @@ fun SettingsScreen(
                         Icon(
                             imageVector = Icons.Default.Info,
                             contentDescription = "License",
-                            tint = AccentPurple,
+                            tint = AccentPrimary,
                             modifier = Modifier.size(24.dp)
                         )
                         Spacer(modifier = Modifier.width(12.dp))
@@ -1816,7 +1816,7 @@ fun SettingsScreen(
                                 fontSize = 11.sp,
                                 fontWeight = FontWeight.Bold,
                                 fontFamily = FontFamily.Monospace,
-                                color = AccentPurple
+                                color = AccentPrimary
                             )
                             Spacer(modifier = Modifier.height(2.dp))
                             Text(
@@ -1852,7 +1852,7 @@ fun SettingsScreen(
                         Icon(
                             imageVector = Icons.Default.Info,
                             contentDescription = "About",
-                            tint = AccentPurple,
+                            tint = AccentPrimary,
                             modifier = Modifier.size(24.dp)
                         )
                         Spacer(modifier = Modifier.width(12.dp))
@@ -1862,7 +1862,7 @@ fun SettingsScreen(
                                 fontSize = 11.sp,
                                 fontWeight = FontWeight.Bold,
                                 fontFamily = FontFamily.Monospace,
-                                color = AccentPurple
+                                color = AccentPrimary
                             )
                             Spacer(modifier = Modifier.height(2.dp))
                             Text(

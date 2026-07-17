@@ -35,7 +35,7 @@ fun AboutScreen(
                         text = "ABOUT",
                         fontFamily = FontFamily.Monospace,
                         fontWeight = FontWeight.Bold,
-                        color = AccentNeonGreen,
+                        color = AccentSecondary,
                         fontSize = 20.sp,
                         letterSpacing = 2.sp
                     )
@@ -45,7 +45,7 @@ fun AboutScreen(
                         Icon(
                             imageVector = Icons.Default.ArrowBack,
                             contentDescription = "Back",
-                            tint = AccentNeonGreen
+                            tint = AccentSecondary
                         )
                     }
                 },
@@ -70,7 +70,7 @@ fun AboutScreen(
                         .fillMaxWidth()
                         .border(
                             1.dp,
-                            Brush.linearGradient(listOf(AccentNeonGreen, AccentCyan)),
+                            Brush.linearGradient(listOf(AccentSecondary, AccentCyan)),
                             RoundedCornerShape(16.dp)
                         ),
                     colors = CardDefaults.cardColors(containerColor = CardBackground),
@@ -89,10 +89,10 @@ fun AboutScreen(
                                 .clip(CircleShape)
                                 .background(
                                     Brush.linearGradient(
-                                        listOf(AccentNeonGreen.copy(alpha = 0.2f), AccentCyan.copy(alpha = 0.2f))
+                                        listOf(AccentSecondary.copy(alpha = 0.2f), AccentCyan.copy(alpha = 0.2f))
                                     )
                                 )
-                                .border(2.dp, AccentNeonGreen, CircleShape),
+                                .border(2.dp, AccentSecondary, CircleShape),
                             contentAlignment = Alignment.Center
                         ) {
                             Text(
@@ -100,7 +100,7 @@ fun AboutScreen(
                                 fontSize = 28.sp,
                                 fontWeight = FontWeight.ExtraBold,
                                 fontFamily = FontFamily.Monospace,
-                                color = AccentNeonGreen
+                                color = AccentSecondary
                             )
                         }
 
@@ -259,7 +259,7 @@ fun AboutScreen(
                                     modifier = Modifier
                                         .size(6.dp)
                                         .clip(CircleShape)
-                                        .background(AccentNeonGreen)
+                                        .background(AccentSecondary)
                                 )
                                 Spacer(modifier = Modifier.width(10.dp))
                                 Text(
@@ -278,7 +278,7 @@ fun AboutScreen(
                 Card(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .border(1.dp, AccentPurple.copy(alpha = 0.3f), RoundedCornerShape(12.dp)),
+                        .border(1.dp, AccentPrimary.copy(alpha = 0.3f), RoundedCornerShape(12.dp)),
                     colors = CardDefaults.cardColors(containerColor = CardBackground)
                 ) {
                     Column(
@@ -292,7 +292,7 @@ fun AboutScreen(
                             fontSize = 11.sp,
                             fontWeight = FontWeight.Bold,
                             fontFamily = FontFamily.Monospace,
-                            color = AccentPurple
+                            color = AccentPrimary
                         )
                         Spacer(modifier = Modifier.height(10.dp))
                         Text(
@@ -341,7 +341,7 @@ private fun FeatureItem(icon: ImageVector, title: String, subtitle: String) {
         Icon(
             imageVector = icon,
             contentDescription = title,
-            tint = AccentNeonGreen,
+            tint = AccentSecondary,
             modifier = Modifier.size(20.dp)
         )
         Spacer(modifier = Modifier.width(12.dp))

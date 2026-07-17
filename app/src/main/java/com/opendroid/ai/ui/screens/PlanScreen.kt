@@ -55,7 +55,7 @@ fun PlanScreen(
                         text = "MOTOR DE PLANOS",
                         fontFamily = FontFamily.Monospace,
                         fontWeight = FontWeight.Bold,
-                        color = AccentNeonGreen,
+                        color = AccentSecondary,
                         fontSize = 20.sp,
                         letterSpacing = 2.sp
                     )
@@ -140,7 +140,7 @@ fun PlanHeaderCard(
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .border(1.dp, if (isCurrentActive) AccentNeonGreen.copy(alpha = 0.4f) else BorderColor, RoundedCornerShape(12.dp)),
+            .border(1.dp, if (isCurrentActive) AccentSecondary.copy(alpha = 0.4f) else BorderColor, RoundedCornerShape(12.dp)),
         colors = CardDefaults.cardColors(containerColor = DarkSurface)
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
@@ -151,7 +151,7 @@ fun PlanHeaderCard(
             ) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     val statusColor = when (plan.status) {
-                        PlanStatus.COMPLETED -> AccentNeonGreen
+                        PlanStatus.COMPLETED -> AccentSecondary
                         PlanStatus.RUNNING -> AccentCyan
                         PlanStatus.FAILED -> AccentRed
                         else -> TextSecondary
@@ -175,12 +175,12 @@ fun PlanHeaderCard(
                     Text(
                         text = "Visualizando Execução Anterior",
                         fontSize = 10.sp,
-                        color = AccentPurple,
+                        color = AccentPrimary,
                         fontWeight = FontWeight.Bold,
                         fontFamily = FontFamily.Monospace,
                         modifier = Modifier
                             .clip(RoundedCornerShape(4.dp))
-                            .background(AccentPurple.copy(alpha = 0.2f))
+                            .background(AccentPrimary.copy(alpha = 0.2f))
                             .padding(horizontal = 6.dp, vertical = 2.dp)
                             .clickable { onClearSelection() }
                     )
@@ -188,12 +188,12 @@ fun PlanHeaderCard(
                     Text(
                         text = "EXECUÇÃO ATIVA",
                         fontSize = 10.sp,
-                        color = AccentNeonGreen,
+                        color = AccentSecondary,
                         fontWeight = FontWeight.Bold,
                         fontFamily = FontFamily.Monospace,
                         modifier = Modifier
                             .clip(RoundedCornerShape(4.dp))
-                            .background(AccentNeonGreen.copy(alpha = 0.2f))
+                            .background(AccentSecondary.copy(alpha = 0.2f))
                             .padding(horizontal = 6.dp, vertical = 2.dp)
                     )
                 }
@@ -316,7 +316,7 @@ fun PastPlanRow(
                 },
                 contentDescription = plan.status.name,
                 tint = when (plan.status) {
-                    PlanStatus.COMPLETED -> AccentNeonGreen
+                    PlanStatus.COMPLETED -> AccentSecondary
                     PlanStatus.FAILED -> AccentRed
                     else -> TextSecondary
                 },

@@ -143,7 +143,7 @@ fun OnboardingScreen(onFinished: () -> Unit) {
                         OnboardingStage.PERMISSION_PROMPT -> "Permissões"
                         OnboardingStage.PERMISSIONS -> "Conceder Permissões"
                     }
-                    Text(titleText, color = AccentNeonGreen, fontWeight = FontWeight.Bold) 
+                    Text(titleText, color = AccentSecondary, fontWeight = FontWeight.Bold) 
                 },
                 colors = TopAppBarDefaults.topAppBarColors(containerColor = DarkBackground)
             )
@@ -275,7 +275,7 @@ fun IntroductionPanel(
                 .size(130.dp)
                 .clip(CircleShape)
                 .background(CardBackground)
-                .border(3.dp, Brush.horizontalGradient(listOf(AccentNeonGreen, AccentCyan)), CircleShape),
+                .border(3.dp, Brush.horizontalGradient(listOf(AccentSecondary, AccentCyan)), CircleShape),
             contentAlignment = Alignment.Center
         ) {
             Image(
@@ -311,13 +311,13 @@ fun IntroductionPanel(
             label = { Text("Como devo te chamar?", color = TextSecondary) },
             placeholder = { Text("Digite seu nome", color = TextSecondary.copy(alpha = 0.6f)) },
             colors = OutlinedTextFieldDefaults.colors(
-                focusedBorderColor = AccentNeonGreen,
+                focusedBorderColor = AccentSecondary,
                 unfocusedBorderColor = BorderColor,
-                focusedLabelColor = AccentNeonGreen,
+                focusedLabelColor = AccentSecondary,
                 unfocusedLabelColor = TextSecondary,
                 focusedTextColor = TextPrimary,
                 unfocusedTextColor = TextPrimary,
-                cursorColor = AccentNeonGreen
+                cursorColor = AccentSecondary
             ),
             singleLine = true,
             keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next),
@@ -332,13 +332,13 @@ fun IntroductionPanel(
             label = { Text("Qual sua data de nascimento?", color = TextSecondary) },
             placeholder = { Text("Ex: DD/MM/AAAA", color = TextSecondary.copy(alpha = 0.6f)) },
             colors = OutlinedTextFieldDefaults.colors(
-                focusedBorderColor = AccentNeonGreen,
+                focusedBorderColor = AccentSecondary,
                 unfocusedBorderColor = BorderColor,
-                focusedLabelColor = AccentNeonGreen,
+                focusedLabelColor = AccentSecondary,
                 unfocusedLabelColor = TextSecondary,
                 focusedTextColor = TextPrimary,
                 unfocusedTextColor = TextPrimary,
-                cursorColor = AccentNeonGreen
+                cursorColor = AccentSecondary
             ),
             singleLine = true,
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text, imeAction = ImeAction.Done),
@@ -361,7 +361,7 @@ fun IntroductionPanel(
         Button(
             onClick = onContinue,
             modifier = Modifier.fillMaxWidth().height(50.dp),
-            colors = ButtonDefaults.buttonColors(containerColor = AccentNeonGreen, contentColor = DarkBackground),
+            colors = ButtonDefaults.buttonColors(containerColor = AccentSecondary, contentColor = DarkBackground),
             shape = RoundedCornerShape(8.dp)
         ) {
             Text("Vamos Lá", fontWeight = FontWeight.Bold, fontSize = 16.sp)
@@ -387,7 +387,7 @@ fun PermissionPromptPanel(
                 .size(130.dp)
                 .clip(CircleShape)
                 .background(CardBackground)
-                .border(3.dp, Brush.horizontalGradient(listOf(AccentCyan, AccentPurple)), CircleShape),
+                .border(3.dp, Brush.horizontalGradient(listOf(AccentCyan, AccentPrimary)), CircleShape),
             contentAlignment = Alignment.Center
         ) {
             Image(
@@ -430,7 +430,7 @@ fun PermissionPromptPanel(
         Button(
             onClick = onContinue,
             modifier = Modifier.fillMaxWidth().height(50.dp),
-            colors = ButtonDefaults.buttonColors(containerColor = AccentNeonGreen, contentColor = DarkBackground),
+            colors = ButtonDefaults.buttonColors(containerColor = AccentSecondary, contentColor = DarkBackground),
             shape = RoundedCornerShape(8.dp)
         ) {
             Text("Conceder Permissões", fontWeight = FontWeight.Bold, fontSize = 16.sp)
@@ -568,7 +568,7 @@ fun PermissionsPanelContent(
         Button(
             onClick = onFinished,
             modifier = Modifier.fillMaxWidth().height(50.dp),
-            colors = ButtonDefaults.buttonColors(containerColor = AccentNeonGreen, contentColor = DarkBackground),
+            colors = ButtonDefaults.buttonColors(containerColor = AccentSecondary, contentColor = DarkBackground),
             shape = RoundedCornerShape(8.dp)
         ) {
             Text("Entrar no ZonIA", fontWeight = FontWeight.Bold, fontSize = 16.sp)
@@ -601,7 +601,7 @@ fun PermissionCard(
         Button(
             onClick = onGrant,
             colors = ButtonDefaults.buttonColors(
-                containerColor = if (granted) BorderColor else AccentNeonGreen,
+                containerColor = if (granted) BorderColor else AccentSecondary,
                 contentColor = if (granted) TextSecondary else DarkBackground
             ),
             shape = RoundedCornerShape(8.dp)

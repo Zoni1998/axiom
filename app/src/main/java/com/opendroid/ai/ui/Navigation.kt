@@ -231,19 +231,19 @@ fun MainDashboard(
                             Icon(
                                 imageVector = tab.icon,
                                 contentDescription = tab.title,
-                                tint = if (isSelected) AccentNeonGreen else TextSecondary
+                                tint = if (isSelected) AccentSecondary else TextSecondary
                             )
                         },
                         label = {
                             Text(
                                 text = tab.title,
                                 fontSize = 10.sp,
-                                color = if (isSelected) AccentNeonGreen else TextSecondary,
+                                color = if (isSelected) AccentSecondary else TextSecondary,
                                 fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Normal
                             )
                         },
                         colors = NavigationBarItemDefaults.colors(
-                            indicatorColor = AccentNeonGreen.copy(alpha = 0.15f)
+                            indicatorColor = AccentSecondary.copy(alpha = 0.15f)
                         )
                     )
                 }

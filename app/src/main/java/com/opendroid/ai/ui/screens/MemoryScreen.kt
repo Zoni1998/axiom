@@ -54,7 +54,7 @@ fun MemoryScreen(
                         text = "MEMÓRIA PERSISTENTE",
                         fontFamily = FontFamily.Monospace,
                         fontWeight = FontWeight.Bold,
-                        color = AccentNeonGreen,
+                        color = AccentSecondary,
                         fontSize = 20.sp,
                         letterSpacing = 2.sp
                     )
@@ -80,7 +80,7 @@ fun MemoryScreen(
             ScrollableTabRow(
                 selectedTabIndex = selectedTab.ordinal,
                 containerColor = DarkBackground,
-                contentColor = AccentNeonGreen,
+                contentColor = AccentSecondary,
                 edgePadding = 0.dp,
                 divider = { Divider(color = BorderColor) }
             ) {
@@ -126,7 +126,7 @@ fun MemoryScreen(
                         leadingIcon = { Icon(Icons.Default.Search, contentDescription = "Buscar", tint = TextSecondary) },
                         singleLine = true,
                         colors = OutlinedTextFieldDefaults.colors(
-                            focusedBorderColor = AccentNeonGreen,
+                            focusedBorderColor = AccentSecondary,
                             unfocusedBorderColor = BorderColor,
                             focusedTextColor = TextPrimary,
                             unfocusedTextColor = TextPrimary
@@ -140,7 +140,7 @@ fun MemoryScreen(
                             modifier = Modifier
                                 .size(48.dp)
                                 .clip(RoundedCornerShape(8.dp))
-                                .background(AccentNeonGreen)
+                                .background(AccentSecondary)
                         ) {
                             Icon(Icons.Default.Add, contentDescription = "Adicionar", tint = DarkBackground)
                         }
@@ -212,8 +212,8 @@ fun WorkingMemoryView(viewModel: MemoryViewModel) {
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.SpaceBetween
                     ) {
-                        StateItem("Nível da Bateria", "${workingMemory.batteryLevel}%", AccentNeonGreen)
-                        StateItem("Estado do WiFi", workingMemory.wifiState, if (workingMemory.wifiState == "Active") AccentNeonGreen else if (workingMemory.wifiState == "Inactive") AccentRed else TextSecondary)
+                        StateItem("Nível da Bateria", "${workingMemory.batteryLevel}%", AccentSecondary)
+                        StateItem("Estado do WiFi", workingMemory.wifiState, if (workingMemory.wifiState == "Active") AccentSecondary else if (workingMemory.wifiState == "Inactive") AccentRed else TextSecondary)
                     }
                     Spacer(modifier = Modifier.height(12.dp))
                     Row(
@@ -221,7 +221,7 @@ fun WorkingMemoryView(viewModel: MemoryViewModel) {
                         horizontalArrangement = Arrangement.SpaceBetween
                     ) {
                         StateItem("Conectividade", workingMemory.connectivity, AccentCyan)
-                        StateItem("Internet", if (workingMemory.isInternetAvailable) "Disponível" else "INDISPONÍVEL", if (workingMemory.isInternetAvailable) AccentNeonGreen else AccentRed)
+                        StateItem("Internet", if (workingMemory.isInternetAvailable) "Disponível" else "INDISPONÍVEL", if (workingMemory.isInternetAvailable) AccentSecondary else AccentRed)
                     }
                     Spacer(modifier = Modifier.height(12.dp))
                     Row(
@@ -266,7 +266,7 @@ fun WorkingMemoryView(viewModel: MemoryViewModel) {
                             Surface(
                                 color = when (plan.status.name) {
                                     "RUNNING" -> AccentCyan.copy(alpha = 0.2f)
-                                    "COMPLETED" -> AccentNeonGreen.copy(alpha = 0.2f)
+                                    "COMPLETED" -> AccentSecondary.copy(alpha = 0.2f)
                                     else -> AccentRed.copy(alpha = 0.2f)
                                 },
                                 shape = RoundedCornerShape(4.dp),
@@ -276,7 +276,7 @@ fun WorkingMemoryView(viewModel: MemoryViewModel) {
                                     text = plan.status.name,
                                     color = when (plan.status.name) {
                                         "RUNNING" -> AccentCyan
-                                        "COMPLETED" -> AccentNeonGreen
+                                        "COMPLETED" -> AccentSecondary
                                         else -> AccentRed
                                     },
                                     fontSize = 10.sp,
@@ -305,7 +305,7 @@ fun WorkingMemoryView(viewModel: MemoryViewModel) {
                                         else -> "○"
                                     },
                                     color = when (step.status.name) {
-                                        "COMPLETED" -> AccentNeonGreen
+                                        "COMPLETED" -> AccentSecondary
                                         "RUNNING" -> AccentCyan
                                         "FAILED" -> AccentRed
                                         else -> TextSecondary
@@ -391,9 +391,9 @@ fun WorkingMemoryView(viewModel: MemoryViewModel) {
                                     horizontalArrangement = if (msg.sender.name == "USER") Arrangement.End else Arrangement.Start
                                 ) {
                                     Surface(
-                                        color = if (msg.sender.name == "USER") AccentCyan.copy(alpha = 0.15f) else AccentNeonGreen.copy(alpha = 0.1f),
+                                        color = if (msg.sender.name == "USER") AccentCyan.copy(alpha = 0.15f) else AccentSecondary.copy(alpha = 0.1f),
                                         shape = RoundedCornerShape(8.dp),
-                                        border = BorderStroke(1.dp, if (msg.sender.name == "USER") AccentCyan.copy(alpha = 0.3f) else AccentNeonGreen.copy(alpha = 0.2f))
+                                        border = BorderStroke(1.dp, if (msg.sender.name == "USER") AccentCyan.copy(alpha = 0.3f) else AccentSecondary.copy(alpha = 0.2f))
                                     ) {
                                         Column(modifier = Modifier.padding(10.dp)) {
                                             Text(
@@ -401,7 +401,7 @@ fun WorkingMemoryView(viewModel: MemoryViewModel) {
                                                 fontSize = 9.sp,
                                                 fontWeight = FontWeight.Bold,
                                                 fontFamily = FontFamily.Monospace,
-                                                color = if (msg.sender.name == "USER") AccentCyan else AccentNeonGreen
+                                                color = if (msg.sender.name == "USER") AccentCyan else AccentSecondary
                                             )
                                             Spacer(modifier = Modifier.height(2.dp))
                                             Text(
@@ -479,7 +479,7 @@ fun EpisodicMemoryView(viewModel: MemoryViewModel, searchQuery: String) {
                                     fontSize = 11.sp,
                                     fontWeight = FontWeight.Bold,
                                     fontFamily = FontFamily.Monospace,
-                                    color = if (log.sender.name == "USER") AccentCyan else AccentNeonGreen
+                                    color = if (log.sender.name == "USER") AccentCyan else AccentSecondary
                                 )
                                 log.modelBadge?.let { badge ->
                                     Spacer(modifier = Modifier.width(8.dp))
@@ -573,7 +573,7 @@ fun SemanticMemoryView(
                         label = { Text("Fact Key/Identifier", fontSize = 12.sp) },
                         singleLine = true,
                         colors = OutlinedTextFieldDefaults.colors(
-                            focusedBorderColor = AccentNeonGreen,
+                            focusedBorderColor = AccentSecondary,
                             unfocusedBorderColor = BorderColor,
                             focusedTextColor = TextPrimary,
                             unfocusedTextColor = TextPrimary
@@ -586,7 +586,7 @@ fun SemanticMemoryView(
                         onValueChange = onNewValueChange,
                         label = { Text("Fact Content/Details", fontSize = 12.sp) },
                         colors = OutlinedTextFieldDefaults.colors(
-                            focusedBorderColor = AccentNeonGreen,
+                            focusedBorderColor = AccentSecondary,
                             unfocusedBorderColor = BorderColor,
                             focusedTextColor = TextPrimary,
                             unfocusedTextColor = TextPrimary
@@ -608,7 +608,7 @@ fun SemanticMemoryView(
                                     onIsAddingFactChange(false)
                                 }
                             },
-                            colors = ButtonDefaults.buttonColors(containerColor = AccentNeonGreen, contentColor = DarkBackground),
+                            colors = ButtonDefaults.buttonColors(containerColor = AccentSecondary, contentColor = DarkBackground),
                             shape = RoundedCornerShape(8.dp)
                         ) {
                             Text("Salvar", fontWeight = FontWeight.Bold)
@@ -676,7 +676,7 @@ fun MemoryItemCard(
                     text = memory.key,
                     fontSize = 14.sp,
                     fontWeight = FontWeight.Bold,
-                    color = AccentNeonGreen,
+                    color = AccentSecondary,
                     fontFamily = FontFamily.Monospace
                 )
                 Spacer(modifier = Modifier.height(4.dp))
@@ -739,7 +739,7 @@ fun ProceduralMemoryView(viewModel: MemoryViewModel, searchQuery: String) {
                                     text = macro.name.uppercase(),
                                     fontSize = 14.sp,
                                     fontWeight = FontWeight.Bold,
-                                    color = AccentNeonGreen,
+                                    color = AccentSecondary,
                                     fontFamily = FontFamily.Monospace
                                 )
                                 Spacer(modifier = Modifier.width(8.dp))

@@ -20,7 +20,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.opendroid.ai.ui.theme.AccentNeonGreen
+import com.opendroid.ai.ui.theme.AccentSecondary
 import com.opendroid.ai.ui.theme.DarkBackground
 import com.opendroid.ai.ui.theme.TextPrimary
 import com.opendroid.ai.ui.theme.TextSecondary
@@ -64,7 +64,7 @@ fun SplashScreen(onNavigateNext: () -> Unit) {
                 fontSize = 36.sp,
                 fontWeight = FontWeight.Bold,
                 fontFamily = FontFamily.Monospace,
-                color = AccentNeonGreen,
+                color = AccentSecondary,
                 letterSpacing = 4.sp
             )
             Spacer(modifier = Modifier.height(12.dp))

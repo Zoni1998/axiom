@@ -105,7 +105,7 @@ fun AutoReplySettingsScreen(
     ) { padding ->
         if (isLoading) {
             Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                CircularProgressIndicator(color = themeColors.accentPurple)
+                CircularProgressIndicator(color = themeColors.accentPrimary)
             }
         } else {
             Column(
@@ -169,7 +169,7 @@ fun AutoReplySettingsScreen(
                                                 context.startActivity(Intent(android.provider.Settings.ACTION_SETTINGS))
                                             }
                                         },
-                                        colors = ButtonDefaults.buttonColors(containerColor = themeColors.accentPurple),
+                                        colors = ButtonDefaults.buttonColors(containerColor = themeColors.accentPrimary),
                                         modifier = Modifier.weight(1f)
                                     ) {
                                         Text("Grant Accessibility Access", fontSize = 10.sp, color = Color.White)
@@ -188,7 +188,7 @@ fun AutoReplySettingsScreen(
                     shape = RoundedCornerShape(16.dp),
                     colors = CardDefaults.cardColors(
                         containerColor = if (config.globalEnabled) {
-                            themeColors.accentPurple.copy(alpha = 0.08f)
+                            themeColors.accentPrimary.copy(alpha = 0.08f)
                         } else {
                             themeColors.cardBackground
                         }
@@ -220,8 +220,8 @@ fun AutoReplySettingsScreen(
                             checked = config.globalEnabled,
                             onCheckedChange = { saveConfig(config.copy(globalEnabled = it)) },
                             colors = SwitchDefaults.colors(
-                                checkedThumbColor = themeColors.accentNeonGreen,
-                                checkedTrackColor = themeColors.accentNeonGreen.copy(alpha = 0.5f)
+                                checkedThumbColor = themeColors.accentSecondary,
+                                checkedTrackColor = themeColors.accentSecondary.copy(alpha = 0.5f)
                             )
                         )
                     }
@@ -287,7 +287,7 @@ fun AutoReplySettingsScreen(
                                     "${config.replyDelayMinutes} minutes",
                                     fontSize = 14.sp,
                                     fontWeight = FontWeight.Bold,
-                                    color = themeColors.accentPurple
+                                    color = themeColors.accentPrimary
                                 )
                             }
                             Spacer(modifier = Modifier.height(8.dp))
@@ -299,8 +299,8 @@ fun AutoReplySettingsScreen(
                                 valueRange = 1f..60f,
                                 steps = 58,
                                 colors = SliderDefaults.colors(
-                                    thumbColor = themeColors.accentPurple,
-                                    activeTrackColor = themeColors.accentPurple
+                                    thumbColor = themeColors.accentPrimary,
+                                    activeTrackColor = themeColors.accentPrimary
                                 )
                             )
                             Row(
@@ -342,7 +342,7 @@ fun AutoReplySettingsScreen(
                                     "${config.maxRepliesPerContactPerHour}",
                                     fontSize = 14.sp,
                                     fontWeight = FontWeight.Bold,
-                                    color = themeColors.accentPurple
+                                    color = themeColors.accentPrimary
                                 )
                             }
                             Spacer(modifier = Modifier.height(8.dp))
@@ -354,8 +354,8 @@ fun AutoReplySettingsScreen(
                                 valueRange = 1f..10f,
                                 steps = 8,
                                 colors = SliderDefaults.colors(
-                                    thumbColor = themeColors.accentPurple,
-                                    activeTrackColor = themeColors.accentPurple
+                                    thumbColor = themeColors.accentPrimary,
+                                    activeTrackColor = themeColors.accentPrimary
                                 )
                             )
                         }
@@ -396,11 +396,11 @@ fun AutoReplySettingsScreen(
                                     )
                                 },
                                 colors = OutlinedTextFieldDefaults.colors(
-                                    focusedBorderColor = themeColors.accentPurple,
+                                    focusedBorderColor = themeColors.accentPrimary,
                                     unfocusedBorderColor = themeColors.borderColor,
                                     focusedTextColor = themeColors.textPrimary,
                                     unfocusedTextColor = themeColors.textPrimary,
-                                    cursorColor = themeColors.accentPurple
+                                    cursorColor = themeColors.accentPrimary
                                 ),
                                 shape = RoundedCornerShape(12.dp),
                                 maxLines = 3
@@ -439,8 +439,8 @@ private fun AppToggleRow(
             checked = isEnabled,
             onCheckedChange = onToggle,
             colors = SwitchDefaults.colors(
-                checkedThumbColor = themeColors.accentNeonGreen,
-                checkedTrackColor = themeColors.accentNeonGreen.copy(alpha = 0.5f)
+                checkedThumbColor = themeColors.accentSecondary,
+                checkedTrackColor = themeColors.accentSecondary.copy(alpha = 0.5f)
             )
         )
     }

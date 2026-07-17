@@ -51,11 +51,11 @@ fun PlanStepCard(
     val displayState = getDisplayState(step)
 
     val statusColor = when (displayState) {
-        StepDisplayState.COMPLETED -> AccentNeonGreen
+        StepDisplayState.COMPLETED -> AccentSecondary
         StepDisplayState.RUNNING -> AccentCyan
         StepDisplayState.FAILED -> AccentRed
         StepDisplayState.AUTO_FIXING -> Color(0xFFFFB300) // Amber
-        StepDisplayState.REPAIRED -> AccentPurple
+        StepDisplayState.REPAIRED -> AccentPrimary
         StepDisplayState.SKIPPED -> TextSecondary
         StepDisplayState.BLOCKED -> Color(0xFFFF5722) // Deep Orange
         StepDisplayState.PENDING -> TextSecondary
@@ -128,7 +128,7 @@ fun PlanStepCard(
                 Column(modifier = Modifier.padding(top = 12.dp)) {
                     Divider(color = BorderColor, modifier = Modifier.padding(vertical = 4.dp))
                     
-                    Text("Action Module: ${step.action}", fontSize = 11.sp, color = AccentPurple, fontFamily = FontFamily.Monospace)
+                    Text("Action Module: ${step.action}", fontSize = 11.sp, color = AccentPrimary, fontFamily = FontFamily.Monospace)
                     
                     if (step.params.isNotEmpty()) {
                         Spacer(modifier = Modifier.height(6.dp))
@@ -164,7 +164,7 @@ fun PlanStepCard(
                                 .padding(8.dp)
                         ) {
                             Column {
-                                Text("Execution Result:", fontSize = 10.sp, color = AccentNeonGreen, fontWeight = FontWeight.Bold)
+                                Text("Execution Result:", fontSize = 10.sp, color = AccentSecondary, fontWeight = FontWeight.Bold)
                                 Text(step.result!!, fontSize = 11.sp, color = TextPrimary)
                             }
                         }

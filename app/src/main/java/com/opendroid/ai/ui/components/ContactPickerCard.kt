@@ -37,7 +37,7 @@ fun ContactPickerCard(
         colors = CardDefaults.cardColors(
             containerColor = Color(0xFF1A1A2E)
         ),
-        border = androidx.compose.foundation.BorderStroke(1.dp, AccentNeonGreen),
+        border = androidx.compose.foundation.BorderStroke(1.dp, AccentSecondary),
         shape = RoundedCornerShape(16.dp)
     ) {
         Column(
@@ -48,13 +48,13 @@ fun ContactPickerCard(
                 Icon(
                     imageVector = Icons.Default.Person,
                     contentDescription = null,
-                    tint = AccentNeonGreen,
+                    tint = AccentSecondary,
                     modifier = Modifier.size(20.dp)
                 )
                 Spacer(modifier = Modifier.width(8.dp))
                 Text(
                     text = "Which '$query' do you mean?",
-                    color = AccentNeonGreen,
+                    color = AccentSecondary,
                     fontWeight = FontWeight.Bold,
                     fontSize = 14.sp
                 )
@@ -112,14 +112,14 @@ fun ContactOptionRow(
             modifier = Modifier
                 .size(28.dp)
                 .background(
-                    AccentNeonGreen.copy(alpha = 0.2f),
+                    AccentSecondary.copy(alpha = 0.2f),
                     CircleShape
                 ),
             contentAlignment = Alignment.Center
         ) {
             Text(
                 text = "$number",
-                color = AccentNeonGreen,
+                color = AccentSecondary,
                 fontSize = 12.sp,
                 fontWeight = FontWeight.Bold
             )
@@ -144,7 +144,7 @@ fun ContactOptionRow(
         Icon(
             imageVector = Icons.Default.ChevronRight,
             contentDescription = null,
-            tint = AccentNeonGreen.copy(alpha = 0.5f),
+            tint = AccentSecondary.copy(alpha = 0.5f),
             modifier = Modifier.size(20.dp)
         )
     }

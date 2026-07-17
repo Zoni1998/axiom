@@ -112,7 +112,7 @@ fun ChatScreen(
                             text = "ZONIA",
                             fontFamily = FontFamily.Monospace,
                             fontWeight = FontWeight.Bold,
-                            color = AccentNeonGreen,
+                            color = AccentSecondary,
                             fontSize = 20.sp,
                             letterSpacing = 2.sp
                         )
@@ -281,7 +281,7 @@ fun ChatScreen(
                             modifier = Modifier
                                 .size(48.dp)
                                 .clip(CircleShape)
-                                .background(AccentNeonGreen)
+                                .background(AccentSecondary)
                         ) {
                             Icon(
                                 imageVector = Icons.Default.Send,
@@ -309,11 +309,11 @@ fun AgentStatusSubtitle(state: AgentState) {
     }
     
     val color = when (state) {
-        is AgentState.Idle -> AccentNeonGreen
+        is AgentState.Idle -> AccentSecondary
         is AgentState.Listening -> AccentRed
-        is AgentState.Thinking -> AccentPurple
+        is AgentState.Thinking -> AccentPrimary
         is AgentState.PlanProposed -> AccentCyan
-        is AgentState.ExecutingPlan -> AccentNeonGreen
+        is AgentState.ExecutingPlan -> AccentSecondary
         is AgentState.Speaking -> AccentCyan
         is AgentState.Error -> AccentRed
     }
@@ -330,7 +330,7 @@ fun AgentStatusSubtitle(state: AgentState) {
 fun ChatBubble(message: ChatMessage, viewModel: ChatViewModel? = null, context: android.content.Context? = null) {
     val isAgent = message.sender == ChatMessage.Sender.AGENT
     val alignment = if (isAgent) Alignment.Start else Alignment.End
-    val bubbleColor = if (isAgent) CardBackground else AccentPurple.copy(alpha = 0.25f)
+    val bubbleColor = if (isAgent) CardBackground else AccentPrimary.copy(alpha = 0.25f)
     val textColor = TextPrimary
     val timeFormat = remember { SimpleDateFormat("h:mm a", Locale.getDefault()) }
 
@@ -383,7 +383,7 @@ fun ChatBubble(message: ChatMessage, viewModel: ChatViewModel? = null, context: 
                     .background(bubbleColor)
                     .border(
                         1.dp,
-                        if (isAgent) BorderColor else AccentPurple.copy(alpha = 0.5f),
+                        if (isAgent) BorderColor else AccentPrimary.copy(alpha = 0.5f),
                         RoundedCornerShape(
                             topStart = 16.dp,
                             topEnd = 16.dp,
@@ -458,9 +458,9 @@ fun ThinkingBubble() {
                 .graphicsLayer(alpha = alpha)
         ) {
             Row(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
-                Box(modifier = Modifier.size(6.dp).clip(CircleShape).background(AccentNeonGreen))
-                Box(modifier = Modifier.size(6.dp).clip(CircleShape).background(AccentNeonGreen))
-                Box(modifier = Modifier.size(6.dp).clip(CircleShape).background(AccentNeonGreen))
+                Box(modifier = Modifier.size(6.dp).clip(CircleShape).background(AccentSecondary))
+                Box(modifier = Modifier.size(6.dp).clip(CircleShape).background(AccentSecondary))
+                Box(modifier = Modifier.size(6.dp).clip(CircleShape).background(AccentSecondary))
             }
         }
     }
@@ -527,7 +527,7 @@ fun ProposedPlanPrompt(
                 Spacer(modifier = Modifier.width(12.dp))
                 Button(
                     onClick = onApprove,
-                    colors = ButtonDefaults.buttonColors(containerColor = AccentNeonGreen, contentColor = DarkBackground),
+                    colors = ButtonDefaults.buttonColors(containerColor = AccentSecondary, contentColor = DarkBackground),
                     shape = RoundedCornerShape(8.dp)
                 ) {
                     Text("Approve & Run", fontWeight = FontWeight.Bold)
@@ -557,8 +557,8 @@ fun FloatingOrb(
     val colorPulse by animateColorAsState(
         targetValue = when {
             isListening -> AccentRed
-            agentState is AgentState.Thinking -> AccentPurple
-            agentState is AgentState.ExecutingPlan -> AccentNeonGreen
+            agentState is AgentState.Thinking -> AccentPrimary
+            agentState is AgentState.ExecutingPlan -> AccentSecondary
             agentState is AgentState.Speaking -> AccentCyan
             else -> BorderColor
         },
