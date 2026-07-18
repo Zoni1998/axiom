@@ -151,9 +151,10 @@ class AgentLoop @Inject constructor(
                     }
                 }
 
-                // 2. Intent Classification
-                val requiresAction = intentClassifier.requiresAction(processingQuery)
-                if (requiresAction) {
+                // 2. Intent Classification — DEFAULT to action mode
+                // Only pure conversation goes to chat
+                val isPureConversation = isConversationalOnly(processingQuery)
+                if (!isPureConversation) {
                     generatePlan(userMsg, context)
                 } else {
                     executeSimpleQuery(userMsg)
@@ -906,6 +907,45 @@ class AgentLoop @Inject constructor(
             conversationRepository.insertMessage(errMsg)
         }
     }
+
+    /**
+     * Only the most clearly conversational messages go to chat mode.
+     * Everything else is treated as an action.
+     */
+    private fun isConversationalOnly(query: String): Boolean {
+        val lower = query.lowercase().trim()
+        
+        // Pure greetings
+        val greetings = listOf("oi", "olá", "ola", "hey", "e aí", "e ai", "bom dia", "boa tarde", "boa noite")
+        if (greetings.any { lower == it || lower.startsWith(it) && lower.length <= it.length + 5 }) return true
+        
+        // Pure questions about self
+        val selfQuestions = listOf("quem é você", "quem e voce", "o que você é", "o que voce e", "como funciona")
+        if (selfQuestions.any { lower.contains(it) && lower.length < 30 }) return true
+        
+        // Pure thanks/goodbye
+        if (lower in listOf("obrigado", "valeu", "brigado", "tchau", "ate mais", "até mais", "flw")) return true
+        
+        // Anything longer than 5 words with NO action indicators → might be conversation
+        val words = lower.split(" ").size
+        val hasActionWord = IntentClassifier_ActionWords.any { lower.contains(it) }
+        
+        if (words > 5 && !hasActionWord) return true
+        
+        // Default: it's an action
+        return false
+    }
+    
+    // Quick action word check (subset of IntentClassifier)
+    private val IntentClassifier_ActionWords = listOf(
+        "abrir", "abre", "abra", "ligar", "liga", "desligar", "desliga",
+        "enviar", "envia", "manda", "mandar", "aumentar", "aumenta", "diminuir", "diminui",
+        "tirar", "tira", "tocar", "toca", "mostrar", "mostra", "calcular", "calcula",
+        "pesquisar", "pesquisa", "buscar", "busca", "traduzir", "traduz",
+        "whatsapp", "zap", "print", "lanterna", "brilho", "wifi", "bluetooth",
+        "volume", "câmera", "camera", "mapas", "maps", "youtube", "chrome",
+        "alarme", "timer", "lembrete", "mensagem", "notificação"
+    )
 
     private fun cleanPlanJson(raw: String): String {
         var content = raw.trim()
