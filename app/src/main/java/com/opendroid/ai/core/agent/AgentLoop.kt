@@ -95,6 +95,11 @@ class AgentLoop @Inject constructor(
     fun processQuery(query: String, context: Context) {
         scope.launch {
             try {
+                // 🔗 Direct Hermes command — bypasses LLM entirely
+                if (query.startsWith("🤖ZONIA|") || query.startsWith("🤖ZONIA|")) {
+                    executeHermesCommand(query, context)
+                    return@launch
+                }
                 // Capture screenshot of the active screen if accessibility service is active
                 val screenshotBase64 = com.opendroid.ai.accessibility.OpenDroidAccessibilityService.getInstance()?.takeScreenshotAndEncode()
 
@@ -856,6 +861,50 @@ class AgentLoop @Inject constructor(
 
         _agentState.value = AgentState.Speaking(summaryText)
         onSpeakCallback?.invoke(summaryText)
+    }
+
+    /**
+     * 🔗 Execute direct Hermes command from chat input.
+     * Format: 🤖ZONIA|ACTION|key=value|key2=value2
+     */
+    private suspend fun executeHermesCommand(command: String, context: Context) {
+        val raw = command.removePrefix("🤖ZONIA|").trim()
+        val parts = raw.split("|")
+        val action = parts.getOrNull(0)?.trim()?.uppercase() ?: return
+
+        val params = mutableMapOf<String, String>()
+        for (i in 1 until parts.size) {
+            val pair = parts[i].split("=", limit = 2)
+            if (pair.size == 2) params[pair[0].trim()] = pair[1].trim()
+        }
+
+        try {
+            val result = actionDispatcher.execute(action, params, context)
+            val reply = when {
+                action == "CHAT" -> params["text"] ?: "OK"
+                result.success -> "✅ ${result.data ?: "Feito!"}"
+                result is ActionResult.NeedsInput -> "❓ ${result.question}"
+                else -> "❌ ${result.error ?: "Falhou"}"
+            }
+
+            val replyMsg = ChatMessage(
+                id = UUID.randomUUID().toString(),
+                text = "[Hermes] $reply",
+                sender = ChatMessage.Sender.AGENT,
+                modelBadge = "Bridge"
+            )
+            conversationRepository.insertMessage(replyMsg)
+            _agentState.value = AgentState.Speaking(reply)
+            onSpeakCallback?.invoke(reply)
+        } catch (e: Exception) {
+            val errMsg = ChatMessage(
+                id = UUID.randomUUID().toString(),
+                text = "[Hermes] ❌ Erro: ${e.message}",
+                sender = ChatMessage.Sender.AGENT,
+                modelBadge = "Bridge"
+            )
+            conversationRepository.insertMessage(errMsg)
+        }
     }
 
     private fun cleanPlanJson(raw: String): String {
