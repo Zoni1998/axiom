@@ -926,6 +926,18 @@ class AgentLoop @Inject constructor(
         // Pure thanks/goodbye
         if (lower in listOf("obrigado", "valeu", "brigado", "tchau", "ate mais", "até mais", "flw")) return true
         
+        // Fact-based questions — no device action needed
+        val factPatterns = listOf(
+            "horas", "hora", "data", "dia", "hoje", "amanhã", "amanha", "ontem",
+            "tempo", "clima", "previsão", "previsao", "chover", "chuva",
+            "quanto é", "quanto e", "calcule", "calcula", "conta", "matemática",
+            "significa", "o que é", "o que e", "definição", "definicao",
+            "quem foi", "onde fica", "qual a capital", "quantos",
+            "você sabe", "voce sabe", "me diga", "me diz", "me fale", "me fala",
+            "como está", "como esta", "como vai", "tudo bem", "tudo bom"
+        )
+        if (factPatterns.any { lower.contains(it) } && lower.length < 60) return true
+        
         // Anything longer than 5 words with NO action indicators → might be conversation
         val words = lower.split(" ").size
         val hasActionWord = IntentClassifier_ActionWords.any { lower.contains(it) }
