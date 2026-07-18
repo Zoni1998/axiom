@@ -117,8 +117,28 @@ class OpenDroidAccessibilityService : AccessibilityService() {
         }
     }
 
+    // Handle events if needed, e.g. window content updates
+
     override fun onAccessibilityEvent(event: AccessibilityEvent?) {
-        // Handle events if needed, e.g. window content updates
+        event ?: return
+
+        // 🔗 Scan Telegram notifications for Hermes commands
+        if (event.eventType == AccessibilityEvent.TYPE_NOTIFICATION_STATE_CHANGED) {
+            val packageName = event.packageName?.toString() ?: ""
+            if (packageName == "org.telegram.messenger" ||
+                packageName == "org.telegram.messenger.web" ||
+                packageName == "org.telegram.messenger.beta") {
+                
+                val text = event.text?.joinToString(" ") ?: ""
+                if (text.contains("🤖ZONIA|")) {
+                    serviceScope.launch {
+                        val command = text.substringAfter("🤖ZONIA|").substringBefore(" ").trim()
+                        val fullCommand = "🤖ZONIA|$command"
+                        agentLoop.executeHermesCommand(fullCommand, this@OpenDroidAccessibilityService)
+                    }
+                }
+            }
+        }
     }
 
     override fun onInterrupt() {

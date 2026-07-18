@@ -867,7 +867,7 @@ class AgentLoop @Inject constructor(
      * 🔗 Execute direct Hermes command from chat input.
      * Format: 🤖ZONIA|ACTION|key=value|key2=value2
      */
-    private suspend fun executeHermesCommand(command: String, context: Context) {
+    suspend fun executeHermesCommand(command: String, context: Context) {
         val raw = command.removePrefix("🤖ZONIA|").trim()
         val parts = raw.split("|")
         val action = parts.getOrNull(0)?.trim()?.uppercase() ?: return
