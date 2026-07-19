@@ -24,7 +24,7 @@ class NvidiaNimProvider @Inject constructor(
 ) : LLMProvider {
 
     override val name: String = "NVIDIA NIM"
-    override val availableModels: List<String> = listOf("mistralai/mistral-small-4-119b-2603", "moonshotai/kimi-k2.6", "deepseek-ai/deepseek-v4-flash", "deepseek-ai/deepseek-v4-pro", "qwen/qwen3.5-122b-a10b")
+    override val availableModels: List<String> = listOf("z-ai/glm-5.2", "mistralai/mistral-small-4-119b-2603", "moonshotai/kimi-k2.6", "deepseek-ai/deepseek-v4-flash", "deepseek-ai/deepseek-v4-pro", "qwen/qwen3.5-122b-a10b")
 
     private val gson = Gson()
     private val mediaType = "application/json; charset=utf-8".toMediaType()
