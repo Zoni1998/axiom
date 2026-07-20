@@ -1,0 +1,97 @@
+{
+  "gerado_em": "20/07/2026 (aguardando 09:55)",
+  "status": "online",
+  "sinais": {
+    "PETR4": {
+      "acao": "AGUARDAR",
+      "forca": 0,
+      "preco": 0
+    },
+    "PRIO3": {
+      "acao": "AGUARDAR",
+      "forca": 0,
+      "preco": 0
+    },
+    "VALE3": {
+      "acao": "AGUARDAR",
+      "forca": 0,
+      "preco": 0
+    },
+    "CSNA3": {
+      "acao": "AGUARDAR",
+      "forca": 0,
+      "preco": 0
+    },
+    "GGBR4": {
+      "acao": "AGUARDAR",
+      "forca": 0,
+      "preco": 0
+    },
+    "CMIN3": {
+      "acao": "AGUARDAR",
+      "forca": 0,
+      "preco": 0
+    },
+    "ITUB4": {
+      "acao": "AGUARDAR",
+      "forca": 0,
+      "preco": 0
+    },
+    "BBDC4": {
+      "acao": "AGUARDAR",
+      "forca": 0,
+      "preco": 0
+    },
+    "BBAS3": {
+      "acao": "AGUARDAR",
+      "forca": 0,
+      "preco": 0
+    },
+    "B3SA3": {
+      "acao": "AGUARDAR",
+      "forca": 0,
+      "preco": 0
+    },
+    "BPAC11": {
+      "acao": "AGUARDAR",
+      "forca": 0,
+      "preco": 0
+    },
+    "ABEV3": {
+      "acao": "AGUARDAR",
+      "forca": 0,
+      "preco": 0
+    },
+    "RENT3": {
+      "acao": "AGUARDAR",
+      "forca": 0,
+      "preco": 0
+    },
+    "RAIZ4": {
+      "acao": "AGUARDAR",
+      "forca": 0,
+      "preco": 0
+    },
+    "EGIE3": {
+      "acao": "AGUARDAR",
+      "forca": 0,
+      "preco": 0
+    },
+    "FLRY3": {
+      "acao": "AGUARDAR",
+      "forca": 0,
+      "preco": 0
+    },
+    "RADL3": {
+      "acao": "AGUARDAR",
+      "forca": 0,
+      "preco": 0
+    },
+    "WEGE3": {
+      "acao": "AGUARDAR",
+      "forca": 0,
+      "preco": 0
+    }
+  },
+  "recomendacao_geral": "AGUARDANDO 09:55"
+}
